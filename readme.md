@@ -1,4 +1,4 @@
-# App name
+# Web - Jiří Zapletal
 Application built on [Strategio SaaS](https://github.com/strategio-digital/saas).  
 
 ## Installation guide

@@ -1,0 +1,25 @@
+/**
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.btn {
+    &.btn-xl {
+        font-weight: bold;
+        padding: 1rem 1.5rem;
+        transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transition: transform .3s ease;
+
+        &:active,
+        &:hover {
+            transform: translate3d(0, 5px, 0);
+            -ms-transform: translate3d(0, 5px, 0);
+        }
+
+        &.btn-cta {
+            background-color: #fa950b;
+            border-color: #fa950b;
+        }
+    }
+}
