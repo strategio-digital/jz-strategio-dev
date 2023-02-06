@@ -29,7 +29,7 @@ class SkillsModel
             'Vuetify 3',
             'Pinia JS',
             'Bootstrap 5',
-            'Tailwind CSS / UI',
+            'Tailwind UI',
             'SCSS',
             'REST API',
             'JWT',

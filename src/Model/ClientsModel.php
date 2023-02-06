@@ -32,7 +32,7 @@ class ClientsModel
             'Orel ČB',
             'VS Montáže',
             'Adrenalinsport',
-            'Veterina Pelhřimov',
+            'VetPel',
             'Václav Flíček',
             'Široko Daleko',
             'Fonditore',
