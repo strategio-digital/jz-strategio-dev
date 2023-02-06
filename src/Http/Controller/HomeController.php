@@ -7,6 +7,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controller;
 
+use App\Model\ClientsModel;
+use App\Model\SkillsModel;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Controller;
 
@@ -15,9 +17,8 @@ class HomeController extends Controller
     public function index(): void
     {
         $this->getResponse()->render(Path::viewDir() . '/controller/home.latte', [
-            'title' => 'Strategio SaaS',
-            'description' => 'The Tool for developing webs & APIs by simple clicks.',
-            'tech' => 'Doctrine ORM + Symfony Router + Latte + Vue + Vite'
+            'skills' => new SkillsModel(),
+            'clients' => new ClientsModel()
         ]);
     }
 }

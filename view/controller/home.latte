@@ -7,70 +7,38 @@
 
 {block head}
     {include parent}
-    <title>Home | Strategio SaaS</title>
+    <title>PHP & Vue | Full-Stack senior developer | Jiří Zapletal</title>
+    <meta name="description" content="Píšu čistý a bezpečný kód, který udrží dlouhodobé zdraví Vašeho projektu.">
 {/block}
 
 {block content}
-    {*include './../component/remove-this.latte'*}
-    <header class="h-75 w-100 d-flex align-items-center bg-radial text-white position-relative">
-        <div class="position-absolute end-0 bottom-0 me-5">
-            <img src="//dummyimage.com/800/" width="800" height="800" alt="Jiří Zapletal - PHP & Vue developer">
-        </div>
-        <div class="container position-relative">
-            <div class="h3 mb-4">Jiří Zapletal</div>
-            <h1 class="display-1 fw-bold">PHP & Vue</h1>
-            <h2>senior full-stsack developer</h2>
+    {include './../component/hero-section.latte'}
+    {include './../component/looking-for.latte'}
 
-            <div class="d-flex align-items-center mt-5">
-                <div class="border-1 border-bottom me-3" style="width: 30px"></div>
-                <p class="h4 fw-light mb-0">
-                    Píšu čistý a bezpečný kód, který udrží dlouhodobé zdraví Vašeho projektu.
-                </p>
+    <article class="container py-5">
+        {include './../component/about-me.latte'}
+    </article>
+
+    <div class="bg-light py-5 overflow-hidden">
+        {include './../component/skills.latte'}
+    </div>
+
+    <div class="py-5 bg-white">
+        {include './../component/code-examples.latte'}
+    </div>
+
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold mb-2">Reference</h2>
+                <p class="lead mb-0">Slova přímo od zákazníků (můžete jim zavolat a cokoli si ověřit).</p>
             </div>
 
-            <div class="mt-5">
-                <button class="btn btn-warning btn-xl btn-cta me-4">Poptat spolupráci</button>
-                <button class="btn btn-light btn-xl">Dozvědět se více</button>
-            </div>
-        </div>
-    </header>
-
-    <div class="bg-light p-5">
-        <div class="container d-flex align-items-center justify-content-between fw-lighter">
-            <h2 class="h4">Hledáte full-stack (backend & frontend) vývojáře? Neváhejte se na mě obrátit.</h2>
-            <button class="btn btn-warning btn-xl btn-cta ms-4">Poptat spolupráci</button>
+            {include './../component/reference-carousel.latte'}
+            {include './../component/reference-clients.latte'}
         </div>
     </div>
 
-    <article class="container py-5">
-        <div class="row">
-            <div class="col-lg-6 col-xxl-5">
-                <img src="//dummyimage.com/800" width="800" height="800" class="img-fluid" alt="...">
-            </div>
-
-            <div class="col-lg-6 col-xxl-6 offset-xxl-1">
-                <h2 class="display-6 fw-bold mb-4 mt-4 mt-lg-0">O mně</h2>
-
-                <p>Jsem programátor a vývojář webových aplikací všech druhů. Mám <strong>přes 17 let zkušeností z oblasti vývoje SW</strong>. Mohu být užitečným členem Vašeho vývojářského týmu, ale klidně mi můžete svěřit i kompletní návrh a realizaci.</p>
-
-                <p>Vyvíjím aplikace pro firmy a instituce jako je <strong>GoPay</strong>, <strong>Jihočeská Univerzita</strong> (Bobřík informatiky), Střechy Bohemia, Osam Trade a další. Pracuji i pro jednotlivce a drobné podnikatele.</p>
-
-                <p>Na backendu nejraději používám <strong>PHP 8.2</strong>, <strong>PHPStan lvl 8</strong>, Doctrine ORM, Symfony, Nette i Laravel komponenty a když je potřeba, tak sáhnu po kompletním frameworku nebo vlastním nástroji.</p>
-
-                <p>Na frontendu preferuji <strong>TypeScript</strong>, <strong>Vite</strong>, <strong>Vue 3</strong> / composition API, Vanilla JS, občas i React, SCSS a prostě vše, co k tomu paří.</p>
-
-                <p>Na GitHubu vlastním přes 70 repozitářů (veřejných a privátních) a jsem contributorem u několika open-source projektů.</p>
-
-                <p>Vyvinul jsem si i vlastní nástroje a frameworky pro rychlejší prototypování, realizace a dlouhodobou udržitelnost webových aplikací.</p>
-
-                <p><strong>Jednám na rovinu, držím slovo a snažím se maximálně vycházet vstříc</strong> - stojím pouze o férovou spolupráci a proto vyžaduji stejný přístup i z druhé strany.</p>
-
-                <div>
-                    <button class="btn btn-outline-secondary btn-xl me-3 mt-4">Můj příběh</button>
-                    <button class="btn btn-outline-secondary btn-xl me-3 mt-4">Co přesně ovládám</button>
-                    <button class="btn btn-warning btn-xl btn-cta mt-4">Poptat spolupráci</button>
-                </div>
-            </div>
-        </div>
-    </article>
+    {include './../component/tools.latte'}
+    {include './../component/plan.latte'}
 {/block}

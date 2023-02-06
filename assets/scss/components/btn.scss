@@ -4,6 +4,11 @@
  */
 
 .btn {
+    &.btn-orange {
+        background-color: #fa950b;
+        border-color: #fa950b;
+    }
+
     &.btn-xl {
         font-weight: bold;
         padding: 1rem 1.5rem;
