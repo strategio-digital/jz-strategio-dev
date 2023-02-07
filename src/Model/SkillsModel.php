@@ -13,7 +13,7 @@ class SkillsModel
      * @param int|null $limit
      * @return string[]
      */
-    public function get(int $limit = null) : array
+    public function get(int $limit = null): array
     {
         $data = [
             'PHP 8.2',
@@ -79,7 +79,7 @@ class SkillsModel
         return $data;
     }
     
-    public function count() : int
+    public function count(): int
     {
         return count($this->get());
     }

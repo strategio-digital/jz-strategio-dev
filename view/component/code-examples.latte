@@ -3,24 +3,26 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  *}
 
+{varType App\Model\CodeExamples $codeExamples}
+
 <div class="container">
-    <h2 class="display-6 fw-bold mb-5 text-center">Jak vypadá můj zdrojový kód</h2>
+    <h2 class="display-6 fw-bold mb-5 text-center">Jak vypadá můj zdrojový&nbsp;kód</h2>
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="rounded-1 bg-light">
-                <button class="border-0 w-100 text-start p-4 mb-1">PHP / Rest API</button>
-                <div class="p-4 fw-bold text-white" style="background: #545454">PHP / Doctrine ORM</div>
-                <div class="p-4">Vue JS / Datagrid</div>
-                <div class="p-4">Node JS / Scraper</div>
-                <div class="p-4">Dockerfile</div>
-                <div class="p-4">CSS / SCSS</div>
+        <div class="col-lg-3 col-xl-4">
+            <div class="rounded-1 bg-light d-flex d-lg-block w-100 overflow-auto">
+                {foreach $codeExamples->get() as $c}
+                    <button class="border-0 text-lg-start p-3 p-lg-4 border-end w-100 text-dark {$c['active'] ? 'fw-bold text-white bg-code'}">
+                        <span class="d-lg-none text-nowrap" style="font-size: .8rem">{$c['shortcut']}</span>
+                        <span class="d-none d-lg-inline">{$c['title']}</span>
+                    </button>
+                {/foreach}
             </div>
         </div>
 
-        <div class="col-md-8">
-            <div class="rounded-1" style="background: #2c2c2c">
-                <div class="fw-bold border-bottom border-white p-4 rounded-top" style="background: #545454">
+        <div class="col-lg-9 col-xl-8">
+            <div class="rounded-1 mt-4 mt-lg-0 bg-code-dark">
+                <div class="fw-bold border-bottom border-white p-4 rounded-top bg-code">
                     <div class="d-flex justify-content-between align-items-center text-white">
                         <span>PHP / Doctrine ORM</span>
                         <a href="//github.com/strategio-digital" target="_blank" class="link-light">
@@ -30,9 +32,11 @@
                         </a>
                     </div>
                 </div>
-                <pre class="mb-0 p-4 text-wrap font-monospace text-white" style="min-height: 540px">
-                    // code with syntax highlighter here
-                </pre>
+                <div class="code">
+                    {foreach $codeExamples->get() as $c}
+                        <pre class="mb-0 p-4 text-wrap font-monospace text-white {$c['active'] === false ? 'd-none'}" style="min-height: 540px">{$c['code']}</pre>
+                    {/foreach}
+                </div>
             </div>
         </div>
     </div>

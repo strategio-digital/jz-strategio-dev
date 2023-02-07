@@ -13,7 +13,7 @@ class ClientsModel
      * @param int|null $limit
      * @return string[]
      */
-    public function get(int $limit = null) : array
+    public function get(int $limit = null): array
     {
         $data = [
             'GoPay',
@@ -49,7 +49,7 @@ class ClientsModel
         return $data;
     }
     
-    public function count() : int
+    public function count(): int
     {
         return count($this->get());
     }

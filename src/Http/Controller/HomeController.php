@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace App\Http\Controller;
 
 use App\Model\ClientsModel;
+use App\Model\CodeExamples;
 use App\Model\SkillsModel;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Controller;
@@ -18,7 +19,8 @@ class HomeController extends Controller
     {
         $this->getResponse()->render(Path::viewDir() . '/controller/home.latte', [
             'skills' => new SkillsModel(),
-            'clients' => new ClientsModel()
+            'clients' => new ClientsModel(),
+            'codeExamples' => new CodeExamples(),
         ]);
     }
 }

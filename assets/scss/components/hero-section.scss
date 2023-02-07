@@ -3,9 +3,9 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
-html,
-body {
-    margin: 0;
-    height: 100%;
-    width: 100%;
+.hero-section {
+    min-height: 80%;
+    @include media-breakpoint-down(md) {
+        min-height: auto;
+    }
 }

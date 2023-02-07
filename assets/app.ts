@@ -7,6 +7,9 @@
 import '@/assets/img/strategio.svg'
 import '@/assets/img/favicon.svg'
 import '@/assets/img/favicon.png'
+import '@/assets/img/jiri-zapletal-web-developer.png'
+import '@/assets/img/jiri-zapletal-php.jpg'
+import '@/assets/img/jiri-zapletal-php-2.jpg'
 
 // Stylesheets
 import '@/assets/scss/layout.scss'

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Strategio Digital s.r.o.
+ * Copyright (c) 2023 Strategio Digital s.r.o.
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
@@ -15,6 +15,10 @@
         transform: translateZ(0);
         -ms-transform: translateZ(0);
         transition: transform .3s ease;
+
+        @include media-breakpoint-down(sm) {
+            padding: .7rem 1rem;
+        }
 
         &:active,
         &:hover {
