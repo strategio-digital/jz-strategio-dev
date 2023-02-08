@@ -3,6 +3,7 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
+
 @import "bootstrap/scss/mixins/banner";
 @include bsBanner("");
 
@@ -56,6 +57,7 @@
 // scss-docs-end import-stack
 
 @import "components/body";
+@import "components/heading";
 @import "components/btn";
 @import "components/bg-blue";
 @import "components/bg-code";
@@ -65,3 +67,4 @@
 @import "components/hero-image";
 @import "components/reference-img";
 @import "components/reference-name";
+@import "components/reference-logo";

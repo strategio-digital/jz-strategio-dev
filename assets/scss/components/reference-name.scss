@@ -9,11 +9,11 @@
         margin-bottom: .5rem;
 
         @include media-breakpoint-only(md) {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
         @include media-breakpoint-up(lg) {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
     }
 

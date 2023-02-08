@@ -10,9 +10,15 @@
 <div class="position-relative overflow-hidden">
     <div class="position-absolute bg-light end-0 top-0 w-100" style="height: 2px"></div>
     <div class="row">
-        <div class="col-6 col-md-4 col-lg-3 col-xl-2 p-0" n:foreach="$clients->get() as $client">
-            <div class="p-4 p-sm-5 h-100 text-center small d-flex justify-content-center align-items-center" style="border-top: 1px dashed #ddd; border-right: 1px dashed #ddd">
-                {$client}
+        <div class="col-6 col-sm-4 col-md-3 col-xl-2 p-0" n:foreach="$clients->get() as $name => $src">
+            <div class="h-100" style="border-top: 1px dashed #ddd; border-right: 1px dashed #ddd">
+                <div class="reference-logo py-2 px-4 py-sm-4">
+                    {if $src}
+                        <img src="{vite($src)}" alt="{$name}" class="w-100">
+                    {else}
+                        <span class="small">{$name}</span>
+                    {/if}
+                </div>
             </div>
         </div>
     </div>
