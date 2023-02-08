@@ -10,73 +10,103 @@ namespace App\Model;
 class SkillsModel
 {
     /**
-     * @param int|null $limit
-     * @return string[]
+     * @return array<string, array<int,string>>
      */
-    public function get(int $limit = null): array
+    public function get(): array
     {
-        $data = [
-            'PHP 8.2',
-            'Nette',
-            'Symfony',
-            'Laravel',
-            'PHP Stan lvl 8',
-            'Doctrine ORM',
-            'Vite, Gulp',
-            'TypeScript',
-            'Vanilla JS',
-            'Vue 3',
-            'Vuetify 3',
-            'Pinia JS',
-            'Bootstrap 5',
-            'Tailwind UI',
-            'SCSS',
-            'REST API',
-            'JWT',
-            'Postman',
-            'Postgres',
-            'MySQL',
-            'MariaDB',
-            'AWS Aurora',
-            'RabbitMQ',
-            'Redis',
-            'Elastic',
-            'MongoDB',
-            'Docker',
-            'CI / CD',
-            'nGinX',
-            'Apache',
-            'Easypanel.io',
-            'Google Cloud Platform',
-            'Amazon Web Services',
-            'Digital Ocean',
-            'GitHub',
-            'GitLab',
-            'BitBucket',
-            'PHP Storm',
-            'Github Copilot',
-            'JIRA / Scrum',
-            'Slack',
-            'TogglTrack',
-            'Full Remote',
-            'Google Meet',
-            'Trello',
-            'Node JS',
-            'Playwright',
-            'Apify SDK',
-            'Pocketbase.io',
-            'Google Firebase',
-            'Shell Script',
-            'Figma',
-            'Affinity',
-            'Golang'
+        return [
+            'Back-end' => [
+                'PHP 8.2',
+                'Nette',
+                'Symfony',
+                'Laravel',
+                'PHP Stan lvl 8',
+                'Doctrine ORM',
+                'Guzzle',
+                'Nette Tester',
+            ],
+            'Front-end' => [
+                'Vite',
+                'TypeScript',
+                'Vanilla JS',
+                'Vue 3',
+                'Vuetify 3',
+                'Pinia JS',
+                'React',
+                'Bootstrap 5',
+                'Tailwind UI',
+                'SCSS',
+                'Gulp'
+            ],
+            'Databáze' => [
+                'Postgres',
+                'MySQL',
+                'MariaDB',
+                'AWS Aurora',
+                'RabbitMQ',
+                'Redis',
+            ],
+            'API' => [
+                'JWT',
+                'OAuth',
+                'REST',
+                'GraphQL',
+                'CURL',
+                'Postman',
+            ],
+            'Dev-Ops' => [
+                'Docker',
+                'Shell',
+                'Nginx',
+                'Apache',
+                'PHP-FPM',
+            ],
+            'Cloud' => [
+                'Google Cloud',
+                'AWS',
+                'Digital Ocean',
+                'AppRunner',
+                'S3',
+                'ECR',
+                'RDS',
+                'SES',
+                'Easypanel',
+            ],
+            'GIT' => [
+                'GitHub',
+                'GitLab',
+                'BitBucket',
+            ],
+            'Scraping' => [
+                'Node JS',
+                'Playwright',
+                'Puppeteer',
+                'Apify SDK',
+                'Apify platform'
+            ],
+            'UX / UI' => [
+                'Figma',
+                'Affinity',
+                'Balsamiq Mockups',
+            ],
+            'Nástroje' => [
+                'PHP Storm',
+                'Github Copilot',
+                'JIRA',
+                'Scrum',
+                'Slack',
+                'TogglTrack',
+                'Google Meet',
+                'Trello',
+            ],
+            'Experimentálně' => [
+                'Elastic',
+                'MongoDB',
+                'Pocketbase.io',
+                'Google Firebase',
+                'Golang',
+            ]
         ];
-        
-        if ($limit !== null) {
-            return array_slice($data, 0, $limit);
-        }
-        
-        return $data;
     }
     
     public function count(): int

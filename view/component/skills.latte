@@ -5,24 +5,28 @@
 
 {varType App\Model\SkillsModel $skills}
 
-<div class="container text-center position-relative">
-    <h2 class="display-6 fw-bold">Technologie a nástroje, které ovládám</h2>
+<div class="bg-light py-5 overflow-hidden position-relative">
+    <div class="position-absolute top-0 end-0 start-0 bottom-0 w-100 h-100">
+        <div class="position-absolute bg-blue top-0 end-0 bottom-0 start-0 bg-light" style="opacity: .97; z-index: 1"></div>
+        <img src="{vite('assets/img/jiri-zapletal-php.jpg')}" class="w-100 h-100 position-relative" style="object-fit: cover; object-position: bottom" alt="Jiří Zapletal - Web developer">
+    </div>
+    <div class="container position-relative" style="z-index: 1">
+        <h2 class="display-6 fw-bold mb-0 text-md-center">Technologie a nástroje, které ovládám</h2>
 
-    <div class="row">
-        <div n:foreach="$skills->get(24) as $skill" class="col-6 col-md-4 col-lg-3 col-xl-2 mt-4">
-            <div class="p-4 p-sm-5 small bg-white h-100 d-flex align-items-center justify-content-center">
-                {$skill}
+        <div class="row mt-2 mt-md-4 justify-content-center">
+            <div class="col-md-9 position-relative">
+                <div class="position-absolute h-100 top-0 bottom-0 d-none d-md-block" style="width: 160px; border-right: 1px dashed #d3d3d3"></div>
+                <div class="text-start">
+                    <div n:foreach="$skills->get() as $category => $s" class="d-md-flex py-3" {if !$iterator->last}style="border-bottom: 1px dashed #d3d3d3"{/if}>
+                        <div style="min-width: 170px" class="d-flex fw-bold text-secondary pb-2 pb-md-0">{$category}</div>
+                        <div class="px-md-3 h-100">
+                            {foreach $s as $skill}
+                                <span class="badge bg-white text-secondary mb-1">{$skill}</span>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="position-absolute bottom-0 start-0 end-0 w-100" style="margin-bottom: -4.5rem">
-        <div class="position-absolute top-0 end-0 start-0 bottom-0 bg-light bg-opacity-75 mx-2" style="filter: blur(5px);-webkit-filter: blur(5px);"></div>
-        <div class="py-5 position-relative">
-            <button class="btn btn-outline-secondary">
-                Zobrazit všech {$skills->count()} položek
-            </button>
-        </div>
-    </div>
-    <div class="mb-4"></div>
 </div>
