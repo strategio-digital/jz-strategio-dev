@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.reference-name {
+    .full-name {
+        font-size: 1rem;
+        margin-bottom: .5rem;
+
+        @include media-breakpoint-only(md) {
+            font-size: 1.2rem;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1.3rem;
+        }
+    }
+
+    .job-name {
+        font-size: .9rem;
+
+        @include media-breakpoint-only(md) {
+            font-size: 1rem;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1.1rem;
+        }
+    }
+}
