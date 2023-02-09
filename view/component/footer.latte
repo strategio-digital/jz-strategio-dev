@@ -3,6 +3,8 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  *}
 
+{varType App\Model\ContactModel $contact}
+
 <div class="text-white text-opacity-75" style="background-color: #303030">
     <div class="container">
         <div class="row">
@@ -38,15 +40,15 @@
                 <p class="mb-4">Senior PHP developer na volné noze. 17&nbsp;let zkušeností v oblasti vývoje. Stovky realizovaných projektů.</p>
 
                 <div class="mb-2">
-                    E-mail: <a href="mailto:jz@strategio.dev" target="_blank" class="link-light">jz@strategio.dev</a>
+                    E-mail: <a href="mailto:{$contact->get('email')}" target="_blank" class="link-light">{$contact->get('email')}</a>
                 </div>
 
                 <div class="mb-2">
-                    Telefon: <a href="tel:+420606091125" target="_blank" class="link-light">+420 606 091 125</a>
+                    Telefon: <a href="tel:{$contact->get('phone')|replace:' '}" target="_blank" class="link-light">{$contact->get('phone')}</a>
                 </div>
 
                 <div class="mb-4">
-                    LinkedIn: <a href="https://www.linkedin.com/in/jz-dev/" target="_blank" class="link-light">linkedin.com/in/jz-dev</a>
+                    LinkedIn: <a href="{$contact->get('linkedIn')}" target="_blank" class="link-light">{$contact->get('linkedIn')|replace:'https://'}</a>
                 </div>
 
                 <div>

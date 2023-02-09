@@ -1,0 +1,17 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.plan-wrapper {
+    &.active,
+    &:hover {
+        color: #1920ae;
+        .plan-circle {
+            box-shadow: 0 0 1.5rem lighten($secondary, 40%);
+            border: 10px solid $white;
+            color: #1920ae;
+            background-color: white;
+        }
+    }
+}

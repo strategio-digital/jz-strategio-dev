@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.skill-row {
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        @include media-breakpoint-up(md) {
+            background-color: lighten($secondary, 45%);
+        }
+    }
+}

@@ -9,12 +9,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;;
-    background-color: $secondary;
+    background-color: lighten($secondary, 30%);
+    border: 0 solid $white;
     color: $white;
     width: 100px;
     height: 100px;
     min-height: 100px;
     min-width: 100px;
+    box-shadow: 0 0 0 $white;
+    transition: all 0.3s ease-in-out;
     @include font-size(4rem);
 
     @include media-breakpoint-down(sm) {

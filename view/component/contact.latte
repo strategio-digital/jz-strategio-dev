@@ -3,6 +3,8 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  *}
 
+{varType App\Model\ContactModel $contact}
+
 <div class="bg-white position-relative" id="contact-me">
     <div class="bg-radial pb-9 pt-8 py-md-9">
         <div class="container text-center text-white">
@@ -13,7 +15,7 @@
     <div class="container position-relative">
         <div class="row align-items-start">
             <div class="col-md-6 col-xl-5 pb-5">
-                <div class="p-4 p-lg-5 bg-white shadow rounded-1 border" style="margin-top: -3rem">
+                <div class="p-4 p-lg-5 bg-white shadow rounded-1 border contact-form">
                     <h3 class="fw-bold mb-4">Poptávky a dotazy</h3>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="name" placeholder="Jméno nebo název firmy">
@@ -43,10 +45,10 @@
 
             <div class="col-md-6 offset-xl-1 pt-0 pb-5 py-md-5">
                 <div class="mb-2">Telefon</div>
-                <a href="tel:+420606091125" target="_blank" class="link-warning text-decoration-none h2 fw-bold">+420 606 091 125</a>
+                <a href="tel:{$contact->get('phone')|replace:' '}" target="_blank" class="link-warning text-decoration-none h2 fw-bold">{$contact->get('phone')}</a>
 
                 <div class="mt-4 mb-2">E-mail</div>
-                <a href="mailto:jz@strategio.dev" target="_blank" class="link-warning text-decoration-none h2 fw-bold">jz@strategio.dev</a>
+                <a href="mailto:{$contact->get('email')}" target="_blank" class="link-warning text-decoration-none h2 fw-bold">{$contact->get('email')}</a>
 
                 <div class="mt-4 mt-md-5">
                     <div class="h3 fw-light mb-3">Kde mě naleznete</div>

@@ -32,7 +32,7 @@ class ClientsModel
             'VS Montáže' => 'assets/img/logo/vsmontaze.svg',
             'Václav Flíček' => 'assets/img/logo/vaclavflicek.svg',
             'Široko Daleko' => 'assets/img/logo/sirokodaleko.svg',
-            'Silluro' => null,
+            'Silluro s.r.o.' => null,
             'PC Robot' => 'assets/img/logo/pcrobot.svg',
             'VetPel' => 'assets/img/logo/vetpel.svg',
             'Adrenalinsport' => 'assets/img/logo/adrenalinsport.png',

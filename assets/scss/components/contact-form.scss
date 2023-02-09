@@ -1,0 +1,18 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.contact-form {
+    margin-top: -3rem;
+    transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transition: transform 0.2s ease-in-out;
+
+    &.active,
+    &:hover,
+    &:focus {
+        transform: translate3d(0, -.7rem, 0);
+        -ms-transform: translate3d(0, -.7rem, 0);
+    }
+}

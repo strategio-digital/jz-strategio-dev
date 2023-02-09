@@ -35,6 +35,9 @@ import '@/assets/img/logo/vetpel.svg'
 import '@/assets/img/logo/cisticistroje.svg'
 import '@/assets/img/logo/adrenalinsport.png'
 
+import '@/assets/img/logo/jcu-colored.svg'
+import '@/assets/img/client/jiri-vanicek.jpg'
+
 // Stylesheets
 import '@/assets/scss/layout.scss'
 

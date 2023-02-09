@@ -38,7 +38,7 @@ class SkillsModel
                 'SCSS',
                 'Gulp'
             ],
-            'Databáze' => [
+            'DB & Storage' => [
                 'Postgres',
                 'MySQL',
                 'MariaDB',
@@ -81,6 +81,7 @@ class SkillsModel
                 'Node JS',
                 'Playwright',
                 'Puppeteer',
+                'Cheerio',
                 'Apify SDK',
                 'Apify platform'
             ],

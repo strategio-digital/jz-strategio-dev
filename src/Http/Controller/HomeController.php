@@ -9,6 +9,8 @@ namespace App\Http\Controller;
 
 use App\Model\ClientsModel;
 use App\Model\CodeExamples;
+use App\Model\ContactModel;
+use App\Model\ReferencesModel;
 use App\Model\SkillsModel;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Controller;
@@ -21,6 +23,8 @@ class HomeController extends Controller
             'skills' => new SkillsModel(),
             'clients' => new ClientsModel(),
             'codeExamples' => new CodeExamples(),
+            'references' => new ReferencesModel(),
+            'contact' => new ContactModel()
         ]);
     }
 }
