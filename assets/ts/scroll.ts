@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
-const init = () => {
+export default () => {
     document.querySelectorAll('[data-scroll]').forEach(element => {
         element.addEventListener('click', event => {
             event.preventDefault()
@@ -20,9 +20,4 @@ const init = () => {
             }
         })
     })
-}
-export const scroll = () => {
-    return {
-        init
-    }
 }

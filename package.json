@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "strategio-saas": "dev"
+    "strategio-saas": "dev",
+    "tsparticles": "^2.9.0",
+    "tsparticles-engine": "^2.8.0"
   }
 }
