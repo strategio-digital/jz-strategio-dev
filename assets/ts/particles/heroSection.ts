@@ -11,7 +11,7 @@ export default async () => {
     await loadFull(tsParticles)
 
     function calculateParticles() {
-        return 0.00004 * window.innerWidth * window.innerHeight;
+        return 0.00003 * window.innerWidth * window.innerHeight;
     }
 
     const hero = await tsParticles.load('hero-section', {

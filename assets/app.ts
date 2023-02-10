@@ -12,8 +12,10 @@ import '@/assets/scss/layout.scss'
 // Typescript
 import scroll from '@/assets/ts/scroll'
 import heroSection from '@/assets/ts/particles/heroSection'
+import stepper from '@/assets/ts/stepper'
 
 scroll()
+stepper()
 heroSection()
 
 // VueJS example
