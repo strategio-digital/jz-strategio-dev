@@ -13,10 +13,14 @@ import '@/assets/scss/layout.scss'
 import scroll from '@/assets/ts/scroll'
 import heroSection from '@/assets/ts/particles/heroSection'
 import stepper from '@/assets/ts/stepper'
+import { useCarousel } from '@/assets/ts/carousel'
 
 scroll()
 stepper()
 heroSection()
+
+const carousels: HTMLDivElement[] = Array.from(document.querySelectorAll('.carousel'))
+carousels.forEach((el) => useCarousel(el, { autoPlay: { speed: 10000, enabled: true } }).create())
 
 // VueJS example
 // import { createApp } from 'vue'

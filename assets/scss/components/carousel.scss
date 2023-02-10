@@ -1,0 +1,24 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.carousel {
+    position: relative;
+
+    [data-carousel="item"] {
+        transition: opacity 700ms ease-in-out;
+
+        &.carousel-hide {
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        &.carousel-show {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 1;
+        }
+    }
+}
