@@ -7,9 +7,9 @@ import '@/assets/img/strategio.svg'
 import '@/assets/img/favicon.svg'
 import '@/assets/img/favicon.png'
 
-import '@/assets/img/jiri-zapletal-web-developer.png'
-import '@/assets/img/jiri-zapletal-php.jpg'
-import '@/assets/img/jiri-zapletal-php-2.jpg'
+import '@/assets/img/about/jiri-zapletal-web-developer.png'
+import '@/assets/img/about/jiri-zapletal-php.jpg'
+import '@/assets/img/about/jiri-zapletal-php-2.jpg'
 
 import '@/assets/img/logo/gopay.svg'
 import '@/assets/img/logo/gproject.svg'
@@ -34,6 +34,8 @@ import '@/assets/img/logo/vetpel.svg'
 import '@/assets/img/logo/cisticistroje.svg'
 import '@/assets/img/logo/adrenalinsport.png'
 
+import '@/assets/img/project/jihoceska-univerzita.jpg'
+
 import '@/assets/img/logo/jcu-colored.svg'
 import '@/assets/img/logo/gopay-colored.svg'
 import '@/assets/img/logo/strechybohemia-colored.svg'
@@ -44,3 +46,4 @@ import '@/assets/img/client/vaclav-novotny.jpg'
 import '@/assets/img/client/roman-kucera.jpg'
 import '@/assets/img/client/jan-pribyl.jpg'
 import '@/assets/img/client/roman-kucera-st.jpg'
+

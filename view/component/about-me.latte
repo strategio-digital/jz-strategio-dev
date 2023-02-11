@@ -3,20 +3,20 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  *}
 
+{varType App\Model\AboutModel $about}
+
 <article class="container py-5" id="about-me">
     <div class="row">
         <div class="col-lg-6 col-xxl-5 pb-3">
             <div class="position-relative h-100 me-4">
-                <div class="position-absolute w-100 h-100 mt-4 ms-4 bg-light"></div>
+                <div class="position-absolute w-100 mt-4 ms-4 bg-light about-carousel shadow-sm"></div>
                 <div class="carousel" id="about-carousel">
                     <div data-carousel="items">
-                        <div data-carousel="item">
-                            <img src="{vite('assets/img/jiri-zapletal-php-2.jpg')}" class="img-fluid shadow" alt="Jiří Zapletal - PHP Developer">
-                        </div>
-
-                        <div data-carousel="item">
-                            <img src="{vite('assets/img/jiri-zapletal-php.jpg')}" class="img-fluid shadow" alt="Jiří Zapletal - PHP Developer">
-                        </div>
+                        {foreach $about->get()['photos'] as $photo}
+                            <div data-carousel="item">
+                                <img src="{vite($photo['src'])}" class="img-fluid shadow" alt="{$photo['alt']}">
+                            </div>
+                        {/foreach}
                     </div>
 
                     <div class="row justify-content-end d-flex align-items-center ms-3 mt-4">

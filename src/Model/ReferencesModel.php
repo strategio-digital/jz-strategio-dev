@@ -22,7 +22,7 @@ class ReferencesModel
                 'logo' => 'assets/img/logo/jcu-colored.svg',
                 'photoSm' => 'assets/img/client/jiri-vanicek.jpg',
                 'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
-                'text' => 'Jsem velmi potěšen veškerou programátorskou prací, kterou Jiří na Bobříkovi Informatiky odvedl. Jeho práce byla klíčovým přínosem pro úspěch našeho projektu a tímto mu tedy děkuji za jeho úsilí a angažovanost.'
+                'text' => 'Jsem velmi potěšen veškerou programátorskou prací, kterou Jiří na Bobříkovi Informatiky odvedl. Jeho práce byla klíčovým přínosem pro úspěch našeho projektu. Tímto mu děkuji za jeho úsilí a angažovanost.'
             ],
             [
                 'name' => 'Václav Novotný',
@@ -46,7 +46,7 @@ class ReferencesModel
                 'logo' => null, //'assets/img/logo/silluro-colored.svg',
                 'photoSm' => 'assets/img/client/jan-pribyl.jpg',
                 'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
-                'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně variant produktů do Shoptetu. Je to zkušený a spolehlivý odborník se kterým rád spolupracuji.'
+                'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně tísíců variant produktů do Shoptetu. Je to zkušený a spolehlivý profesionál se kterým rád spolupracuji.'
             ],
             [
                 'name' => 'Roman Kučera st.',
@@ -54,7 +54,7 @@ class ReferencesModel
                 'logo' => 'assets/img/logo/rokuc-colored.svg',
                 'photoSm' => 'assets/img/client/roman-kucera-st.jpg',
                 'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
-                'text' => 'Jirku považuji za skvělého kreativce a partnera. Vytvořil již několik webových stránek, které mi každý den přinášejí několik poptávek. Pro správu těchto webů používám jednoduchý web-editor Contentio, který také sám vyvinul.',
+                'text' => 'Jirku považuji za skvělého kreativce a partnera. Vytvořil již řadu webových stránek, které mi každý den přinášejí několik poptávek. Pro správu používám Contentio web-editor, jenž je ze stejné dílny. Spolupráci vřele doporucuji.'
             ]
         ];
         
