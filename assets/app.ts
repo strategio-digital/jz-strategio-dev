@@ -15,12 +15,27 @@ import heroSection from '@/assets/ts/particles/heroSection'
 import stepper from '@/assets/ts/stepper'
 import { useCarousel } from '@/assets/ts/carousel'
 
-scroll()
-stepper()
-heroSection()
+(async () => {
+    scroll()
+    stepper()
 
-const carousels: HTMLDivElement[] = Array.from(document.querySelectorAll('.carousel'))
-carousels.forEach((el) => useCarousel(el, { autoPlay: { speed: 10000, enabled: true } }).create())
+    useCarousel(document.querySelector('#about-carousel') as HTMLDivElement, {
+        autoPlay: {
+            speed: 10000,
+            enabled: true
+        }
+    }).create()
+
+    useCarousel(document.querySelector('#reference-carousel') as HTMLDivElement, {
+        autoPlay: {
+            speed: 0,
+            enabled: false
+        }
+    }).create()
+
+    heroSection()
+})()
+
 
 // VueJS example
 // import { createApp } from 'vue'

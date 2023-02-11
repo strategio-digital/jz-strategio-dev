@@ -42,6 +42,7 @@ export const useCarousel = (el: HTMLDivElement, options: Options) => {
 
         restartAutoplay()
         updateCounter()
+        updateSizing()
     }
 
     function handleNext(): void {

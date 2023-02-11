@@ -35,4 +35,12 @@ import '@/assets/img/logo/cisticistroje.svg'
 import '@/assets/img/logo/adrenalinsport.png'
 
 import '@/assets/img/logo/jcu-colored.svg'
+import '@/assets/img/logo/gopay-colored.svg'
+import '@/assets/img/logo/strechybohemia-colored.svg'
+import '@/assets/img/logo/rokuc-colored.svg'
+
 import '@/assets/img/client/jiri-vanicek.jpg'
+import '@/assets/img/client/vaclav-novotny.jpg'
+import '@/assets/img/client/roman-kucera.jpg'
+import '@/assets/img/client/jan-pribyl.jpg'
+import '@/assets/img/client/roman-kucera-st.jpg'
