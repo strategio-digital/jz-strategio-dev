@@ -1,0 +1,66 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+.contract {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    animation: blink 2s ease-in-out infinite;
+    opacity: 1;
+    background-color: transparentize($danger, .5);
+    color: $white;
+    border-radius: 3rem;
+    padding: .8rem;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $white;
+        color: $dark;
+        animation: none;
+
+        .contract-dot {
+            border-color: $dark;
+        }
+    }
+
+    .contract-dot {
+        transition: border-color .3s ease-in-out;
+        display: block;
+        animation: blink-dot 2s infinite;
+        margin: .2rem;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 0, 69, 0.55);
+        border: 10px solid white;
+        border-radius: 50%;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .7;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes blink-dot {
+        0% {
+            background: #f00
+        }
+        50% {
+            background: #ff6200
+        }
+        100% {
+            background: #f00
+        }
+    }
+
+}
