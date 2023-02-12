@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.code-button {
+    border: none;
+    background: transparentize($secondary, .9);
+    color: #343a40;
+    width: 100%;
+    padding: 1rem;
+    text-align: start;
+    border-top: 1px solid transparentize($secondary, .7);
+    transition: all .3s ease-in-out;
+
+    @include media-breakpoint-down(xl) {
+        border-top: none;
+        text-align: center;
+    }
+
+    &:first-child {
+        border-top: none;
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+        color: $white;
+        background: #545454;
+    }
+}

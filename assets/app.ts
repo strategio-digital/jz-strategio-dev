@@ -13,28 +13,30 @@ import '@/assets/scss/layout.scss'
 import scroll from '@/assets/ts/scroll'
 import heroSection from '@/assets/ts/particles/heroSection'
 import stepper from '@/assets/ts/stepper'
+import highlight from '@/assets/ts/highlight/highlight'
 import { useCarousel } from '@/assets/ts/carousel'
+import { useSwitcher } from '@/assets/ts/switcher'
 
-(async () => {
-    scroll()
-    stepper()
+scroll()
+stepper()
+highlight()
+heroSection()
 
-    useCarousel(document.querySelector('#about-carousel') as HTMLDivElement, {
-        autoPlay: {
-            speed: 10000,
-            enabled: true
-        }
-    }).create()
+useSwitcher(document.querySelector('#code-switcher') as HTMLDivElement)
 
-    useCarousel(document.querySelector('#reference-carousel') as HTMLDivElement, {
-        autoPlay: {
-            speed: 0,
-            enabled: false
-        }
-    }).create()
+useCarousel(document.querySelector('#about-carousel') as HTMLDivElement, {
+    autoPlay: {
+        speed: 10000,
+        enabled: true
+    }
+}).create()
 
-    heroSection()
-})()
+useCarousel(document.querySelector('#reference-carousel') as HTMLDivElement, {
+    autoPlay: {
+        speed: 0,
+        enabled: false
+    }
+}).create()
 
 
 // VueJS example

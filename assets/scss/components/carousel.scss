@@ -5,24 +5,27 @@
 
 .carousel {
     position: relative;
+    overflow: hidden;
 
     [data-carousel="items"] {
         position: relative;
+        overflow: hidden;
     }
 
     [data-carousel="item"] {
-        position: absolute;
+        position: relative;
         transition: opacity 300ms ease-in-out;
 
         &.carousel-hide {
+            position: absolute;
             pointer-events: none;
             opacity: 0;
             z-index: 0;
         }
 
         &.carousel-show {
-            opacity: 1;
             pointer-events: auto;
+            opacity: 1;
             z-index: 1;
         }
     }

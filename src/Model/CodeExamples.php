@@ -7,32 +7,56 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use Saas\Helper\Path;
+
 class CodeExamples
 {
     /**
-     * @param int|null $limit
-     * @return array<int, array{title:string, code:string}>
+     * @return array<int, array<string,mixed>>
      */
-    public function get(int $limit = null): array
+    public function getAll(): array
     {
-        $data = [
-            ['title' => 'PHP / Rest API', 'shortcut' => 'PHP v1', 'code' => '// code with syntax highlighter here', 'active' => false],
-            ['title' => 'PHP / Doctrine ORM', 'shortcut' => 'PHP v2', 'code' => '// code with syntax highlighter here', 'active' => true],
-            ['title' => 'Vue JS / Datagrid', 'shortcut' => 'Vue', 'code' => '// code with syntax highlighter here', 'active' => false],
-            ['title' => 'Node JS / Scraper', 'shortcut' => 'NodeJS', 'code' => '// code with syntax highlighter here', 'active' => false],
-            ['title' => 'Dockerfile', 'shortcut' => 'Docker', 'code' => '// code with syntax highlighter here', 'active' => false],
-            ['title' => 'CSS / SCSS', 'shortcut' => 'SCSS', 'code' => '// code with syntax highlighter here', 'active' => false]
+        return [
+            [
+                'type' => 'ts',
+                'title' => 'useDatagrid.ts',
+                'shortcut' => 'Vue',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/vue.txt'),
+                'active' => false,
+                'link' => 'https://github.com/strategio-digital/saas/blob/master/vue/composables/datagrid/useDatagrid.ts'
+            ],
+            [
+                'type' => 'php',
+                'title' => 'User\\CreateRequest.php',
+                'shortcut' => 'PHP',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/php.txt'),
+                'active' => true,
+                'link' => 'https://github.com/strategio-digital/saas/blob/master/src/Http/Request/User/CreateRequest.php'
+            ],
+            [
+                'type' => 'ts',
+                'title' => 'Node / Scraper',
+                'shortcut' => 'Node',
+                'code' => '// code with syntax highlighter here',
+                'active' => false,
+                'link' => null
+            ],
+            [
+                'type' => 'docker',
+                'title' => 'Dockerfile',
+                'shortcut' => 'Docker',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/dockerfile.txt'),
+                'active' => false,
+                'link' => 'https://github.com/strategio-digital/saas/blob/master/template/Dockerfile'
+            ],
+            [
+                'type' => 'scss',
+                'title' => 'side-modal.scss',
+                'shortcut' => 'SCSS',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/scss.txt'),
+                'active' => false,
+                'link' => 'https://github.com/strategio-digital/saas/blob/master/vue/assets/scss/side-modal.scss'
+            ]
         ];
-        
-        if ($limit !== null) {
-            return array_slice($data, 0, $limit);
-        }
-        
-        return $data;
-    }
-    
-    public function count(): int
-    {
-        return count($this->get());
     }
 }
