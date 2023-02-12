@@ -1,9 +1,8 @@
 <?php
 /**
  * Copyright (c) 2022 Strategio Digital s.r.o.
- * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
-declare(strict_types=1);
 
 namespace Saas\Http\Request\User;
 
@@ -25,6 +24,9 @@ class CreateRequest implements IRequest
     {
     }
 
+    /**
+     * @return array{rows: array{email: string, password: string}[1, 20]}
+     */
     public function schema(): array
     {
         return [
@@ -35,6 +37,9 @@ class CreateRequest implements IRequest
         ];
     }
 
+    /**
+     * @param array{rows: array{email: string, password: string}[1, 20]} $data
+     */
     public function process(array $data): void
     {
         /** @var Role|null $role */

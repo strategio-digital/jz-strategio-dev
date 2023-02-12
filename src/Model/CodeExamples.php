@@ -35,17 +35,17 @@ class CodeExamples
             ],
             [
                 'type' => 'ts',
-                'title' => 'Node / Scraper',
+                'title' => 'firebase/scraper.ts',
                 'shortcut' => 'Node',
-                'code' => '// code with syntax highlighter here',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/node.txt'),
                 'active' => false,
-                'link' => null
+                'link' => 'https://github.com/strategio-digital/pricingo/blob/master/functions/src/index.ts'
             ],
             [
                 'type' => 'docker',
                 'title' => 'Dockerfile',
                 'shortcut' => 'Docker',
-                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/dockerfile.txt'),
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/docker.txt'),
                 'active' => false,
                 'link' => 'https://github.com/strategio-digital/saas/blob/master/template/Dockerfile'
             ],

@@ -13,6 +13,7 @@ use App\Model\CodeExamples;
 use App\Model\ContactModel;
 use App\Model\ReferencesModel;
 use App\Model\SkillsModel;
+use App\Model\ToolsModel;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Controller;
 
@@ -26,6 +27,7 @@ class HomeController extends Controller
             'codeExamples' => new CodeExamples(),
             'references' => new ReferencesModel(),
             'clients' => new ClientsModel(),
+            'tools' => new ToolsModel(),
             'contact' => new ContactModel()
         ]);
     }
