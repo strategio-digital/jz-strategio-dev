@@ -11,8 +11,8 @@ import '@/assets/scss/layout.scss'
 
 // Typescript
 import heroSection from '@/assets/ts/particles/heroSection'
-import stepper from '@/assets/ts/stepper'
 import highlight from '@/assets/ts/highlight/highlight'
+import { useStepper } from '@/assets/ts/stepper'
 import { useScroll } from '@/assets/ts/scroll'
 import { useCarousel } from '@/assets/ts/carousel'
 import { useSwitcher } from '@/assets/ts/switcher'
@@ -20,7 +20,7 @@ import { useNavbar } from '@/assets/ts/navbar'
 
 useScroll().registerEvents()
 useNavbar().registerEvents()
-stepper()
+useStepper().registerEvents()
 highlight()
 heroSection()
 

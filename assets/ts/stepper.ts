@@ -3,17 +3,30 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
-export default () => {
-    const step2: HTMLDivElement | null = document.querySelector('[data-step="2"]')
-    const step3: HTMLDivElement | null = document.querySelector('[data-step="3"]')
+export const useStepper = () => {
+    const step2 = document.querySelector('[data-step="2"]') as HTMLDivElement
+    const step3 = document.querySelector('[data-step="3"]') as HTMLDivElement
 
-    if (step2 && step3) {
-        step3.addEventListener('mouseover', () => step2.classList.add('active'))
-        step3.addEventListener('click', () => step2.classList.add('active'))
+    function addClass(): void {
+        step2.classList.add('active')
+        step2.classList.add('active')
+    }
 
-        step3.addEventListener('mouseleave', () => {
-            step2.classList.remove('active')
-            step3.classList.remove('active')
-        })
+    function removeClass(): void {
+        step2.classList.remove('active')
+        step3.classList.remove('active')
+    }
+
+    function registerEvents(): void {
+        step3.addEventListener('mouseover', addClass)
+        step3.addEventListener('click', addClass)
+        step3.addEventListener('touchstart', addClass)
+
+        step3.addEventListener('touchend', removeClass)
+        step3.addEventListener('mouseleave', removeClass)
+    }
+
+    return {
+        registerEvents
     }
 }
