@@ -16,7 +16,7 @@ export const useScroll = () => {
 
         if (anchor) {
             const current = window.scrollY
-            const offset = anchor.getBoundingClientRect().y <= 0 ? 65 : 0
+            const offset = anchor.getBoundingClientRect().y <= 0 ? 64 : 0
 
             window.scrollTo({
                 top: anchor.getBoundingClientRect().y + current - offset,
