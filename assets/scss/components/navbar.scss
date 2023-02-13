@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ */
+
+.navbar {
+    transition: padding-top 300ms ease-in-out, padding-bottom 300ms ease-in-out, top 300ms ease-in-out, background-color 300ms ease-in-out;
+    border-bottom: none;
+    position: fixed;
+    background-color: transparent;
+    color: $white;
+    z-index: 1980;
+    top: 0;
+    right: 0;
+    left: 0;
+    pointer-events: none;
+    padding: 2rem 0;
+
+    @include navbar-small;
+
+    @include media-breakpoint-down(sm) {
+        padding: 1rem 0;
+    }
+
+    &.hidden {
+        top: -10%;
+    }
+
+    &.show-bg {
+        border-bottom: 1px solid hsla(0, 0%, 100%, .1);
+        background-color: #161c98;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+    }
+
+    &.active {
+        pointer-events: all;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .navbar-content {
+            left: 0;
+        }
+
+        &.show-bg {
+            @include media-breakpoint-down(sm) {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}

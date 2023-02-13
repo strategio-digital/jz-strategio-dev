@@ -20,7 +20,7 @@
         {vite('assets/app.ts', true)|noescape}
     {/block}
 </head>
-<body class="{block body}h-full{/block}" id="top">
+<body class="{block body}position-relative{/block}" id="top">
     {*<noscript n:if="$_ENV['GTM_ENABLED'] === 'yes'">
         <iframe
                 src="https://www.googletagmanager.com/ns.html?id={$_ENV['GTM_ID']}"
@@ -29,7 +29,9 @@
                 style="display:none;visibility:hidden"
         ></iframe>
     </noscript>*}
-    {block top}{/block}
+    {block top}
+        {include './component/navbar.latte'}
+    {/block}
     {include content}
     {block bottom}{/block}
     {block modal}{/block}

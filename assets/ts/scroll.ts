@@ -3,21 +3,48 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
-export default () => {
-    document.querySelectorAll('[data-scroll]').forEach(element => {
-        element.addEventListener('click', event => {
-            event.preventDefault()
+enum ScrollDirection {
+    Up = 'up',
+    Down = 'down'
+}
 
-            const target = (element as HTMLLinkElement).dataset.scroll as string
-            const anchor = document.querySelector(target)
+export const useScroll = () => {
+    let lastScrollTop = 0
 
-            if (anchor) {
-                const current = window.scrollY
-                window.scrollTo({
-                    top: anchor.getBoundingClientRect().y + current, // - 65,
-                    behavior: 'smooth'
-                })
-            }
+    function scrollTo(target: string): void {
+        const anchor = document.querySelector(target)
+
+        if (anchor) {
+            const current = window.scrollY
+            const offset = anchor.getBoundingClientRect().y <= 0 ? 65 : 0
+
+            window.scrollTo({
+                top: anchor.getBoundingClientRect().y + current - offset,
+                behavior: 'smooth'
+            })
+        }
+    }
+
+    function scrollDirection(): ScrollDirection {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        const direction = scrollTop > lastScrollTop ? ScrollDirection.Down : ScrollDirection.Up
+        lastScrollTop = scrollTop
+        return direction
+    }
+
+    function registerEvents(): void {
+        document.querySelectorAll('[data-scroll]').forEach(element => {
+            element.addEventListener('click', event => {
+                event.preventDefault()
+                const target = (element as HTMLLinkElement).dataset.scroll as string
+                scrollTo(target)
+            })
         })
-    })
+    }
+
+    return {
+        scrollTo,
+        scrollDirection,
+        registerEvents
+    }
 }

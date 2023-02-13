@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
  */
 
-export const useSwitcher = (el: HTMLDivElement) => {
+export const useSwitcher = (el: HTMLDivElement): void => {
     const buttons: HTMLButtonElement[] = Array.from(el.querySelectorAll('[data-switcher-btn]'))
     const targets: HTMLDivElement[] = Array.from(el.querySelectorAll('[data-switcher-wrapper] > div'))
 
@@ -16,5 +16,5 @@ export const useSwitcher = (el: HTMLDivElement) => {
 
         targets.map((t) => t.classList.remove('active'))
         targetEl.classList.add('active')
-    }));
+    }))
 }

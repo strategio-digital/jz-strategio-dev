@@ -4,8 +4,8 @@
  */
 
 
-@import "bootstrap/scss/mixins/banner";
-@include bsBanner("");
+//@import "bootstrap/scss/mixins/banner";
+//@include bsBanner("");
 
 // scss-docs-start import-stack
 // Configuration
@@ -26,11 +26,11 @@
 //@import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/button-group";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/navbar";
+//@import "bootstrap/scss/transitions";
+//@import "bootstrap/scss/dropdown";
+//@import "bootstrap/scss/button-group";
+//@import "bootstrap/scss/nav";
+//@import "bootstrap/scss/navbar";
 //@import "bootstrap/scss/card";
 //@import "bootstrap/scss/accordion";
 //@import "bootstrap/scss/breadcrumb";
@@ -55,6 +55,8 @@
 // Utilities
 @import "bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
+
+@import "mixins/navbar-small";
 
 @import "components/body";
 @import "components/contract";
@@ -81,3 +83,9 @@
 @import "components/switcher";
 @import "components/code-button";
 @import "components/code-wrapper";
+@import "components/navbar";
+@import "components/navbar-container";
+@import "components/navbar-hamburger";
+@import "components/navbar-content";
+@import "components/navbar-logo";
+

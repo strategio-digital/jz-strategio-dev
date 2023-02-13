@@ -10,7 +10,7 @@ import php from 'highlight.js/lib/languages/php'
 import scss from 'highlight.js/lib/languages/scss'
 import docker from 'highlight.js/lib/languages/dockerfile'
 
-export default ()  => {
+export default () => {
     hljs.registerLanguage('ts', ts)
     hljs.registerLanguage('php', php)
     hljs.registerLanguage('scss', scss)

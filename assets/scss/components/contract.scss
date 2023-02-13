@@ -7,10 +7,10 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    transition: all .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
     animation: blink 2s ease-in-out infinite;
     opacity: 1;
-    background-color: transparentize($danger, .5);
+    background-color: transparentize($warning, .5);
     color: $white;
     border-radius: 3rem;
     padding: .8rem;

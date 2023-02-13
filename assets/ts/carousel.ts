@@ -61,7 +61,7 @@ export const useCarousel = (el: HTMLDivElement, options: Options) => {
         updateCounter()
     }
 
-    function updateCounter() {
+    function updateCounter(): void {
         counter.innerText = (currentIndex + 1) + ' / ' + items.length
     }
 
@@ -75,7 +75,7 @@ export const useCarousel = (el: HTMLDivElement, options: Options) => {
         item.classList.add('carousel-show')
     }
 
-    function restartAutoplay() {
+    function restartAutoplay(): void {
         if (options.autoPlay.enabled) {
             if (autoPlayInterval) {
                 clearInterval(autoPlayInterval)
