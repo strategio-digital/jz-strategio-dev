@@ -42,7 +42,7 @@ function createData(): TData {
     }
 }
 
-async function handleSubmit(v: Values, a: FormActions<Values>): Promise<void> {
+async function handleSubmit(v: any, a: FormActions<Values>): Promise<void> {
     loading.value = true
     alert.reset()
 
