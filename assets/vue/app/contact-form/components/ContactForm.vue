@@ -2,7 +2,7 @@
 import * as yup from 'yup'
 import { computed, ref } from 'vue'
 import { Form, Field, ErrorMessage, FormActions } from 'vee-validate'
-import { TData } from '@/assets/vue/app/types/TData'
+import { TLead } from '@/assets/vue/app/types/TLead'
 import { useApi } from '@/assets/ts/components/useApi'
 import { useAlert } from '@/assets/vue/app/composables/useAlert'
 import { useAntiSpam } from '@/assets/ts/components/useAntiSpam'
@@ -30,7 +30,7 @@ const schema = yup.object({
     message: yup.string()
 })
 
-function createData(): TData {
+function createData(): TLead {
     return {
         type: 'jz-web-contactForm',
         params: {
@@ -42,25 +42,26 @@ function createData(): TData {
     }
 }
 
-async function handleSubmit(v: any, a: FormActions<Values>): Promise<void> {
+async function handleSubmit(v: any, actions: FormActions<Values>): Promise<void> {
     loading.value = true
     alert.reset()
 
-    if (antiSpam.isReady()) {
-        try {
-            await api.fetchApi('/lead/create', {
-                method: 'POST',
-                body: JSON.stringify(createData())
-            })
-
-            alert.setAlert('success', 'Formulář byl úspěšně odeslán. Do 60 minut se Vám ozvu a probereme vše potřebné.')
-            values.value = { name: '', email: '', phone: '', message: '' }
-            a.resetForm()
-        } catch (e) {
-            alert.setAlert('danger', 'Je mi to líto, ale něco se pokazilo. Kontaktujte mě prosím jiným způsobem.')
-        }
-    } else {
+    if (! antiSpam.isReady()) {
         alert.setAlert('danger', antiSpam.message)
+        loading.value = false
+        return
+    }
+
+    const resp = await api.fetchApi('/lead/create', {
+        method: 'POST',
+        body: JSON.stringify(createData())
+    })
+
+    if (resp.success) {
+        alert.setAlert('success', 'Formulář byl úspěšně odeslán. Do 60 minut se Vám ozvu a probereme vše potřebné.')
+        actions.resetForm({ values: { name: '', email: '', phone: '', message: '' } })
+    } else {
+        alert.setAlert('danger', 'Je mi to líto, ale něco se pokazilo. Kontaktujte mě prosím jiným způsobem.')
     }
 
     loading.value = false
@@ -141,7 +142,7 @@ async function handleSubmit(v: any, a: FormActions<Values>): Promise<void> {
             <i class="bi bi-check-circle"></i> {{ alertData.message }}
         </div>
 
-        <button class="btn btn-warning btn-xl shadow-sm w-100" :disabled="loading">
+        <button type="submit" class="btn btn-warning btn-xl shadow-sm w-100" :disabled="loading">
             <span v-if="loading" class="spinner-border spinner-border-sm text-light" role="status">
                 <span class="visually-hidden">Loading...</span>
             </span>

@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 
-export type TData = {
+export type TLead = {
     type: string,
     params: Record<string, string>
 }
