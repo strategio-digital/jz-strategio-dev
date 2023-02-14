@@ -2,10 +2,11 @@
  * Copyright (c) 2023 Strategio Digital s.r.o.
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
-import { useScroll } from '@/assets/ts/scroll'
+
+import { useScroller } from '@/assets/ts/components/useScroller'
 
 export const useNavbar = () => {
-    const scroll = useScroll()
+    const scroller = useScroller()
 
     const el = document.querySelector('.navbar') as HTMLDivElement
     const navbarToggle = el.querySelector('.navbar-hamburger') as HTMLButtonElement
@@ -46,7 +47,7 @@ export const useNavbar = () => {
             if (hash && document.querySelector('#' + hash)) {
                 e.preventDefault()
                 closeNavbar()
-                scroll.scrollTo('#' + hash)
+                scroller.scrollTo('#' + hash)
             }
         }))
 
@@ -58,7 +59,7 @@ export const useNavbar = () => {
 
         document.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-            const direction = scroll.scrollDirection()
+            const direction = scroller.scrollDirection()
 
             if (scrollTop <= bgAppendOffset) {
                 el.classList.remove('show-bg')

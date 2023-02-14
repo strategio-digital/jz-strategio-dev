@@ -16,10 +16,25 @@
     pointer-events: none;
     padding: 2rem 0;
 
-    @include navbar-small;
-
     @include media-breakpoint-down(sm) {
         padding: 1rem 0;
+    }
+
+    .navbar-logo {
+        &-img {
+            width: 42px;
+            height: 42px;
+        }
+
+        &-text {
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .description {
+                font-size: .9rem;
+            }
+        }
     }
 
     &.hidden {

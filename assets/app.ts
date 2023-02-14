@@ -9,46 +9,28 @@ import '@/assets/images'
 // Stylesheets
 import '@/assets/scss/layout.scss'
 
-// Typescript
-import heroSection from '@/assets/ts/particles/heroSection'
-import highlight from '@/assets/ts/highlight/highlight'
-import { useStepper } from '@/assets/ts/stepper'
-import { useScroll } from '@/assets/ts/scroll'
-import { useCarousel } from '@/assets/ts/carousel'
-import { useSwitcher } from '@/assets/ts/switcher'
-import { useNavbar } from '@/assets/ts/navbar'
+// VueJS
+import { createApp } from 'vue'
+import App from '@/assets/vue/app/contact-form/App.vue'
+createApp(App).mount('#vue-contact-form')
 
-useScroll().registerEvents()
+// Typescript
+import particles from '@/assets/ts/plugins/particles'
+import highlight from '@/assets/ts/plugins/highlight'
+import consoleInfo from '@/assets/ts/consoleInfo'
+import carousels from '@/assets/ts/carousels'
+import switchers from '@/assets/ts/switchers'
+
+import { useStepper } from '@/assets/ts/components/useStepper'
+import { useScroller } from '@/assets/ts/components/useScroller'
+import { useNavbar } from '@/assets/ts/components/useNavbar'
+
+useScroller().registerEvents()
 useNavbar().registerEvents()
 useStepper().registerEvents()
+
+carousels()
 highlight()
-heroSection()
-
-useSwitcher(document.querySelector('#code-switcher') as HTMLDivElement)
-useCarousel(document.querySelector('#about-carousel') as HTMLDivElement, {
-    autoPlay: {
-        speed: 10000,
-        enabled: true
-    }
-}).create()
-useCarousel(document.querySelector('#reference-carousel') as HTMLDivElement, {
-    autoPlay: {
-        speed: 0,
-        enabled: false
-    }
-}).create()
-
-console.log(
-    `%c\nContact me at:\n\njz@strategio.dev\n\n+420 606 091 125 \n\nI'm looking forward to hearing from you!\n`,
-    `font-weight: bold; font-size: 2rem; color: white; background: #f90; width: 300px;`
-)
-
-console.log(
-    `%cBTW Don't use Particle engine for production, it's costs a lot of performance!`,
-    `font-weight: bold; font-size: 1.5rem; color: white; background: #f90; padding: 5px;`
-)
-
-// VueJS example
-// import { createApp } from 'vue'
-// import App from '@/assets/vue/app/App.vue'
-// createApp(App).mount('#vue-app')
+switchers()
+particles()
+consoleInfo()

@@ -8,7 +8,7 @@ enum ScrollDirection {
     Down = 'down'
 }
 
-export const useScroll = () => {
+export const useScroller = () => {
     let lastScrollTop = 0
 
     function scrollTo(target: string): void {

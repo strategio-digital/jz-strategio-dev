@@ -19,14 +19,15 @@
     .hamburger-text {
         margin-top: .5rem;
         transition: color 300ms ease-in-out, font-size 300ms ease-in-out;
-        font-size: 1rem;
+        font-size: .9rem;
+        text-transform: uppercase;
     }
 
     .hamburger-icon {
         transition: width 300ms ease-in-out, height 300ms ease-in-out;
         color: white;
-        width: 34px;
-        height: 34px;
+        width: 24px;
+        height: 24px;
 
         rect {
             transform-box: fill-box;
