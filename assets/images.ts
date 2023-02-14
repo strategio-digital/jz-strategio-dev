@@ -33,6 +33,7 @@ import '@/assets/img/logo/vaclavflicek.svg'
 import '@/assets/img/logo/vetpel.svg'
 import '@/assets/img/logo/cisticistroje.svg'
 import '@/assets/img/logo/adrenalinsport.png'
+import '@/assets/img/logo/silluro.svg'
 
 import '@/assets/img/project/jihoceska-univerzita.jpg'
 
@@ -40,6 +41,7 @@ import '@/assets/img/logo/jcu-colored.svg'
 import '@/assets/img/logo/gopay-colored.svg'
 import '@/assets/img/logo/strechybohemia-colored.svg'
 import '@/assets/img/logo/rokuc-colored.svg'
+import '@/assets/img/logo/silluro-colored.svg'
 
 import '@/assets/img/client/jiri-vanicek.jpg'
 import '@/assets/img/client/vaclav-novotny.jpg'

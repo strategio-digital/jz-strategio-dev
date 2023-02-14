@@ -43,7 +43,7 @@ class ReferencesModel
             [
                 'name' => 'Jan Přibyl',
                 'job' => 'Jednatel Silluro s.r.o.',
-                'logo' => null, //'assets/img/logo/silluro-colored.svg',
+                'logo' => 'assets/img/logo/silluro-colored.svg',
                 'photoSm' => 'assets/img/client/jan-pribyl.jpg',
                 'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
                 'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně tísíců variant produktů do Shoptetu. Je to zkušený a spolehlivý profesionál se kterým rád spolupracuji.'
