@@ -15,7 +15,6 @@ import App from '@/assets/vue/app/contact-form/App.vue'
 createApp(App).mount('#vue-contact-form')
 
 // Typescript
-import particles from '@/assets/ts/plugins/particles'
 import highlight from '@/assets/ts/plugins/highlight'
 import consoleInfo from '@/assets/ts/consoleInfo'
 import carousels from '@/assets/ts/carousels'
@@ -32,5 +31,4 @@ useStepper().registerEvents()
 carousels()
 highlight()
 switchers()
-particles()
 consoleInfo()

@@ -19,7 +19,7 @@ export default defineConfig({
         laravel({
             hotFile: 'temp/vite.hot',
             buildDirectory: 'public',
-            input: ['assets/app.ts', 'assets/saas.ts'],
+            input: ['assets/app.ts', 'assets/saas.ts', 'assets/particles.ts'],
             refresh: ['assets/**', 'view/**']
         }),
     ]
