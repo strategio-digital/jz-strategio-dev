@@ -58,7 +58,7 @@ async function handleSubmit(v: any, actions: FormActions<Values>): Promise<void>
     })
 
     if (resp.success) {
-        alert.setAlert('success', 'Formulář byl úspěšně odeslán. Do 60 minut se Vám ozvu a probereme vše potřebné.')
+        alert.setAlert('success', 'Děkuji, formulář byl úspěšně odeslán. Do 60 minut se Vám ozvu a probereme vše potřebné.')
         actions.resetForm({ values: { name: '', email: '', phone: '', message: '' } })
     } else {
         alert.setAlert('danger', 'Je mi to líto, ale něco se pokazilo. Kontaktujte mě prosím jiným způsobem.')
