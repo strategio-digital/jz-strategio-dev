@@ -8,25 +8,15 @@ export type Options = {
 }
 
 export const useCarousel = (el: HTMLDivElement, options: Options) => {
-    const itemWrapper = el.querySelector('[data-carousel="items"]') as HTMLDivElement
     const items = Array.from(el.querySelectorAll('[data-carousel="item"]')) as HTMLDivElement[]
     const next = el.querySelector('[data-carousel="next"]') as HTMLButtonElement
     const prev = el.querySelector('[data-carousel="prev"]') as HTMLButtonElement
     const counter = el.querySelector('[data-carousel="counter"]') as HTMLElement
 
-    const resizeObserver = new ResizeObserver(updateSizing)
-
     let currentIndex = 0
     let autoPlayInterval: number | null = null
 
-    function updateSizing(): void {
-        const max = items.reduce((a, b) => Math.max(a, b.offsetHeight), 0)
-        itemWrapper.style.height = max.toString() + 'px'
-    }
-
     function create(): void {
-        resizeObserver.observe(el)
-
         next.addEventListener('click', () => {
             handleNext()
             restartAutoplay()
@@ -42,7 +32,6 @@ export const useCarousel = (el: HTMLDivElement, options: Options) => {
 
         restartAutoplay()
         updateCounter()
-        updateSizing()
     }
 
     function handleNext(): void {
