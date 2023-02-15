@@ -12,7 +12,7 @@ const useDatagrid = (collectionName: string, itemsPerPage: number) => {
     const store = useDatagridStore()
     const { checkedAll, loading, selectedItems, items, page } = storeToRefs(store)
 
-    async function refresh(): Promise<any> {
+    async function refresh(): Promise<void> {
         loading.value = true
         items.value = []
         selectedItems.value = []
