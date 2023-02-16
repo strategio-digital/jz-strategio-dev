@@ -7,7 +7,7 @@
 
 <div class="row d-flex justify-content-between align-items-center carousel" id="reference-carousel">
     <div class="col-4 col-lg-1 order-1 order-lg-0 text-end text-lg-start">
-        <button class="btn btn-warning rounded-circle" style="width: 50px; height: 50px" data-carousel="prev">
+        <button class="btn btn-warning rounded-circle" style="width: 50px; height: 50px" data-carousel="prev" title="Prev">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
             </svg>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-4 col-lg-1 order-2 text-start text-lg-end">
-        <button class="btn btn-warning rounded-circle" style="width: 50px; height: 50px" data-carousel="next">
+        <button class="btn btn-warning rounded-circle" style="width: 50px; height: 50px" data-carousel="next" aria-label="Next">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>
@@ -30,7 +30,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-5 pe-md-0">
                                 <div class="position-relative w-100 h-100 reference-img">
-                                    <img src="{vite($reference['photoLg'])}" alt="" width="600" height="600" loading="lazy" class="position-absolute w-100 h-100 d-block">
+                                    <img src="{vite($reference['photoLg'])}" alt="{$reference['name']}" width="600" height="600" loading="lazy" class="position-absolute w-100 h-100 d-block">
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                 <div class="p-4 p-lg-5">
                                     <div class="d-flex mb-4 align-items-center">
                                         <div class="me-3">
-                                            <img src="{vite($reference['photoSm'])}" loading="lazy" class="rounded-circle border" alt="{$reference['name']}" width="70" height="70">
+                                            <img src="{vite($reference['photoSm'])}" class="rounded-circle border" alt="{$reference['name']}" width="70" height="70" loading="lazy">
                                         </div>
                                         <div class="reference-name">
                                             <div class="full-name text-dark">{$reference['name']}</div>
@@ -49,7 +49,7 @@
                                     <p class="mb-3 text-secondary fst-italic reference-text">{$reference['text']}</p>
 
                                     {if $reference['logo']}
-                                        <img src="{vite($reference['logo'])}" alt="{$reference['name']}" style="max-width: 230px; max-height: 80px">
+                                        <img src="{vite($reference['logo'])}" alt="{$reference['name']}" width="230" height="80" style="max-width: 230px; max-height: 80px" loading="lazy">
                                     {/if}
                                 </div>
                             </div>

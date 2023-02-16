@@ -16,8 +16,8 @@ class AboutModel
     {
         return [
             'photos' => [
-                ['src' => 'assets/img/about/jiri-zapletal-php.jpg', 'alt' => 'Jiří Zapletal - PHP Developer'],
-                ['src' => 'assets/img/about/jiri-zapletal-php-2.jpg', 'alt' => 'Jiří Zapletal - VUE Developer'],
+                ['src' => 'assets/img/about/jiri-zapletal-php-slide-1.jpg', 'alt' => 'Jiří Zapletal - PHP Developer'],
+                ['src' => 'assets/img/about/jiri-zapletal-php-slide-2.jpg', 'alt' => 'Jiří Zapletal - VUE Developer'],
             ],
         ];
     }

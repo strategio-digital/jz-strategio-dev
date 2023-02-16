@@ -8,8 +8,9 @@ import '@/assets/img/favicon.svg'
 import '@/assets/img/favicon.png'
 
 import '@/assets/img/about/jiri-zapletal-web-developer.png'
-import '@/assets/img/about/jiri-zapletal-php.jpg'
-import '@/assets/img/about/jiri-zapletal-php-2.jpg'
+import '@/assets/img/about/jiri-zapletal-bg.jpg'
+import '@/assets/img/about/jiri-zapletal-php-slide-1.jpg'
+import '@/assets/img/about/jiri-zapletal-php-slide-2.jpg'
 
 import '@/assets/img/logo/gopay.svg'
 import '@/assets/img/logo/gproject.svg'
