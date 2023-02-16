@@ -9,7 +9,7 @@ COPY ./composer.lock ./composer.lock
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-cache --prefer-dist --no-scripts
 
-FROM node:18 as build-stage-node
+FROM node:18-alpine as build-stage-node
 WORKDIR /build
 
 COPY ./assets ./assets
