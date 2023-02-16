@@ -54,8 +54,12 @@
                     Telefon: <a href="tel:{$contact->get('phone')|replace:' '}" target="_blank" class="link-light">{$contact->get('phone')}</a>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-2">
                     LinkedIn: <a href="{$contact->get('linkedIn')}" target="_blank" class="link-light">{$contact->get('linkedIn')|replace:'https://'}</a>
+                </div>
+
+                <div class="mb-4">
+                    GitHub: <a href="{$contact->get('github')}" target="_blank" class="link-light">{$contact->get('github')|replace:'https://'}</a>
                 </div>
 
                 {*<div>

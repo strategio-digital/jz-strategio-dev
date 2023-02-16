@@ -15,6 +15,7 @@ class ContactModel
             'phone' => '+420 606 091 125',
             'email' => 'jz@strategio.dev',
             'linkedIn' => 'https://linkedin.com/in/jz-dev',
+            'github' => 'https://github.com/jzaplet'
         ];
         
         return $data[$key];
