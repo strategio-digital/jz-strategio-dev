@@ -1,9 +1,9 @@
-import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import Puppeteer from './scraper/puppeteer'
-import { ComparatorResult } from './types/ComparatorResult'
+import * as functions from 'firebase-functions'
 import { CallableContext } from 'firebase-functions/lib/providers/https'
+import { ComparatorResult } from './types/ComparatorResult'
 import { AllowedTypes } from './types/ScraperType'
+import Puppeteer from './scraper/puppeteer'
 
 admin.initializeApp()
 
