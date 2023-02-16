@@ -6,6 +6,7 @@
 import '@/assets/img/strategio.svg'
 import '@/assets/img/favicon.svg'
 import '@/assets/img/favicon.png'
+import '@/assets/img/social.png'
 
 import '@/assets/img/about/jiri-zapletal-web-developer.png'
 import '@/assets/img/about/jiri-zapletal-bg.jpg'
