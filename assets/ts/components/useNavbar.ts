@@ -14,10 +14,11 @@ export const useNavbar = () => {
     const links = Array.from(el.querySelectorAll('.navbar-content [data-navbar-link]')) as HTMLAnchorElement[]
 
     const bgAppendOffset = 50
-    const bgStickyOffset = 100
+    const bgStickyOffsetDown = 70
+    const bgStickyOffsetUp = 20
 
     let lastScrollTop = 0
-    let hideScrollBreakPoint = bgStickyOffset
+    let hideScrollBreakPoint = bgStickyOffsetDown
 
     function closeNavbar(): void {
         el.classList.remove('active')
@@ -67,11 +68,12 @@ export const useNavbar = () => {
                 el.classList.add('show-bg')
             }
 
-            if (direction === 'up') {
+            if (direction === 'up' && scrollTop < hideScrollBreakPoint) {
                 el.classList.remove('hidden')
-                hideScrollBreakPoint = scrollTop + bgStickyOffset
+                hideScrollBreakPoint = scrollTop + bgStickyOffsetDown
             } else if (direction === 'down' && scrollTop > hideScrollBreakPoint) {
                 el.classList.add('hidden')
+                hideScrollBreakPoint = scrollTop - bgStickyOffsetUp
             }
 
             lastScrollTop = scrollTop
