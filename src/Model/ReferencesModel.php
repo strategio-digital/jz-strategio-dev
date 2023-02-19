@@ -21,7 +21,7 @@ class ReferencesModel
                 'job' => 'Vedoucí katedry informatiky, PF, JČU',
                 'logo' => 'assets/img/logo/jcu-colored.svg',
                 'photoSm' => 'assets/img/client/jiri-vanicek.jpg',
-                'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
+                'photoLg' => 'assets/img/project/jcu.jpg',
                 'text' => 'Jsem velmi potěšen veškerou programátorskou prací, kterou Jiří na Bobříkovi Informatiky odvedl. Jeho práce byla klíčovým přínosem pro úspěch našeho projektu. Tímto mu děkuji za jeho úsilí a angažovanost.'
             ],
             [
@@ -29,7 +29,7 @@ class ReferencesModel
                 'job' => 'Technický ředitel GoPay s.r.o.',
                 'logo' => 'assets/img/logo/gopay-colored.svg',
                 'photoSm' => 'assets/img/client/vaclav-novotny.jpg',
-                'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
+                'photoLg' => 'assets/img/project/gopay.jpg',
                 'text' => 'Vývoj GoPay+ doplňku do Shoptetu proběhl hladce. Oceňuji především kvalitu, proaktivní přístup a rychlou komunikaci. Jiří Zapletal je pro nás spolehlivým partnerem, se kterým plánujeme dlouhodobě spolupracovat.'
             ],
             [
@@ -37,7 +37,7 @@ class ReferencesModel
                 'job' => 'Jednatel Střechy Bohemia s.r.o.',
                 'logo' => 'assets/img/logo/strechybohemia-colored.svg',
                 'photoSm' => 'assets/img/client/roman-kucera.jpg',
-                'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
+                'photoLg' => 'assets/img/project/strechy-bohemia.jpg',
                 'text' => 'Deset let bezproblémové spolupráce. Jiří pro nás vyvinul objednávkové i administrační systémy včetně několika webových stránek. Oceňuji precizní screening požadavků, odborné znalosti, lidský přístup a přesnou domluvu.'
             ],
             [
@@ -45,7 +45,7 @@ class ReferencesModel
                 'job' => 'Jednatel Silluro s.r.o.',
                 'logo' => 'assets/img/logo/silluro-colored.svg',
                 'photoSm' => 'assets/img/client/jan-pribyl.jpg',
-                'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
+                'photoLg' => 'assets/img/project/silluro.jpg',
                 'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně tísíců variant produktů do Shoptetu. Je to zkušený a spolehlivý profesionál se kterým rád spolupracuji.'
             ],
             [
@@ -53,7 +53,7 @@ class ReferencesModel
                 'job' => 'Soudní znalec a odobrník v oblastni střech',
                 'logo' => 'assets/img/logo/rokuc-colored.svg',
                 'photoSm' => 'assets/img/client/roman-kucera-st.jpg',
-                'photoLg' => 'assets/img/project/jihoceska-univerzita.jpg',
+                'photoLg' => 'assets/img/project/rokuc.jpg',
                 'text' => 'Jirku považuji za skvělého kreativce a partnera. Vytvořil již řadu webových stránek, které mi každý den přinášejí několik poptávek. Pro správu používám Contentio web-editor, jenž je ze stejné dílny. Spolupráci vřele doporucuji.'
             ]
         ];
