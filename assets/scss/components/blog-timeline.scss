@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+.blog-timeline {
+    margin-top: -5rem;
+    z-index: 1;
+
+    @include media-breakpoint-down(sm){
+        margin-top: 0;
+    }
+
+    &-svg {
+        &.top-25 {
+            top: 25%;
+        }
+
+        &.bottom-25 {
+            bottom: 25%;
+        }
+    }
+
+    &-container {
+        position: absolute;
+        width: 80px;
+        left: -15%;
+        top: 0;
+        bottom: 0;
+        //border-bottom: 1px dashed $gray-400;
+        margin-top: 10px;
+
+        @include media-breakpoint-down(xl){
+            left: -12.5%;
+        }
+        @include media-breakpoint-down(lg){
+            left: -9%;
+        }
+        @include media-breakpoint-down(md){
+            left: -3%;
+        }
+        @include media-breakpoint-down(sm){
+            left: -1%;
+        }
+    }
+
+    &-line {
+        width: 2px;
+        left: -15%;
+        border-right: 2px dashed $orange;
+        z-index: 2;
+        pointer-events: none;
+        height: 100%;
+    }
+
+    &-icon {
+        z-index: 3;
+        position: absolute;
+        background-color: white;
+        border: 1px solid $gray-200;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        top: -20px;
+        left: -18px;
+    }
+}

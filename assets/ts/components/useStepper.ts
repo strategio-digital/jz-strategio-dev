@@ -18,12 +18,14 @@ export const useStepper = () => {
     }
 
     function registerEvents(): void {
-        step3.addEventListener('mouseover', addClass)
-        step3.addEventListener('click', addClass)
-        step3.addEventListener('touchstart', addClass, { passive: true })
+        if (step2 && step3) {
+            step3.addEventListener('mouseover', addClass)
+            step3.addEventListener('click', addClass)
+            step3.addEventListener('touchstart', addClass, { passive: true })
 
-        step3.addEventListener('touchend', removeClass, { passive: true })
-        step3.addEventListener('mouseleave', removeClass)
+            step3.addEventListener('touchend', removeClass, { passive: true })
+            step3.addEventListener('mouseleave', removeClass)
+        }
     }
 
     return {

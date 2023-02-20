@@ -24,6 +24,7 @@ class SkillsModel
                 'Doctrine ORM',
                 'Guzzle',
                 'Nette Tester',
+                'Node JS'
             ],
             'Front-end' => [
                 'Vite',
@@ -78,7 +79,6 @@ class SkillsModel
                 'BitBucket',
             ],
             'Scraping' => [
-                'Node JS',
                 'Playwright',
                 'Puppeteer',
                 'Cheerio',

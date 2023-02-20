@@ -1,0 +1,30 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ *}
+
+{extends './../@layout.latte'}
+
+{block head}
+    {include parent}
+    <title>O mně | Jiří Zapletal</title>
+    <meta name="description" content="Jak jsem se stal programátorem, od narození.">
+    <meta property="og:title" content="O mně | Jiří Zapletal">
+    <meta property="og:description" content="Jak jsem se stal programátorem, od narození.">
+{/block}
+
+{block content}
+    <header class="blog-header bg-radial">
+        <div class="container text-white text-center">
+            <div class="h1 fw-bold">Jiří Zapletal</div>
+            <h1 class="h5">Jak jsem se stal programátorem, od narození.</h1>
+        </div>
+    </header>
+
+    {include './../component/blog-timeline.latte'}
+    {include './../component/looking-for.latte'}
+    {include './../component/contact.latte'}
+    {include './../component/subscriber.latte'}
+    {include './../component/footer.latte'}
+    {include './../component/copy.latte'}
+{/block}

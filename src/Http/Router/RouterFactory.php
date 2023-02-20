@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace App\Http\Router;
 
+use App\Http\Controller\AboutController;
 use App\Http\Controller\HomeController;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 
@@ -16,6 +17,7 @@ class RouterFactory extends \Saas\Http\Router\RouterFactory
     {
         // Homepage
         $this->add('GET', '/', [HomeController::class, 'index'], [], 'home');
+        $this->add('GET', '/about-me', [AboutController::class, 'index'], [], 'about');
         
         return parent::create();
     }

@@ -35,9 +35,12 @@ export const useScroller = () => {
     function registerEvents(): void {
         document.querySelectorAll('[data-scroll]').forEach(element => {
             element.addEventListener('click', event => {
-                event.preventDefault()
                 const target = (element as HTMLLinkElement).dataset.scroll as string
-                scrollTo(target)
+
+                if (target && document.querySelector(target)) {
+                    event.preventDefault()
+                    scrollTo(target)
+                }
             })
         })
     }
