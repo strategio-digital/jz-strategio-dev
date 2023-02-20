@@ -30,13 +30,13 @@ class AboutModel
                 [
                     'year' => '1998',
                     'title' => 'První algoritmus',
-                    'text' => 'Po pár letech došlo ke změně lokace z Moravy do Jižních čech a v backlogu přibyl nový task - Školka. Zjištění, že ty nejlepší hračky nejsou určeny jen pro mě, opět ovlivnilo mé chování a došlo k přesunu do dětské kuchyňky. Tam byl vytvořen můj úplně první algoritmus - recept na kořeněné koření do mističky.',
+                    'text' => 'Po pár letech došlo ke změně lokace z Moravy do Jižních čech a v backlogu přibyl nový task - školka. Zjištění, že ty nejlepší hračky nejsou určeny jen pro mě, opět ovlivnilo mé chování a došlo k přesunu do dětské kuchyňky. Tam byl vytvořen můj úplně první algoritmus - recept na kořeněné koření do mističky.',
                     'images' => []
                 ],
                 [
                     'year' => '1999',
                     'title' => 'Kazetové videohry',
-                    'text' => 'O pár let později začaly letět kazetové videohry. U nás doma to byly tanky, Super Mario, Duck Hunt a pistole s infračerveným senzorem. Zde jsem se nejspíše stal normálním člověkem. Lze to poznat z toho, že hraní na konzoli byla velká zábava, ale více mě lákalo být venku s kamarády.',
+                    'text' => 'O rok později začaly letět kazetové videohry. U nás doma to byly tanky, Super Mario, Duck Hunt a pistole s infračerveným senzorem. Zde jsem se nejspíše stal normálním člověkem. Lze to poznat z toho, že hraní na konzoli byla velká zábava, ale více mě lákalo být venku s kamarády.',
                     'images' => []
                 ],
                 [
@@ -126,7 +126,7 @@ class AboutModel
                 [
                     'year' => '2020',
                     'title' => 'Založení Strategio Digital s.r.o. a další kontrakt s univerzitou',
-                    'text' => 'Zakázek bylo víc než dost, OSVČ už nestačilo a přišlo na řadu založení firmy Strategio. Bohužel jsem se na začátku nového maratonu rovnou střelil do kolena - vyvinout cloudovou platformu pro úzce specializované e-shopy byl špatný nápad. Co klient, to naprosto unikátní požadavky na funkce a ty by bez armády programátorů trvalo vyvinout další roky. Po ¾ roce one man show skončila.<br><br>Od Jihočeské Univerzity přišel kontrakt na další 3 roky spolupráce v rámci Bobříka informatiky. Cílem bylo vytvořit prostředí, kde si děti pomocí vizuálních bloků sestaví program, který rozpohybuje jejich hrdiny a ti splní určité zadání ve daných herních světech. Povedlo se a trhaly se rekordy v podobě 150&nbsp;000 soutěžících dětí.',
+                    'text' => 'Zakázek bylo víc než dost, OSVČ už nestačilo a přišlo na řadu založení firmy Strategio. Bohužel jsem se na začátku nového maratonu rovnou střelil do kolena - vyvinout cloudovou platformu pro úzce specializované e-shopy byl špatný nápad. Co klient, to naprosto unikátní požadavky na funkce a ty by bez armády programátorů trvalo vyvinout další roky. Po ¾ roce one man show skončila.<br><br>Od Jihočeské Univerzity přišel kontrakt na další 3 roky spolupráce v rámci Bobříka informatiky. Cílem bylo vytvořit prostředí, kde si děti pomocí vizuálních bloků sestaví program, který rozpohybuje jejich hrdiny a ti splní určité zadání v daných herních světech. Povedlo se a trhaly se rekordy v podobě 150&nbsp;000 soutěžících dětí.',
                 ],
                 [
                     'year' => '2021 - 2022',
