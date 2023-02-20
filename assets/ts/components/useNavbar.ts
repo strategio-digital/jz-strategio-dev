@@ -5,17 +5,13 @@
 
 import { useScroller } from '@/assets/ts/components/useScroller'
 
-export const useNavbar = () => {
+export const useNavbar = (bgAppendOffset = 50, bgStickyOffsetDown = 50, bgStickyOffsetUp = 20) => {
     const scroller = useScroller()
 
     const el = document.querySelector('.navbar') as HTMLDivElement
     const navbarToggle = el.querySelector('.navbar-hamburger') as HTMLButtonElement
     const body = document.querySelector('body') as HTMLBodyElement
     const links = Array.from(el.querySelectorAll('.navbar-content [data-navbar-link]')) as HTMLAnchorElement[]
-
-    const bgAppendOffset = 50
-    const bgStickyOffsetDown = 70
-    const bgStickyOffsetUp = 20
 
     let lastScrollTop = 0
     let hideScrollBreakPoint = bgStickyOffsetDown
