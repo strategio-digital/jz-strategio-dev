@@ -129,9 +129,15 @@ class AboutModel
                     'text' => 'Zakázek bylo víc než dost, OSVČ už nestačilo a přišlo na řadu založení firmy Strategio. Bohužel jsem se na začátku nového maratonu rovnou střelil do kolena - vyvinout cloudovou platformu pro úzce specializované e-shopy byl špatný nápad. Co klient, to naprosto unikátní požadavky na funkce a ty by bez armády programátorů trvalo vyvinout další roky. Po ¾ roce one man show skončila.<br><br>Od Jihočeské Univerzity přišel kontrakt na další 3 roky spolupráce v rámci Bobříka informatiky. Cílem bylo vytvořit prostředí, kde si děti pomocí vizuálních bloků sestaví program, který rozpohybuje jejich hrdiny a ti splní určité zadání v daných herních světech. Povedlo se a trhaly se rekordy v podobě 150&nbsp;000 soutěžících dětí.',
                 ],
                 [
-                    'year' => '2021 - 2022',
-                    'title' => 'Vývoj pro GoPay, Shoptet a Strategio',
-                    'text' => 'Zatím asi nejzajímavější zakázka u mě přistála od instituce GoPay. Požadovali integraci platební brány a její širší propojení s e-shopovou platformou Shoptet. Za 3 měsíce byla venku první verze, kterou si obchodníci mohli snadno nainstalovat. Dnes tuto integraci používá přes 4&nbsp;000 obchodníků a spolupráce stále pokračuje.<br><br> V roce 2022 byl prostor na vlastní projekty - původně vyvíjená e-shop platforma prošla transformací do pokročilého CRM / CMS na kterém lze stavět nové weby. Také se mi už nechtělo platit za Fakturoid a proto vznikl Invoice GUN (vlastní systém na faktury). <br><br>Tím vůbec nejzajímavějším projektem se stalo Strategio SaaS - nástroj ve kterém lze doslova naklikat profesionální administraci aplikace, Doctrine entity, REST API a úrovně přístupů pro uživatelské skupiny. Zároveň generuje krásný zdrojový kód, který lze dle libosti upravit pro potřeby konkrétního klienta. Tento nástroj šetří mnoho času a peněz a je také zdrojem nových zakázek.',
+                    'year' => '2021',
+                    'title' => 'Vývoj pro GoPay / Shoptet',
+                    'text' => 'Zatím asi nejzajímavější zakázka u mě přistála od instituce GoPay. Požadovali integraci platební brány a její širší propojení s e-shopovou platformou Shoptet. Za 3 měsíce byla venku první verze, kterou si obchodníci mohli snadno nainstalovat. Dnes tuto integraci používá přes 4&nbsp;000 obchodníků a spolupráce stále pokračuje.',
+                    'images' => []
+                ],
+                [
+                    'year' => '2022',
+                    'title' => 'Vývoj Contentio, Invoice GUN, Strategio SaaS',
+                    'text' => 'V roce 2022 byl prostor na vlastní projekty - původně vyvíjená e-shop platforma prošla transformací do pokročilého CRM / CMS na kterém lze stavět nové weby.<br><br>Také se mi už nechtělo platit za Fakturoid a proto vznikl Invoice GUN (vlastní systém na faktury). <br><br>Tím vůbec nejzajímavějším projektem se stalo Strategio SaaS - nástroj ve kterém lze doslova naklikat profesionální administraci aplikace, Doctrine entity, REST API a úrovně přístupů pro uživatelské skupiny. Zároveň generuje krásný zdrojový kód, který lze dle libosti upravit pro potřeby konkrétního klienta. Tento nástroj šetří mnoho času a peněz a je také zdrojem nových zakázek.',
                     'images' => []
                 ],
                 [
