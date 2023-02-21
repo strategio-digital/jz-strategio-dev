@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2022 Strategio Digital s.r.o.
- * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 
 // Static files
@@ -18,10 +18,16 @@ import SubscriberForm from '@/assets/vue/app/subscriber-form/App.vue'
 import { useStepper } from '@/assets/ts/components/useStepper'
 import { useScroller } from '@/assets/ts/components/useScroller'
 import { useNavbar } from '@/assets/ts/components/useNavbar'
+import { useAnalytics } from '@/assets/ts/components/useAnalytics'
 import highlight from '@/assets/ts/plugins/highlight'
 import consoleInfo from '@/assets/ts/consoleInfo'
 import carousels from '@/assets/ts/carousels'
 import switchers from '@/assets/ts/switchers'
+
+// Inject analytics script
+if (window.location.host === 'jz.strategio.dev') {
+    useAnalytics().injectScript('GTM-WLH66JJ')
+}
 
 // Create vue apps
 createApp(ContactForm).mount('#vue-contact-form')

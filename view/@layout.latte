@@ -1,6 +1,6 @@
 {*
  * Copyright (c) 2022 Strategio Digital s.r.o.
- * @author Jiří Zapletal (https://strategio.digital, jz@strategio.digital)
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  *}
 
 <!doctype html>
@@ -23,14 +23,6 @@
     {/block}
 </head>
 <body class="{block body}position-relative{/block}" id="top">
-    {*<noscript n:if="$_ENV['GTM_ENABLED'] === 'yes'">
-        <iframe
-                src="https://www.googletagmanager.com/ns.html?id={$_ENV['GTM_ID']}"
-                height="0"
-                width="0"
-                style="display:none;visibility:hidden"
-        ></iframe>
-    </noscript>*}
     {block top}
         {include './component/navbar.latte'}
     {/block}

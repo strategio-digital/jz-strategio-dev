@@ -6,12 +6,14 @@ import { useApi } from '@/assets/ts/components/useApi'
 import { useAlert } from '@/assets/vue/app/composables/useAlert'
 import { useAntiSpam } from '@/assets/ts/components/useAntiSpam'
 import { TNewsletter } from '@/assets/vue/app/types/TNewsletter'
+import { useAnalytics } from '@/assets/ts/components/useAnalytics'
 
 type Values = { email: string }
 
 const api = useApi()
 const alert = useAlert()
 const antiSpam = useAntiSpam(10 * 1000, 'Prosím vyčkejte 10 vteřin, tímto se bráním proti spamu, děkuji za pochopení.')
+const { trackNewsletterSubscribe } = useAnalytics()
 
 const alertData = ref(alert.data)
 const loading = ref(false)
@@ -45,6 +47,7 @@ async function handleSubmit(v: any, actions: FormActions<Values>): Promise<void>
     if (resp.success) {
         alert.setAlert('success', 'Úspěšně jste se přihlásili k odběru.')
         await actions.resetForm({ values: { email: '' } })
+        trackNewsletterSubscribe()
     } else {
         alert.setAlert('danger', 'Je mi to líto, ale něco se pokazilo. Prosím, kontaktujte mě přes e-mail.')
     }

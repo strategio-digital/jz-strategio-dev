@@ -6,6 +6,7 @@ import { TLead } from '@/assets/vue/app/types/TLead'
 import { useApi } from '@/assets/ts/components/useApi'
 import { useAlert } from '@/assets/vue/app/composables/useAlert'
 import { useAntiSpam } from '@/assets/ts/components/useAntiSpam'
+import { useAnalytics } from '@/assets/ts/components/useAnalytics'
 
 type Values = {
     name: string
@@ -17,6 +18,8 @@ type Values = {
 const api = useApi()
 const alert = useAlert()
 const antiSpam = useAntiSpam(10 * 1000, 'Prosím vyčkejte 10 vteřin, tímto se bráním proti spamu, děkuji za pochopení.')
+const { trackLeadGenerate } = useAnalytics()
+
 
 const alertData = ref(alert.data)
 const loading = ref(false)
@@ -60,6 +63,7 @@ async function handleSubmit(v: any, actions: FormActions<Values>): Promise<void>
     if (resp.success) {
         alert.setAlert('success', 'Děkuji, formulář byl úspěšně odeslán. Do 60 minut se Vám ozvu a probereme vše potřebné.')
         actions.resetForm({ values: { name: '', email: '', phone: '', message: '' } })
+        trackLeadGenerate()
     } else {
         alert.setAlert('danger', 'Je mi to líto, ale něco se pokazilo. Kontaktujte mě prosím jiným způsobem.')
     }
