@@ -5,7 +5,7 @@
 
 import { useScroller } from '@/assets/ts/components/useScroller'
 
-export const useNavbar = (bgAppendOffset = 50, bgStickyOffsetDown = 50, bgStickyOffsetUp = 20) => {
+export const useNavbar = (showBgFrom = 50, stayDownFor = 50, stayUpFor = 20) => {
     const scroller = useScroller()
 
     const el = document.querySelector('.navbar') as HTMLDivElement
@@ -14,20 +14,18 @@ export const useNavbar = (bgAppendOffset = 50, bgStickyOffsetDown = 50, bgSticky
     const links = Array.from(el.querySelectorAll('.navbar-content [data-navbar-link]')) as HTMLAnchorElement[]
 
     let lastScrollTop = 0
-    let hideScrollBreakPoint = bgStickyOffsetDown
+    let hidingBreakPoint = stayDownFor
 
     function closeNavbar(): void {
         el.classList.remove('active')
         navbarToggle.classList.remove('active')
         body.style.overflow = 'auto'
-        //body.style.paddingRight = '0'
     }
 
     function openNavbar(): void {
         el.classList.add('active')
         navbarToggle.classList.add('active')
         body.style.overflow = 'hidden'
-        //body.style.paddingRight = '15px'
     }
 
     function registerEvents(): void {
@@ -58,18 +56,18 @@ export const useNavbar = (bgAppendOffset = 50, bgStickyOffsetDown = 50, bgSticky
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop
             const direction = scroller.scrollDirection()
 
-            if (scrollTop <= bgAppendOffset) {
+            if (scrollTop <= showBgFrom) {
                 el.classList.remove('show-bg')
             } else {
                 el.classList.add('show-bg')
             }
 
-            if (direction === 'up' && scrollTop < hideScrollBreakPoint) {
+            if (direction === 'up' && scrollTop < hidingBreakPoint) {
                 el.classList.remove('hidden')
-                hideScrollBreakPoint = scrollTop + bgStickyOffsetDown
-            } else if (direction === 'down' && scrollTop > hideScrollBreakPoint) {
+                hidingBreakPoint = scrollTop + stayDownFor
+            } else if (direction === 'down' && scrollTop > hidingBreakPoint && scrollTop > showBgFrom) {
                 el.classList.add('hidden')
-                hideScrollBreakPoint = scrollTop - bgStickyOffsetUp
+                hidingBreakPoint = scrollTop - stayUpFor
             }
 
             lastScrollTop = scrollTop
@@ -78,7 +76,7 @@ export const useNavbar = (bgAppendOffset = 50, bgStickyOffsetDown = 50, bgSticky
         document.addEventListener('DOMContentLoaded', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop
             el.classList.remove('hidden')
-            if (scrollTop > bgAppendOffset) {
+            if (scrollTop > showBgFrom) {
                 el.classList.add('show-bg')
             }
         })
