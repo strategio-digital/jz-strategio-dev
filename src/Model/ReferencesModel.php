@@ -17,8 +17,8 @@ class ReferencesModel
     {
         $data = [
             [
-                'name' => 'doc. PaeDr. Jiří Vaníček, Ph.D.',
-                'job' => 'Vedoucí katedry informatiky, PF, JČU',
+                'name' => 'doc. PaedDr. Jiří Vaníček, Ph.D.',
+                'job' => 'Vedoucí katedry Informatiky, PF, JČU',
                 'logo' => 'assets/img/logo/jcu-colored.svg',
                 'photoSm' => 'assets/img/client/jiri-vanicek.jpg',
                 'photoLg' => 'assets/img/project/jcu.jpg',
@@ -46,15 +46,15 @@ class ReferencesModel
                 'logo' => 'assets/img/logo/silluro-colored.svg',
                 'photoSm' => 'assets/img/client/jan-pribyl.jpg',
                 'photoLg' => 'assets/img/project/silluro.jpg',
-                'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně tísíců variant produktů do Shoptetu. Je to zkušený a spolehlivý profesionál se kterým rád spolupracuji.'
+                'text' => 'Jiří Zapletal pro nás vyvinul scrapera, díky kterému jsme byli schopni přenést veškerá produktová data včetně tisíců variant produktů do Shoptetu. Je to zkušený a spolehlivý profesionál, se kterým rád spolupracuji.'
             ],
             [
                 'name' => 'Roman Kučera st.',
-                'job' => 'Soudní znalec a odobrník v oblastni střech',
+                'job' => 'Soudní znalec a odborník v oblasti střech',
                 'logo' => 'assets/img/logo/rokuc-colored.svg',
                 'photoSm' => 'assets/img/client/roman-kucera-st.jpg',
                 'photoLg' => 'assets/img/project/rokuc.jpg',
-                'text' => 'Jirku považuji za skvělého kreativce a partnera. Vytvořil již řadu webových stránek, které mi každý den přinášejí několik poptávek. Pro správu používám Contentio web-editor, jenž je ze stejné dílny. Spolupráci vřele doporucuji.'
+                'text' => 'Jirku považuji za skvělého kreativce a partnera. Vytvořil již řadu webových stránek, které mi každý den přinášejí několik poptávek. Pro správu používám Contentio web-editor, jenž je ze stejné dílny. Spolupráci vřele doporučuji.'
             ]
         ];
         
