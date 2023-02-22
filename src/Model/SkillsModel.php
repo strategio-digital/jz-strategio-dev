@@ -15,7 +15,7 @@ class SkillsModel
     public function get(): array
     {
         return [
-            'Back-end' => [
+            'PHP' => [
                 'PHP 8.2',
                 'Nette',
                 'Symfony',
@@ -24,9 +24,16 @@ class SkillsModel
                 'Doctrine ORM',
                 'Guzzle',
                 'Nette Tester',
-                'Node JS'
             ],
-            'Front-end' => [
+            'Node.js' => [
+                'Node 18',
+                'Strapi',
+                'Playwright',
+                'Puppeteer',
+                'Cheerio',
+                'Apify SDK'
+            ],
+            'Frontend' => [
                 'Vite',
                 'TypeScript',
                 'Vanilla JS',
@@ -72,18 +79,12 @@ class SkillsModel
                 'RDS',
                 'SES',
                 'Easypanel',
+                'Apify platform',
             ],
             'GIT' => [
                 'GitHub',
                 'GitLab',
                 'BitBucket',
-            ],
-            'Scraping' => [
-                'Playwright',
-                'Puppeteer',
-                'Cheerio',
-                'Apify SDK',
-                'Apify platform'
             ],
             'UX / UI' => [
                 'Figma',
