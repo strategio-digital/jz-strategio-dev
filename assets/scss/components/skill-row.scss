@@ -8,7 +8,7 @@
 
     &:hover {
         @include media-breakpoint-up(md) {
-            background-color: lighten($secondary, 45%);
+            background-color: transparentize($white, .5);
         }
     }
 }
