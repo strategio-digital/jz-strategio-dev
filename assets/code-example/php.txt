@@ -46,7 +46,7 @@ class CreateRequest implements IRequest
         $role = $this->em->getRoleRepo()->findOneBy(['name' => DefaultRole::Registered->name()]);
 
         if (!$role) {
-            $this->response->sendError(["Permission 'user' does not exists"]);
+            $this->response->sendError(["Role 'registered' does not exists"]);
         }
 
         foreach ($data['rows'] as $row) {
