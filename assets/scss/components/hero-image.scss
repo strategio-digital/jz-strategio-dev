@@ -11,17 +11,28 @@
 
     img {
         max-width: 90%;
-        margin-bottom: -1.5rem;
+        margin-bottom: -2.6rem;
+
+        @include media-breakpoint-up(sm) {
+            margin-bottom: -2.5rem;
+        }
+
+        @include media-breakpoint-up(md) {
+            margin-bottom: -2rem;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin-bottom: -3rem;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: -3.6rem;
+        }
     }
 
     @include media-breakpoint-up(md) {
         position: absolute;
         bottom: 0;
         left: 45%;
-
-        img {
-            margin-bottom: -2rem;
-            width: 1000px
-        }
     }
 }

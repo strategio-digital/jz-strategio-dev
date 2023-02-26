@@ -9,6 +9,7 @@ import '@/assets/img/favicon.png'
 import '@/assets/img/social.png'
 
 import '@/assets/img/about/jiri-zapletal-web-developer.png'
+import '@/assets/img/about/jiri-zapletal-web-developer-footer-big.png'
 import '@/assets/img/about/jiri-zapletal-bg.jpg'
 import '@/assets/img/about/jiri-zapletal-slide-1.jpg'
 import '@/assets/img/about/jiri-zapletal-slide-2.jpg'
