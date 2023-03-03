@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "flag-icons": "^6.6.6",
     "highlight.js": "^11.7.0",
     "strategio-saas": "dev",
     "tsparticles": "^2.9.0",

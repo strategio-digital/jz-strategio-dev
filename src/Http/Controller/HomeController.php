@@ -14,6 +14,7 @@ use App\Model\ContactModel;
 use App\Model\ReferencesModel;
 use App\Model\SkillsModel;
 use App\Model\ToolsModel;
+use App\Model\WorkingTimeModel;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Controller;
 
@@ -28,7 +29,8 @@ class HomeController extends Controller
             'references' => new ReferencesModel(),
             'clients' => new ClientsModel(),
             'tools' => new ToolsModel(),
-            'contact' => new ContactModel()
+            'contact' => new ContactModel(),
+            'workingTime' => new WorkingTimeModel(),
         ]);
     }
 }
