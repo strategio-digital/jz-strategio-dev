@@ -28,26 +28,24 @@
         </div>
 
         <div class="position-relative mt-5">
-            <a href="#" target="_blank" class="text-decoration-none link-light">
-                <div class="row">
-                    <div class="col-12 col-xxl-auto fw-bold mb-2 mb-xxl-0">
-                        {if $times['isWorkingTime']}
-                            <span style="color: lime">Jsem on-line:</span>
-                        {else}
-                            <span style="color: red">Jsem off-line:</span>
-                        {/if}
-                    </div>
-                    <div class="col-12 col-xxl-auto">
-                        {if $times['workingZone'] === 'Europe/Prague'}
-                            <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
-                            <span style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
-                        {else}
-                            <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
-                            <span  style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
-                        {/if}
-                    </div>
+            <div class="row">
+                <div class="col-12 col-xxl-auto fw-bold mb-2 mb-xxl-0">
+                    {if $times['isWorkingTime']}
+                        <span style="color: lime">Jsem on-line:</span>
+                    {else}
+                        <span style="color: red">Jsem off-line:</span>
+                    {/if}
                 </div>
-            </a>
+                <div class="col-12 col-xxl-auto">
+                    {if $times['workingZone'] === 'Europe/Prague'}
+                        <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
+                        <span style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
+                    {else}
+                        <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
+                        <span style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
+                    {/if}
+                </div>
+            </div>
         </div>
 
         <div class="mt-5 mt-lg-7">
