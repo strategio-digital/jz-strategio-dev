@@ -28,10 +28,11 @@ class SkillsModel
             'Node.js' => [
                 'Node 18',
                 'Strapi',
+                'Crawlee',
+                'Apify SDK',
                 'Playwright',
                 'Puppeteer',
                 'Cheerio',
-                'Apify SDK'
             ],
             'Frontend' => [
                 'Vite',
