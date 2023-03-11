@@ -1,5 +1,7 @@
 services:
     routerFactory: App\Http\Router\RouterFactory
 
+    - App\Model\ApiModel
+
 includes:
     - ./../vendor/strategio/saas/config/app.neon

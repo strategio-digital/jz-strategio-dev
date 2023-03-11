@@ -1,0 +1,51 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ *}
+
+{varType array $data}
+
+{define svg $classes}
+    <div class="position-absolute top-0 start-0 end-0 bottom-0">
+        <svg class="position-absolute blog-timeline-svg {$classes}" width="200" height="400" fill="none" viewBox="0 0 200 400">
+            <defs>
+                <pattern id="74b3fd99-0a6f-4271-bef2-e80eeafdf357" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" fill="currentColor" style="color: #e5e7eb"></rect>
+                </pattern>
+            </defs>
+            <rect width="200" height="400" fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"></rect>
+        </svg>
+    </div>
+{/define}
+
+<article class="container position-relative">
+    <div class="bg-white text-secondary page-header blog-timeline" style="z-index: 1">
+        <div class="position-relative row justify-content-center pt-7">
+            {include svg classes => 'top-0 end-0 my-5 me-5 d-none d-lg-block'}
+                {include svg classes => 'top-25 start-0 ms-5 d-none d-lg-block'}
+                {include svg classes => 'top-50 end-0 me-5 d-none d-lg-block'}
+                {include svg classes => 'bottom-25 start-0 ms-5 d-none d-lg-block'}
+                {include svg classes => 'bottom-0 end-0 my-5 me-5 d-none d-lg-block'}
+
+            <div class="col-11 col-sm-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7 bg-white position-relative">
+                {foreach $data['item']['paragraphs'] as $paragraph}
+                    <div class="mb-5">
+                        <h2 n:if="$paragraph['title']" class="text-dark h5 fw-bold mb-3" style="line-height: 1.7">{$paragraph['title']}</h2>
+                        <div style="font-size: 1.125rem; line-height: 1.78;">{$paragraph['description']|noescape}</div>
+                        {if $paragraph['files']}
+                            {foreach $paragraph['files'] as $file}
+                                {if Nette\Utils\Strings::startsWith($file['mimeType'], 'image/')}
+                                    <div class="mt-4">
+                                        <a href="https://cdn.contentio.app/{$file['filePath']}" target="_blank" class="d-block">
+                                            <img src="https://cdn.contentio.app/{$file['filePath']}" class="img-fluid" alt="{$file['description']}">
+                                        </a>
+                                    </div>
+                                {/if}
+                            {/foreach}
+                        {/if}
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+</article>

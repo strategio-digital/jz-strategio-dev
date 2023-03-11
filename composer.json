@@ -18,7 +18,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.2",
-        "strategio/saas": "dev-master"
+        "strategio/saas": "dev-master",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "scripts": {
         "phpstan": "vendor/bin/phpstan analyse -l 8 src/ www/ bin/console  --memory-limit 1G",

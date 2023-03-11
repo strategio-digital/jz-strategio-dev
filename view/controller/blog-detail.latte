@@ -1,0 +1,32 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ *}
+
+{varType array $data}
+
+{extends './../@layout.latte'}
+
+{block head}
+    {include parent}
+    <title>{$data['item']['seoTitle']}</title>
+    <meta name="description" content="{$data['item']['seoDescription']}">
+    <meta property="og:title" content="{$data['item']['openGraphTitle']}">
+    <meta property="og:description" content="{$data['item']['openGraphDescription']}">
+{/block}
+
+{block content}
+    <header class="blog-header bg-radial">
+        <div class="container text-white text-center">
+            <div class="h5">Článek</div>
+            <h1 class="h1 fw-bold mb-0">{$data['item']['title']}</h1>
+        </div>
+    </header>
+
+    {include './../component/blog-content.latte'}
+    {include './../component/subscriber.latte'}
+    {include './../component/contact.latte'}
+    {include './../component/looking-for.latte'}
+    {include './../component/footer.latte'}
+    {include './../component/copy.latte'}
+{/block}
