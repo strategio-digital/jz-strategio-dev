@@ -4,6 +4,8 @@
  *}
 
 {varType array $data}
+{var $images = array_filter($data['item']['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
+{var $cover = current(array_filter($images, fn($image) => $image['cover']))}
 
 {define svg $classes}
     <div class="position-absolute top-0 start-0 end-0 bottom-0">
@@ -20,29 +22,30 @@
 
 <article class="container position-relative">
     <div class="bg-white text-secondary page-header blog-timeline" style="z-index: 1">
-        <div class="position-relative row justify-content-center pt-7">
+        <div class="position-relative row justify-content-center pt-5 pt-md-6 pt-lg-7">
             {include svg classes => 'top-0 end-0 my-5 me-5 d-none d-lg-block'}
-                {include svg classes => 'top-25 start-0 ms-5 d-none d-lg-block'}
-                {include svg classes => 'top-50 end-0 me-5 d-none d-lg-block'}
-                {include svg classes => 'bottom-25 start-0 ms-5 d-none d-lg-block'}
-                {include svg classes => 'bottom-0 end-0 my-5 me-5 d-none d-lg-block'}
+            {include svg classes => 'top-25 start-0 ms-5 d-none d-lg-block'}
+            {include svg classes => 'top-50 end-0 me-5 d-none d-lg-block'}
+            {include svg classes => 'bottom-25 start-0 ms-5 d-none d-lg-block'}
+            {include svg classes => 'bottom-0 end-0 my-5 me-5 d-none d-lg-block'}
 
-            <div class="col-11 col-sm-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7 bg-white position-relative">
+            <div class="col-12 col-sm-10 col-md-10 col-lg-9 col-xl-8 col-xxl-7 bg-white position-relative">
+                <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4">
+                    <img src="https://cdn.contentio.app/{$cover['filePath']}" class="img-fluid" alt="{$cover['description']}">
+                </a>
+                <div class="mb-4">{$data['item']['createdAt']['date']|date:'j. n. Y H:i'}</div>
                 {foreach $data['item']['paragraphs'] as $paragraph}
                     <div class="mb-5">
                         <h2 n:if="$paragraph['title']" class="text-dark h5 fw-bold mb-3" style="line-height: 1.7">{$paragraph['title']}</h2>
                         <div style="font-size: 1.125rem; line-height: 1.78;">{$paragraph['description']|noescape}</div>
-                        {if $paragraph['files']}
-                            {foreach $paragraph['files'] as $file}
-                                {if Nette\Utils\Strings::startsWith($file['mimeType'], 'image/')}
-                                    <div class="mt-4">
-                                        <a href="https://cdn.contentio.app/{$file['filePath']}" target="_blank" class="d-block">
-                                            <img src="https://cdn.contentio.app/{$file['filePath']}" class="img-fluid" alt="{$file['description']}">
-                                        </a>
-                                    </div>
-                                {/if}
-                            {/foreach}
-                        {/if}
+                        {var $files = array_filter($paragraph['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
+                        {foreach $files as $file}
+                            <div class="mt-4">
+                                <a href="https://cdn.contentio.app/{$file['filePath']}" target="_blank" class="d-block">
+                                    <img src="https://cdn.contentio.app/{$file['filePath']}" class="img-fluid" alt="{$file['description']}">
+                                </a>
+                            </div>
+                        {/foreach}
                     </div>
                 {/foreach}
             </div>
