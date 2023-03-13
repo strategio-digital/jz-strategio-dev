@@ -45,15 +45,15 @@
                     <span class="text-nowrap">Poslední úprava: {$data['item']['updatedAt']['date']|date:'j. n. Y H:i'}</span>
                 </div>
 
-                <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4">
+                <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4" title="{$data['item']['title']}">
                     {var $thumb = thumbnail($cover['filePath'], 750, null, 'shrink_only', 90)}
                     {varType Saas\Helper\Thumbnail $thumb}
 
                     <img data-thumb
                          src="https://cdn.contentio.app/{$thumb->getSrc()}"
                          alt="{$cover['description']}"
-                         width="{$thumb->getWidth()}"
-                         height="{$thumb->getHeight()}"
+                         width="100%"
+                         height="100%"
                          class="w-100"
                     >
                 </a>
@@ -74,15 +74,15 @@
                         {var $files = array_filter($paragraph['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
                         {foreach $files as $file}
                             <div class="mt-4">
-                                <a href="https://cdn.contentio.app/{$file['filePath']}" target="_blank" class="d-block">
+                                <a href="https://cdn.contentio.app/{$file['filePath']}" title="{$file['description']}" target="_blank" class="d-block">
                                     {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
                                     {varType Saas\Helper\Thumbnail $thumb}
 
                                     <img data-thumb
                                          src="https://cdn.contentio.app/{$thumb->getSrc()}"
                                          alt="{$file['description']}"
-                                         width="{$thumb->getWidth()}"
-                                         height="{$thumb->getHeight()}"
+                                         width="100%"
+                                         height="100%"
                                          class="img-fluid"
                                          loading="lazy"
                                     >

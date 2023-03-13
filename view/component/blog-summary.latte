@@ -37,23 +37,23 @@
                             {include thumbnail article:$article}
                         </div>
                     {else}
-                        <a href="{route('blog-detail', ['slug' => $article['slug']])}" class="d-block position-relative p-3 p-sm-4 bg-light">
+                        <a href="{route('blog-detail', ['slug' => $article['slug']])}" title="{$article['title']}" class="d-block position-relative p-3 p-sm-4 bg-light">
                             {include thumbnail article:$article}
                         </a>
                     {/if}
 
-                    <div class="bg-white px-4 px-sm-5">
-                        <h2 class="fw-bold h4 mb-0 mb-4 pt-5" style="line-height: 1.4">{$article['title']}</h2>
+                    <div class="bg-white px-4 px-sm-5 px-md-4 px-lg-5 px-xl-4 px-xxl-5">
+                        <h2 class="fw-bold h4 mb-0 mb-4 pt-4 pt-sm-5 pt-md-4 pt-lg-5 pt-xl-4 pt-xxl-5" style="line-height: 1.4">{$article['title']}</h2>
                         <p class="mb-0 text-secondary" style="font-size: 1.125rem">{$article['descriptionShort']}</p>
                     </div>
                 </div>
 
                 <div class="pt-4">
-                    <div class="px-4 px-sm-5 pb-4">
+                    <div class="px-4 px-sm-5 px-md-4 px-lg-5 px-xl-4 px-xxl-5 pb-4">
                         {if $article['description'] && Nette\Utils\Strings::contains($article['description'], 'Připravuje se...')}
-                            <a href="{route('blog-detail', ['slug' => $article['slug']])}" class="btn btn-secondary btn-xl">Připravuje se...</a>
+                            <a href="{route('blog-detail', ['slug' => $article['slug']])}" title="{$article['title']}" class="btn btn-secondary btn-xl">Připravuje se...</a>
                         {else}
-                            <a href="{route('blog-detail', ['slug' => $article['slug']])}" class="btn btn-warning btn-xl">Přečíst více</a>
+                            <a href="{route('blog-detail', ['slug' => $article['slug']])}" title="{$article['title']}" class="btn btn-warning btn-xl">Přečíst více</a>
                         {/if}
                     </div>
                     <div class="bg-light px-4 py-2 text-secondary text-end d-flex align-items-center justify-content-between">
