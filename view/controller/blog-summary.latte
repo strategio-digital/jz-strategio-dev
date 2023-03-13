@@ -1,0 +1,33 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ *}
+
+{extends './../@layout.latte'}
+
+{block head}
+    {include parent}
+    <title>Blog | Webdesign a vývoj aplikací - Jiří Zapletal</title>
+    <meta name="description" content="Aktuální tipy, návody i studie od webdesignera a vývojáře aplikací">
+    <meta property="og:title" content="Blog | Webdesign a vývoj aplikací - Jiří Zapleta">
+    <meta property="og:description" content="Aktuální tipy, návody i studie od webdesignera a vývojáře aplikací">
+{/block}
+
+{block content}
+    <header class="blog-header bg-radial">
+        <div class="container text-white text-center pb-5 pb-sm-0 pb-md-0">
+            <h1 class="h1 fw-bold" style="line-height: 1.5">Blog a články</h1>
+            <div class="h5 mb-0">Aktuální tipy, návody i studie od webdesignera a vývojáře aplikací.</div>
+        </div>
+    </header>
+
+    {include './../component/blog-summary.latte'}
+    {include './../component/subscriber.latte' text: 'Dostávejte ty nejnovější články rovnou na Váš e-mail.'}
+    {include './../component/contact.latte'}
+
+    <div class="overflow-hidden">
+        {include './../component/looking-for.latte'}
+        {include './../component/footer.latte'}
+        {include './../component/copy.latte'}
+    </div>
+{/block}

@@ -9,24 +9,27 @@
 
 {block head}
     {include parent}
-    <title>{$data['item']['seoTitle']}</title>
-    <meta name="description" content="{$data['item']['seoDescription']}">
-    <meta property="og:title" content="{$data['item']['openGraphTitle']}">
-    <meta property="og:description" content="{$data['item']['openGraphDescription']}">
+    <title>{$data['item']['seoTitle'] ?: $data['item']['title']}</title>
+    <meta name="description" content="{$data['item']['seoDescription'] ?: $data['item']['descriptionShort']}">
+    <meta property="og:title" content="{$data['item']['openGraphTitle'] ?: $data['item']['seoTitle'] ?: $data['item']['title'] }">
+    <meta property="og:description" content="{$data['item']['openGraphDescription'] ?: $data['item']['seoDescription'] ?: $data['item']['descriptionShort']}">
 {/block}
 
 {block content}
     <header class="blog-header bg-radial">
         <div class="container text-white text-center">
-            <div class="h5">Tipy a triky od vývojáře</div>
+            <div class="h5">{$data['item']['descriptionExtra'] ?: 'Článek'}</div>
             <h1 class="h1 fw-bold mb-0" style="line-height: 1.5">{$data['item']['title']}</h1>
         </div>
     </header>
 
     {include './../component/blog-content.latte'}
-    {include './../component/subscriber.latte'}
+    {include './../component/subscriber.latte' text: 'Dostávejte ty nejnovější články rovnou na Váš e-mail.'}
     {include './../component/contact.latte'}
-    {include './../component/looking-for.latte'}
-    {include './../component/footer.latte'}
-    {include './../component/copy.latte'}
+
+    <div class="overflow-hidden">
+        {include './../component/looking-for.latte'}
+        {include './../component/footer.latte'}
+        {include './../component/copy.latte'}
+    </div>
 {/block}

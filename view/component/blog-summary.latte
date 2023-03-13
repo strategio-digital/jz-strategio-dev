@@ -1,0 +1,48 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ *}
+
+{varType array $data}
+{varType array $file}
+
+<article class="container position-relative py-5" style="margin-top: -8rem">
+    <div class="row">
+        <div n:foreach="$data['items'] as $article" class="col-md-6 col-xl-4 mt-4">
+            <div class="bg-white shadow-sm h-100 d-flex flex-column justify-content-between">
+                {var $images = array_filter($article['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
+                {var $cover = current(array_filter($images, fn($file) => $file['cover']))}
+
+                <div>
+                    <a href="{route('blog-detail', ['slug' => $article['slug']])}" class="d-block position-relative p-3 p-sm-4 bg-light">
+                        {if $cover}
+                            <img src="https://cdn.contentio.app/{$cover['filePath']}" class="w-100" alt="{$article['title']}" style="object-fit: cover; height: 260px">
+                        {else}
+                            <img src="https://dummyimage.com/260" class="w-100" alt="{$article['title']}" style="object-fit: cover; height: 260px">
+                        {/if}
+                    </a>
+
+                    <div class="bg-white px-4 px-sm-5">
+                        <h2 class="fw-bold h4 mb-0 mb-4 pt-5" style="line-height: 1.4">{$article['title']}</h2>
+                        <p class="mb-0 text-secondary" style="font-size: 1.125rem">{$article['descriptionShort']}</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <div class="px-4 px-sm-5 pb-4">
+                        <a href="{route('blog-detail', ['slug' => $article['slug']])}" class="btn btn-warning btn-xl">Přečíst více</a>
+                    </div>
+                    <div class="bg-light px-4 py-2 text-secondary text-end d-flex align-items-center justify-content-between">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                        </svg>
+                        <span>{$article['createdAt']['date']|date:'j. n. Y'}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {include './pagination.latte', routeName: 'blog', data: $data}
+</article>

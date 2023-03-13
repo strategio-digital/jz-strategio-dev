@@ -27,17 +27,38 @@ class BlogController extends Controller
         parent::__construct($response, $request);
     }
     
+    public function index(int $page): void
+    {
+        $data = $this->apiModel->call('POST', 'article/show-all', [
+            'currentPage' => $page,
+            'itemsPerPage' => 12,
+            'desc' => true,
+            'labels' => ['jz-strategio-blog'],
+            'suppressLabels' => true,
+            'suppressFiles' => false,
+            'suppressParagraphs' => true,
+            'suppressParagraphFiles' => true,
+        ]);
+        
+        $this->getResponse()->render(Path::viewDir() . '/controller/blog-summary.latte', [
+            'data' => $data,
+            'about' => new AboutModel(),
+            'contact' => new ContactModel()
+        ]);
+    }
+    
     public function detail(string $slug): void
     {
         $data = $this->apiModel->call('POST', 'article/show-one', [
             'slug' => $slug,
+            'labels' => ['jz-strategio-blog'],
             'suppressLabels' => true,
             'suppressFiles' => false,
             'suppressParagraphs' => false,
             'suppressParagraphFiles' => false,
-            'suppressPrevNext' => true,
-            'suppressPrevNextFiles' => true,
-            'prevNextByLabel' => null
+            'suppressPrevNext' => false,
+            'suppressPrevNextFiles' => false,
+            'prevNextByLabel' => 'jz-strategio-blog',
         ]);
         
         $this->getResponse()->render(Path::viewDir() . '/controller/blog-detail.latte', [

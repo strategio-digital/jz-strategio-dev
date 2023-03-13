@@ -10,7 +10,6 @@ namespace App\Model;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Psr7\Response;
 
 class ApiModel
 {
@@ -40,7 +39,7 @@ class ApiModel
             $data = json_decode($response->getBody()->getContents(), true);
         } catch (ClientException $e) {
             if ($e->getResponse()->getStatusCode() === 404) {
-                $this->response->sendError(['Data not found'], 404);
+                $this->response->sendError(['404 Data not found'], 404);
             }
         }
         
