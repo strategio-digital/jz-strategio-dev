@@ -19,7 +19,7 @@ class RouterFactory extends \Saas\Http\Router\RouterFactory
         // Homepage
         $this->add('GET', '/', [HomeController::class, 'index'], [], 'home');
         $this->add('GET', '/about-me', [AboutController::class, 'index'], [], 'about');
-        $this->add('GET', '/blog/{page}', [BlogController::class, 'index'], ['page' => '1'], 'blog', ['page' => '\d+']);
+        $this->add('GET', '/blog/{page}', [BlogController::class, 'index'], ['page' => 1], 'blog', ['page' => '\d+']);
         $this->add('GET', '/blog/{slug}', [BlogController::class, 'detail'], [], 'blog-detail');
         
         return parent::create();

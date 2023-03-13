@@ -10,12 +10,13 @@ namespace App\Model;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
+use Saas\Http\Response\Response;
 
 class ApiModel
 {
     protected Client $client;
     
-    public function __construct(protected \Saas\Http\Response\Response $response)
+    public function __construct(protected Response $response)
     {
         $this->client = new Client([
             'base_uri' => 'https://strategio.contentio.app/api/',
@@ -32,17 +33,14 @@ class ApiModel
      */
     public function call(string $method, string $uri, array $params): array
     {
-        $data = [];
-        
         try {
             $response = $this->client->request($method, $uri, ['json' => $params]);
-            $data = json_decode($response->getBody()->getContents(), true);
+            return json_decode($response->getBody()->getContents(), true);
         } catch (ClientException $e) {
             if ($e->getResponse()->getStatusCode() === 404) {
                 $this->response->sendError(['404 Data not found'], 404);
             }
+            throw $e;
         }
-        
-        return $data;
     }
 }
