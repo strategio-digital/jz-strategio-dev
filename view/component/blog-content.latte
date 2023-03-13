@@ -46,7 +46,16 @@
                 </div>
 
                 <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4">
-                    <img src="https://cdn.contentio.app/{$cover['filePath']}" class="w-100" alt="{$cover['description']}">
+                    {var $thumb = thumbnail($cover['filePath'], 750, null, 'shrink_only', 90)}
+                    {varType Saas\Helper\Thumbnail $thumb}
+
+                    <img data-thumb
+                         src="https://cdn.contentio.app/{$thumb->getSrc()}"
+                         alt="{$cover['description']}"
+                         width="{$thumb->getWidth()}"
+                         height="{$thumb->getHeight()}"
+                         class="w-100"
+                    >
                 </a>
 
                 <p class="lead">{$data['item']['descriptionShort']}</p>
@@ -66,7 +75,17 @@
                         {foreach $files as $file}
                             <div class="mt-4">
                                 <a href="https://cdn.contentio.app/{$file['filePath']}" target="_blank" class="d-block">
-                                    <img src="https://cdn.contentio.app/{$file['filePath']}" class="img-fluid" alt="{$file['description']}" loading="lazy">
+                                    {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
+                                    {varType Saas\Helper\Thumbnail $thumb}
+
+                                    <img data-thumb
+                                         src="https://cdn.contentio.app/{$thumb->getSrc()}"
+                                         alt="{$file['description']}"
+                                         width="{$thumb->getWidth()}"
+                                         height="{$thumb->getHeight()}"
+                                         class="img-fluid"
+                                         loading="lazy"
+                                    >
                                 </a>
                             </div>
                         {/foreach}

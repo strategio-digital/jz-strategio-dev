@@ -15,10 +15,11 @@ import ContactForm from '@/assets/vue/app/contact-form/App.vue'
 import SubscriberForm from '@/assets/vue/app/subscriber-form/App.vue'
 
 // Typescript
-import { useStepper } from '@/assets/ts/components/useStepper'
-import { useScroller } from '@/assets/ts/components/useScroller'
-import { useNavbar } from '@/assets/ts/components/useNavbar'
-import { useAnalytics } from '@/assets/ts/components/useAnalytics'
+import { useStepper } from '@/saas/frontend-utils/useStepper'
+import { useScroller } from '@/saas/frontend-utils/useScroller'
+import { useNavbar } from '@/saas/frontend-utils/useNavbar'
+import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
+import { useThumbnail } from '@/saas/frontend-utils/useThumbnail'
 import highlight from '@/assets/ts/plugins/highlight'
 import consoleInfo from '@/assets/ts/consoleInfo'
 import carousels from '@/assets/ts/carousels'
@@ -37,6 +38,7 @@ createApp(SubscriberForm).mount('#vue-subscriber-form')
 useScroller().registerEvents()
 useNavbar().registerEvents()
 useStepper().registerEvents()
+useThumbnail().registerEvents()
 
 // Register custom components & plugins
 carousels()

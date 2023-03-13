@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 
-import { useSwitcher } from '@/assets/ts/components/useSwitcher'
+import { useSwitcher } from '@/saas/frontend-utils/useSwitcher'
 
 export default () => {
     const code: HTMLDivElement | null = document.querySelector('#code-switcher')

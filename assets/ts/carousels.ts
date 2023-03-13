@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 
-import { useCarousel } from '@/assets/ts/components/useCarousel'
+import { useCarousel } from '@/saas/frontend-utils/useCarousel'
 
 export default () => {
     const about: HTMLDivElement | null = document.querySelector('#about-carousel')

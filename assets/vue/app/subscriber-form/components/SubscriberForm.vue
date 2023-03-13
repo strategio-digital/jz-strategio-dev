@@ -2,11 +2,11 @@
 import * as yup from 'yup'
 import { ref } from 'vue'
 import { Form, Field, ErrorMessage, FormActions } from 'vee-validate'
-import { useApi } from '@/assets/ts/components/useApi'
+import { useApi } from '@/saas/frontend-utils/useApi'
+import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
+import { useAntiSpam } from '@/saas/frontend-utils/useAntiSpam'
 import { useAlert } from '@/assets/vue/app/composables/useAlert'
-import { useAntiSpam } from '@/assets/ts/components/useAntiSpam'
 import { TNewsletter } from '@/assets/vue/app/types/TNewsletter'
-import { useAnalytics } from '@/assets/ts/components/useAnalytics'
 
 type Values = { email: string }
 

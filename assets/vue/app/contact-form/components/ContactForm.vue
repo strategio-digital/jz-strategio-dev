@@ -3,10 +3,10 @@ import * as yup from 'yup'
 import { computed, ref } from 'vue'
 import { Form, Field, ErrorMessage, FormActions } from 'vee-validate'
 import { TLead } from '@/assets/vue/app/types/TLead'
-import { useApi } from '@/assets/ts/components/useApi'
+import { useApi } from '@/saas/frontend-utils/useApi'
+import { useAntiSpam } from '@/saas/frontend-utils/useAntiSpam'
+import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
 import { useAlert } from '@/assets/vue/app/composables/useAlert'
-import { useAntiSpam } from '@/assets/ts/components/useAntiSpam'
-import { useAnalytics } from '@/assets/ts/components/useAnalytics'
 
 type Values = {
     name: string
