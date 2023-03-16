@@ -11,9 +11,9 @@
 {var $next = $data['next']}
 
 <div class="w-100">
-    <div class="row justify-content-between gy-4">
+    <div class="row justify-content-between">
         {if $next}
-            <div class="col-md-6 col-xl-5">
+            <div class="col-md-6 col-xl-5 mb-4">
                 <a href="{route($routeName, ['slug' => $next['slug']])}" class="p-4 bg-light d-flex align-items-center justify-content-start text-decoration-none rounded-3">
                     <div>
                         {var $file = current(array_filter($next['files'], fn(array $file) => $file['cover'] === true))}
@@ -41,7 +41,7 @@
                 </a>
             </div>
         {else}
-            <div class="col-md-6 col-lg-12 col-xl-6">&nbsp;</div>
+            <div class="col-md-6 col-xl-7"></div>
         {/if}
 
         {if $prev}
@@ -73,7 +73,7 @@
                 </a>
             </div>
         {else}
-            <div class="col-md-6 col-lg-12 col-xl-6">&nbsp;</div>
+            <div class="col-md-6 col-xl-7"></div>
         {/if}
     </div>
 </div>

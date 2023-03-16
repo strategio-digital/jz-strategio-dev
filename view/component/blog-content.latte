@@ -61,40 +61,40 @@
                 <p class="lead">{$data['item']['descriptionShort']}</p>
 
                 {foreach $data['item']['paragraphs'] as $paragraph}
-                    <div class="mb-5">
-                        <h2 n:if="$paragraph['title']" class="text-dark h5 fw-bold mb-3" style="line-height: 1.7">{$paragraph['title']}</h2>
 
-                        <div n:if="$paragraph['videoLink']" class="video shadow-sm rounded-3 overflow-hidden" style="margin-bottom: 1.8rem">
-                            <div class="ratio ratio-16x9">
-                                <iframe src="https://www.youtube-nocookie.com/embed/{$paragraph['videoLink']|replace:'https://youtu.be/'}" title="{$paragraph['title']}" loading="lazy" allowfullscreen></iframe>
-                            </div>
+                    <h2 n:if="$paragraph['title']" class="text-dark h5 fw-bold mb-3" style="line-height: 1.78">{$paragraph['title']}</h2>
+
+                    <div style="font-size: 1.125rem; line-height: 1.78;">{$paragraph['description']|noescape}</div>
+
+                    <div n:if="$paragraph['videoLink']" class="video shadow-sm rounded-3 overflow-hidden mb-4">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube-nocookie.com/embed/{$paragraph['videoLink']|replace:'https://youtu.be/'}" title="{$paragraph['title']}" loading="lazy" allowfullscreen></iframe>
                         </div>
-
-                        <div style="font-size: 1.125rem; line-height: 1.78;">{$paragraph['description']|noescape}</div>
-                        {var $files = array_filter($paragraph['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
-                        {foreach $files as $file}
-                            <div class="mt-4">
-                                <a href="https://cdn.contentio.app/{$file['filePath']}" title="{$file['description']}" target="_blank" class="d-block">
-                                    {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
-                                    {varType Saas\Helper\Thumbnail $thumb}
-
-                                    <img data-thumb
-                                         src="https://cdn.contentio.app/{$thumb->getSrc()}"
-                                         alt="{$file['description']}"
-                                         width="100%"
-                                         height="100%"
-                                         class="img-fluid"
-                                         loading="lazy"
-                                    >
-                                </a>
-                            </div>
-                        {/foreach}
                     </div>
+
+                    {var $files = array_filter($paragraph['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
+                    {foreach $files as $file}
+                        <div class="mb-4">
+                            <a href="https://cdn.contentio.app/{$file['filePath']}" title="{$file['description']}" target="_blank" class="d-block">
+                                {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
+                                {varType Saas\Helper\Thumbnail $thumb}
+
+                                <img data-thumb
+                                     src="https://cdn.contentio.app/{$thumb->getSrc()}"
+                                     alt="{$file['description']}"
+                                     width="100%"
+                                     height="100%"
+                                     class="img-fluid"
+                                     loading="lazy"
+                                >
+                            </a>
+                        </div>
+                    {/foreach}
                 {/foreach}
             </div>
         </div>
 
-        <div class="d-flex justify-content-center mb-5" n:if="$data['prev'] || $data['next']">
+        <div class="d-flex justify-content-center pt-4 pb-5" n:if="$data['prev'] || $data['next']">
             {include './prev-next.latte' title: 'článek', routeName: 'blog-detail'}
         </div>
     </div>
