@@ -50,8 +50,12 @@
 
     &.active {
         pointer-events: all;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+
+        @include media-breakpoint-up(md) {
+
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+        }
 
         .navbar-content {
             left: 0;
