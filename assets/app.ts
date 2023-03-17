@@ -13,6 +13,8 @@ import '@/assets/scss/layout.scss'
 import { createApp } from 'vue'
 import ContactForm from '@/assets/vue/app/contact-form/App.vue'
 import SubscriberForm from '@/assets/vue/app/subscriber-form/App.vue'
+import OpenAiTranslator from '@/assets/vue/app/open-ai/translator/App.vue'
+import OpenAiChat from '@/assets/vue/app/open-ai/chat/App.vue'
 
 // Typescript
 import { useStepper } from '@/saas/frontend-utils/useStepper'
@@ -30,10 +32,6 @@ if (window.location.host === 'jz.strategio.dev') {
     useAnalytics().injectScript('GTM-WLH66JJ')
 }
 
-// Create vue apps
-createApp(ContactForm).mount('#vue-contact-form')
-createApp(SubscriberForm).mount('#vue-subscriber-form')
-
 // Register classic events
 useScroller().registerEvents()
 useNavbar().registerEvents()
@@ -45,3 +43,15 @@ carousels()
 highlight()
 switchers()
 consoleInfo()
+
+// Create vue apps
+createApp(ContactForm).mount('#vue-contact-form')
+createApp(SubscriberForm).mount('#vue-subscriber-form')
+
+if (document.querySelector('#vue-open-ai-chat')) {
+    createApp(OpenAiChat).mount('#vue-open-ai-chat')
+}
+
+if (document.querySelector('#vue-open-ai-translator')) {
+    createApp(OpenAiTranslator).mount('#vue-open-ai-translator')
+}

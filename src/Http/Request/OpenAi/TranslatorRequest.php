@@ -14,7 +14,7 @@ use Nette\Schema\Expect;
 use Saas\Http\Request\IRequest;
 use Saas\Http\Response\Response;
 
-class TranslateRequest implements IRequest
+class TranslatorRequest implements IRequest
 {
     
     public function __construct(protected Response $response)

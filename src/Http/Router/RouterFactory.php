@@ -23,7 +23,8 @@ class RouterFactory extends \Saas\Http\Router\RouterFactory
         $this->add('GET', '/blog/{page}', [BlogController::class, 'index'], ['page' => 1], 'blog', ['page' => '\d+']);
         $this->add('GET', '/blog/{slug}', [BlogController::class, 'detail'], [], 'blog-detail');
         
-        $this->add('POST', '/api/utils/translate', [OpenAIController::class, 'translate'], [], 'openai-translate');
+        $this->add('POST', '/api/utils/open-ai/translator', [OpenAIController::class, 'translator'], [], 'openai-translator');
+        $this->add('POST', '/api/utils/open-ai/chat-bot', [OpenAIController::class, 'chatBot'], [], 'openai-chat-bot');
         
         return parent::create();
     }
