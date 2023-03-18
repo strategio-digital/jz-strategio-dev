@@ -78,7 +78,7 @@ onMounted(() => {
             messages.value = []
             messages.value.push({
                 time: new Date(),
-                content: 'Zdravím, jsem AI Chatbot, jak vám mohu pomoci?',
+                content: 'Zdravím, jsem AI Chatbot. Položte mi jakýkoliv dotaz.',
                 role: 'system',
                 name: 'AI Bot',
                 shortName: 'AI'
