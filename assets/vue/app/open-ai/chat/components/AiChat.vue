@@ -4,7 +4,7 @@ import markdown from 'markdown-it'
 
 const md = markdown()
 const apiKey = 'anotZGV2LTY2Ni5jb29M'
-const timeout = ref(1)
+const timeout = ref(20)
 const active = ref(false)
 const loading = ref(false)
 const messageBox = ref<HTMLElement>()
