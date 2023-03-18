@@ -11,10 +11,8 @@ import '@/assets/scss/layout.scss'
 
 // VueJS
 import { createApp } from 'vue'
-import ContactForm from '@/assets/vue/app/contact-form/App.vue'
-import SubscriberForm from '@/assets/vue/app/subscriber-form/App.vue'
-import OpenAiTranslator from '@/assets/vue/app/open-ai/translator/App.vue'
-import OpenAiChat from '@/assets/vue/app/open-ai/chat/App.vue'
+import ContactForm from '@/assets/vue/app/forms/contact-form/App.vue'
+import SubscriberForm from '@/assets/vue/app/forms/subscriber-form/App.vue'
 
 // Typescript
 import { useStepper } from '@/saas/frontend-utils/useStepper'
@@ -49,9 +47,11 @@ createApp(ContactForm).mount('#vue-contact-form')
 createApp(SubscriberForm).mount('#vue-subscriber-form')
 
 if (document.querySelector('#vue-open-ai-chat')) {
-    createApp(OpenAiChat).mount('#vue-open-ai-chat')
+    const OpenAiChat = import('@/assets/vue/app/open-ai/chat/App.vue')
+    OpenAiChat.then(module => createApp(module.default).mount('#vue-open-ai-chat'))
 }
 
 if (document.querySelector('#vue-open-ai-translator')) {
-    createApp(OpenAiTranslator).mount('#vue-open-ai-translator')
+    const OpenAiTranslator = import('@/assets/vue/app/open-ai/translator/App.vue')
+    OpenAiTranslator.then(module => createApp(module.default).mount('#vue-open-ai-translator'))
 }
