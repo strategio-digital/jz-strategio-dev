@@ -4,7 +4,7 @@ import markdown from 'markdown-it'
 
 const md = markdown()
 const apiKey = 'anotZGV2LTY2Ni5jb29M'
-const timeout = ref(20)
+const timeout = ref(1)
 const active = ref(false)
 const loading = ref(false)
 const messageBox = ref<HTMLElement>()
@@ -88,8 +88,12 @@ onMounted(() => {
 })
 
 onUpdated(() => {
-    // @ts-ignore
-    messageBox.value.scrollTop = messageBox.value.scrollHeight
+
+    const lastMsg = document.querySelector('.message:last-child') as HTMLElement
+
+    // scroll to start of the last message
+    //@ts-ignore
+    messageBox.value.scrollTop = lastMsg.offsetTop - 16 * 1.5
 
     document.querySelectorAll('.message .content a:not([target="_blank"])').forEach((link) => {
         link.setAttribute('target', '_blank')
@@ -100,7 +104,7 @@ onUpdated(() => {
 
 <template>
     <div style="height: 500px" class="border rounded-3 d-flex flex-column justify-content-between mb-4 shadow-sm">
-        <div class="p-4 overflow-auto" ref="messageBox">
+        <div class="p-4 overflow-auto position-relative" ref="messageBox">
 
             <div v-for="message in messages" :key="message.time.toLocaleString()" class="d-flex message">
                 <div :class="message.role === 'user' ? 'order-1 ms-sm-2' : 'order-0 me-sm-2'">
@@ -163,6 +167,10 @@ onUpdated(() => {
 
 .message {
     margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 
     .text {
         padding: 1rem;
