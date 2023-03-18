@@ -41,8 +41,6 @@ class ChatBotRequest implements IRequest
      */
     public function process(array $data): void
     {
-        \Tracy\Debugger::log($data);
-        
         if ($data['apiKey'] !== $_ENV['JZ_API_KEY']) {
             $this->response->sendError(['message' => 'Invalid apiKey for jz.strategio.dev'], 403);
         }

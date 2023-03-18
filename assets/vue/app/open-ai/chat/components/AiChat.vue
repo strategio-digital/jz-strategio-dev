@@ -88,10 +88,8 @@ onMounted(() => {
 })
 
 onUpdated(() => {
-
     const lastMsg = document.querySelector('.message:last-child') as HTMLElement
 
-    // scroll to start of the last message
     //@ts-ignore
     messageBox.value.scrollTop = lastMsg.offsetTop - 16 * 1.5
 
@@ -99,7 +97,6 @@ onUpdated(() => {
         link.setAttribute('target', '_blank')
     })
 })
-
 </script>
 
 <template>
