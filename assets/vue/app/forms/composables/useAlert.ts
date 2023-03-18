@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 import { ref } from 'vue'
-import { TAlert } from '@/assets/vue/app/types/TAlert'
+import { TAlert } from '@/assets/vue/app/forms/types/TAlert'
 
 export const useAlert = () => {
     const data = ref<null | TAlert>(null)

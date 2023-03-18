@@ -1,0 +1,113 @@
+/**
+ * Copyright (c) 2023 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+.open-ai-message {
+    margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .text {
+        padding: 1rem;
+        width: 100%;
+        @include media-breakpoint-up(sm) {
+            width: calc(100% - 50px);
+        }
+
+        &.order-0 {
+            border-top-right-radius: 0 !important;
+        }
+
+        &.order-1 {
+            border-top-left-radius: 0 !important;
+        }
+
+        &.author {
+            background-color: #f6f6f6;
+            color: #c46b6b;
+        }
+
+        &.user {
+            background-color: #3e7bd5;
+            color: #fff;
+        }
+
+        &.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        &.system {
+            background-color: #f6f6f6;
+        }
+
+        &.assistant {
+            background-color: #f6f6f6;
+        }
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        color: #fff;
+
+        &.author {
+            background-color: #c46b6b;
+        }
+
+        &.user {
+            background-color: #3e7bd5;
+        }
+
+        &.error {
+            background-color: #721c24;
+        }
+
+        &.system {
+            background-color: #f6f6f6;
+            color: gray;
+        }
+
+        &.assistant {
+            background-color: #f6f6f6;
+            color: gray;
+        }
+    }
+
+    .content {
+        overflow: auto;
+        width: 100%;
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    code,
+    pre {
+        margin: .5rem 0 1rem;
+        overflow: auto;
+    }
+    table {
+        width: 100%;
+        border: 1px solid #d7d7d7;
+        margin: .5rem 0 1rem;
+        overflow: auto;
+        white-space: nowrap;
+
+        th,
+        td {
+            line-height: 1;
+            font-size: .9rem;
+            border: 1px solid #d7d7d7;
+            padding: .7rem;
+        }
+    }
+}

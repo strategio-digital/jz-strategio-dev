@@ -2,11 +2,11 @@
 import * as yup from 'yup'
 import { computed, ref } from 'vue'
 import { Form, Field, ErrorMessage, FormActions } from 'vee-validate'
-import { TLead } from '@/assets/vue/app/types/TLead'
+import { TLead } from '@/assets/vue/app/forms/types/TLead'
 import { useApi } from '@/saas/frontend-utils/useApi'
 import { useAntiSpam } from '@/saas/frontend-utils/useAntiSpam'
 import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
-import { useAlert } from '@/assets/vue/app/composables/useAlert'
+import { useAlert } from '@/assets/vue/app/forms/composables/useAlert'
 
 type Values = {
     name: string
