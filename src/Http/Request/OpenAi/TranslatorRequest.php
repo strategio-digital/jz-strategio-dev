@@ -30,12 +30,12 @@ class TranslatorRequest implements IRequest
             'apiKey' => Expect::string()->required(),
             'debug' => Expect::bool(false),
             'message' => Expect::string()->required(),
-            'toLanguages' => Expect::arrayOf(Expect::string())->required()->min(1)->max(5),
+            'languages' => Expect::arrayOf(Expect::string())->required()->min(1)->max(8),
         ];
     }
     
     /**
-     * @param array{apiKey: string, debug: bool, message: string, toLanguages: array<int,string>} $data
+     * @param array{apiKey: string, debug: bool, message: string, languages: array<int,string>} $data
      * @throws GuzzleException
      */
     public function process(array $data): void
@@ -46,9 +46,8 @@ class TranslatorRequest implements IRequest
         
         $openAi = new OpenAi();
         
-        $source = implode(',', $data['toLanguages']);
+        $source = implode(',', $data['languages']);
         $prompt = "Translate this into {$source} and if there will be square brackets in the text, don't change the content between them:\n\n{$data['message']}?\n\n";
-        
         
         $response = $openAi->call('POST', 'completions', [
             'model' => 'text-davinci-003',
@@ -65,8 +64,13 @@ class TranslatorRequest implements IRequest
         $translations = array_values($filtered);
         
         $output = [];
-        foreach ($data['toLanguages'] as $key => $language) {
-            $output[mb_strtolower($language)] = str_replace($language . ': ', '', $translations[$key]);
+        foreach ($data['languages'] as $key => $language) {
+            if (array_key_exists($key, $translations)) {
+                $output[] = [
+                    'name' => mb_strtolower($language),
+                    'message' => str_replace($language . ': ', '', $translations[$key]),
+                ];
+            }
         }
         
         $this->response->send([

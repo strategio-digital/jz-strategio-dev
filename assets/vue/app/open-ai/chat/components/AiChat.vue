@@ -1,19 +1,12 @@
 <script lang="ts" setup>
 import { onMounted, onUpdated, ref } from 'vue'
-import markdown from 'markdown-it'
 import { useChat } from '@/assets/vue/app/open-ai/composables/useChat'
+import ChatMessage from '@/assets/vue/app/open-ai/chat/components/ChatMessage.vue'
 
-const { container, active, loading, timeout, fetchApi, scrollToBottom, activator } = useChat()
-const md = markdown()
+const { container, active, loading, timeout, introMessage, fetchApi, scrollToBottom, activator } = useChat()
 
 const message = ref('')
-const messages = ref([{
-    time: new Date(),
-    name: 'Jiří Zapletal',
-    shortName: 'JZ',
-    role: 'author',
-    content: `Dobrý den, chat se aktivuje za několik vteřin. Využívání Open AI stojí pár korun měsíčně. Toto je pouze ochrana, aby mi spam-boti zbytečně neutráceli peníze.`
-}])
+const messages = ref([introMessage])
 
 function formattedMessage(): { content: string, role: string }[] {
     return messages.value.filter((message) => ['system', 'user', 'assistant'].includes(message.role)).map((message) => {
@@ -41,7 +34,7 @@ async function sendMessage(): Promise<void> {
             shortName: 'AI'
         })
     } catch (e) {
-        messages.value.push({ time: new Date(), content: e as string, role: 'error', name: 'Chyba', shortName: '!' })
+        messages.value.push({ time: new Date(), content: 'Něco se pokazilo, zkuste to prozím znovu.', role: 'error', name: 'Chyba', shortName: '!' })
     }
 
     loading.value = false
@@ -69,29 +62,7 @@ onUpdated(() => {
 <template>
     <div style="height: 500px" class="border rounded-3 d-flex flex-column justify-content-between mb-4 shadow-sm">
         <div class="p-4 overflow-auto position-relative" ref="container">
-            <div v-for="message in messages" :key="message.time.toLocaleString()" class="d-flex open-ai-message box-message">
-                <div :class="message.role === 'user' ? 'order-1 ms-sm-2' : 'order-0 me-sm-2'">
-                    <div
-                        class="icon d-none d-sm-flex justify-content-center align-items-center rounded-circle"
-                        :class="message.role"
-                    >
-                        {{ message.shortName }}
-                    </div>
-                </div>
-                <div
-                    class="rounded-4 text"
-                    :class="[message.role, message.role === 'user' ? 'order-0' : 'order-1']"
-                >
-                    <div class="opacity-75 mb-2" style="line-height: 1; font-size: .9rem">
-                        ({{ message.name }}) {{ message.time.toLocaleString() }}
-                    </div>
-                    <div
-                        class="content"
-                        style="line-height: 1.5; font-size: 1rem"
-                        v-html="md.render(message.content)"
-                    ></div>
-                </div>
-            </div>
+            <ChatMessage :message="message" v-for="message in messages" :key="message.time.getTime()" />
         </div>
 
         <div class="bg-light w-100 d-flex p-4 rounded-bottom">
@@ -101,7 +72,7 @@ onUpdated(() => {
                     type="text"
                     class="form-control"
                     placeholder="Zde zadejte dotaz..."
-                    aria-label="Recipient's username"
+                    aria-label="Zadejte dotaz..."
                     aria-describedby="button-chat"
                     :disabled="!active"
                     required

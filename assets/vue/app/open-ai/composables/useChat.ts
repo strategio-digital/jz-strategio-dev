@@ -8,9 +8,17 @@ import { ref } from 'vue'
 export const useChat = () => {
     const apiKey = 'anotZGV2LTY2Ni5jb29M'
     const container = ref<HTMLElement>()
-    const timeout = ref(20)
+    const timeout = ref(1)
     const active = ref(false)
     const loading = ref(false)
+
+    const introMessage = {
+        time: new Date(),
+        name: 'Jiří Zapletal',
+        shortName: 'JZ',
+        role: 'author',
+        content: `Dobrý den, okno se aktivuje za několik vteřin. Využívání Open AI stojí pár korun měsíčně. Toto je pouze ochrana, aby mi spam-boti zbytečně neutráceli peníze.`
+    }
 
     async function fetchApi(uri: string, params: any): Promise<any> {
         const response = await fetch(uri, {
@@ -42,13 +50,13 @@ export const useChat = () => {
         }
     }
 
-    function activator(callback: () => void) {
+    function activator(callback?: () => void) {
         const interval = setInterval(() => {
             timeout.value = timeout.value - 1
             if (timeout.value <= 0) {
                 clearInterval(interval)
                 active.value = true
-                callback()
+                if (callback) callback()
             }
         }, 1000)
     }
@@ -58,6 +66,7 @@ export const useChat = () => {
         timeout,
         active,
         loading,
+        introMessage,
         fetchApi,
         scrollToBottom,
         activator
