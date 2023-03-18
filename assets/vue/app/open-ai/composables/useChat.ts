@@ -21,7 +21,7 @@ export const useChat = () => {
             body: JSON.stringify({
                 apiKey: atob(apiKey),
                 debug: false,
-                messages: params
+                ...params
             })
         })
 

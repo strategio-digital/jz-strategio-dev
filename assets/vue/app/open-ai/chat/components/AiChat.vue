@@ -31,8 +31,8 @@ async function sendMessage(): Promise<void> {
     messages.value.push({ time: new Date(), content: currentMessage, role: 'user', name: 'Vy', shortName: 'Vy' })
 
     try {
-        const params = formattedMessage()
-        const data = await fetchApi('/api/utils/open-ai/chat-bot', params)
+        const formattedMessages = formattedMessage()
+        const data = await fetchApi('/api/utils/open-ai/chat-bot', { messages: formattedMessages })
         messages.value.push({
             time: new Date(),
             content: data.content,
