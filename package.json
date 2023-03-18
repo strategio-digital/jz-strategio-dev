@@ -8,11 +8,15 @@
     "bootstrap": "^5.2.3",
     "flag-icons": "^6.6.6",
     "highlight.js": "^11.7.0",
+    "markdown-it": "^13.0.1",
     "strategio-saas": "dev",
     "tsparticles": "^2.9.0",
     "tsparticles-engine": "^2.8.0",
     "vee-validate": "^4.7.4",
     "vue": "^3.2.47",
     "yup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^12.2.3"
   }
 }

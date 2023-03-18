@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, onUpdated, ref } from 'vue'
+import markdown from 'markdown-it'
 
+const md = markdown()
 const apiKey = 'anotZGV2LTY2Ni5jb29M'
 const timeout = ref(20)
 const active = ref(false)
@@ -14,7 +16,7 @@ const messages = ref([
         name: 'Jiří Zapletal',
         shortName: 'JZ',
         role: 'author',
-        content: `Chat se sám aktivuje za několik vteřin. Využívání Open AI mě stojí pár dolarů měsíčně. Tímto se pouze bráním, aby mi spam-boti zbytečně nevyčerpali limit.`
+        content: `Dobrý den, chat se aktivuje za několik vteřin. Využívání Open AI stojí pár korun měsíčně. Toto je pouze ochrana, aby mi spam-boti zbytečně neutráceli peníze.`
     }
 ])
 
@@ -53,7 +55,6 @@ async function sendMessage(): Promise<void> {
 
     try {
         const data = await fetchApi()
-        console.log(data)
         messages.value.push({
             time: new Date(),
             content: data.content,
@@ -69,7 +70,6 @@ async function sendMessage(): Promise<void> {
 }
 
 onMounted(() => {
-
     const interval = setInterval(() => {
         timeout.value = timeout.value - 1
         if (timeout.value <= 0) {
@@ -78,7 +78,7 @@ onMounted(() => {
             messages.value = []
             messages.value.push({
                 time: new Date(),
-                content: 'Dobrý den, jsem AI Chatbot, jak vám mohu pomoci?',
+                content: 'Zdravím, jsem AI Chatbot, jak vám mohu pomoci?',
                 role: 'system',
                 name: 'AI Bot',
                 shortName: 'AI'
@@ -90,6 +90,10 @@ onMounted(() => {
 onUpdated(() => {
     // @ts-ignore
     messageBox.value.scrollTop = messageBox.value.scrollHeight
+
+    document.querySelectorAll('.message .content a:not([target="_blank"])').forEach((link) => {
+        link.setAttribute('target', '_blank')
+    })
 })
 
 </script>
@@ -108,13 +112,13 @@ onUpdated(() => {
                     </div>
                 </div>
                 <div
-                    class="w-100 rounded-4 text"
+                    class="rounded-4 text"
                     :class="[message.role, message.role === 'user' ? 'order-0' : 'order-1']"
                 >
                     <div class="opacity-75 mb-2" style="line-height: 1; font-size: .9rem">
                         ({{ message.name }}) {{ message.time.toLocaleString() }}
                     </div>
-                    <div style="line-height: 1.5; font-size: 1rem">{{ message.content }}</div>
+                    <div class="content" style="line-height: 1.5; font-size: 1rem" v-html="md.render(message.content)"></div>
                 </div>
             </div>
         </div>
@@ -152,11 +156,20 @@ onUpdated(() => {
 
 <style lang="scss">
 
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
 .message {
     margin-bottom: 2rem;
 
     .text {
         padding: 1rem;
+        width: 100%;
+        @include media-breakpoint-up(sm) {
+            width: calc(100% - 50px);
+        }
 
         &.order-0 {
             border-top-right-radius: 0 !important;
@@ -215,6 +228,35 @@ onUpdated(() => {
         &.assistant {
             background-color: #f6f6f6;
             color: gray;
+        }
+    }
+
+    .content {
+        overflow: auto;
+        width: 100%;
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    code,
+    pre {
+        margin: .5rem 0 1rem;
+        overflow: auto;
+    }
+    table {
+        width: 100%;
+        border: 1px solid #d7d7d7;
+        margin: .5rem 0 1rem;
+        overflow: auto;
+        white-space: nowrap;
+
+        th,
+        td {
+            line-height: 1;
+            font-size: .9rem;
+            border: 1px solid #d7d7d7;
+            padding: .7rem;
         }
     }
 }
