@@ -2,11 +2,13 @@
 import { onMounted, onUpdated, ref } from 'vue'
 import { useChat } from '@/assets/vue/app/open-ai/composables/useChat'
 import ChatMessage from '@/assets/vue/app/open-ai/chat/components/ChatMessage.vue'
+import { TMessage } from '@/assets/vue/app/open-ai/types/TMessage'
+import { TTranslation } from '@/assets/vue/app/open-ai/types/TTranslation'
 
 const { container, active, loading, timeout, introMessage, fetchApi, activator, scrollToBottom } = useChat()
 const message = ref()
-const messages = ref([introMessage])
-const translations = ref([])
+const messages = ref<TMessage[]>([introMessage])
+const translations = ref<TTranslation[]>([])
 
 const languages = ['English', 'German', 'French', 'Spanish', 'Italian', 'Ukrainian', 'Chinese', 'Japanese']
 

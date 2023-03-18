@@ -95,7 +95,3 @@ onUpdated(() => {
         </div>
     </div>
 </template>
-
-<style lang="scss">
-@import 'assets/scss/vue/open-ai/open-ai-message';
-</style>

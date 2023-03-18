@@ -8,7 +8,7 @@ import { ref } from 'vue'
 export const useChat = () => {
     const apiKey = 'anotZGV2LTY2Ni5jb29M'
     const container = ref<HTMLElement>()
-    const timeout = ref(1)
+    const timeout = ref(20)
     const active = ref(false)
     const loading = ref(false)
 

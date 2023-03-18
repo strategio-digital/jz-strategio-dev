@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import { PropType } from 'vue'
+import { TMessage } from '@/assets/vue/app/open-ai/types/TMessage'
 import markdown from 'markdown-it'
+
 const md = markdown()
 
 defineProps({
     message: {
-        type: Object as PropType<{ time: Date, name: string, shortName: string, role: string, content: string }>,
+        type: Object as PropType<TMessage>,
         required: true
     }
 })
