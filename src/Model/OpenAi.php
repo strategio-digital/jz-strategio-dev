@@ -18,6 +18,7 @@ class OpenAi
     {
         $this->client = new Client([
             'base_uri' => 'https://api.openai.com/v1/',
+            'timeout' => 30,
             'headers' => [
                 'Authorization' => 'Bearer ' . $_ENV['OPENAI_API_KEY'],
                 'OpenAI-Organization' => $_ENV['OPENAI_ORGANIZATION_ID'],

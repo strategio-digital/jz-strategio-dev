@@ -27,7 +27,7 @@ async function sendMessage(): Promise<void> {
         messages.value = []
         translations.value = data.translations
     } catch (e) {
-        messages.value.push({ time: new Date(), content: 'Něco se pokazilo, zkuste to prozím znovu.', role: 'error', name: 'Chyba', shortName: '!' })
+        messages.value.push({ time: new Date(), content: 'Něco se pokazilo, zkuste to prosím znovu.', role: 'error', name: 'Chyba', shortName: '!' })
     }
 
     loading.value = false
