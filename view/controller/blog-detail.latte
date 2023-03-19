@@ -7,6 +7,14 @@
 
 {extends './../@layout.latte'}
 
+{block ogimage}
+    {if $data['item']['openGraphImage']}
+        <meta property="og:image" content="https://cdn.contentio.app/{$data['item']['openGraphImage']}">
+    {else}
+        <meta property="og:image" content="{vite('assets/img/social.png')}">
+    {/if}
+{/block}
+
 {block head}
     {include parent}
     <title>{$data['item']['seoTitle'] ?: $data['item']['title']}</title>
