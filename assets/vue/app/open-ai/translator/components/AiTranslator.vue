@@ -48,7 +48,7 @@ onUpdated(() => scrollToBottom())
 </script>
 
 <template>
-    <div style="height: 520px" class="border rounded-3 d-flex flex-column justify-content-between mb-4 shadow-sm">
+    <div style="height: 520px" class="border rounded-top d-flex flex-column justify-content-between mb-4 shadow-sm">
         <div class="p-4 overflow-auto position-relative" ref="container">
             <ChatMessage v-for="message in messages" :message="message" />
             <div class="fw-bold" v-if="translations.length > 0">Výsledná tabulka:</div>
@@ -68,7 +68,7 @@ onUpdated(() => scrollToBottom())
             </div>
         </div>
 
-        <div class="bg-light w-100 d-flex p-4 rounded-bottom">
+        <div class="bg-light w-100 d-flex p-4 animated-box">
             <form @submit.prevent="sendMessage" class="input-group mb-0">
                 <input
                     v-model="message"
