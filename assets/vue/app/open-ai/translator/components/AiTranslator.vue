@@ -9,6 +9,7 @@ const { container, active, loading, timeout, introMessage, fetchApi, activator, 
 const message = ref()
 const messages = ref<TMessage[]>([introMessage])
 const translations = ref<TTranslation[]>([])
+const angle = ref(0)
 
 const languages = ['English', 'German', 'French', 'Spanish', 'Italian', 'Ukrainian', 'Chinese', 'Japanese']
 
@@ -33,16 +34,24 @@ async function sendMessage(): Promise<void> {
     loading.value = false
 }
 
-onMounted(() => activator(() => {
-    messages.value = []
-    messages.value.push({
-        time: new Date(),
-        content: 'Zdravím, jsem AI Překladatel. Autor článku mi nastavil, abych překládal do následujících jazyků: ' + languages.join(', ') + '.  Zadejte mi nějaký text k překladu.',
-        role: 'system',
-        name: 'AI Bot',
-        shortName: 'AI'
+onMounted(() => {
+    activator(() => {
+        messages.value = []
+        messages.value.push({
+            time: new Date(),
+            content: 'Zdravím, jsem AI Překladatel. Autor článku mi nastavil, abych překládal do následujících jazyků: ' + languages.join(', ') + '.  Zadejte mi nějaký text k překladu.',
+            role: 'system',
+            name: 'AI Bot',
+            shortName: 'AI'
+        })
     })
-}))
+
+    const timeout = setInterval(() => {
+        angle.value += 0.01
+    }, 20)
+
+    return () => clearInterval(timeout)
+})
 
 onUpdated(() => scrollToBottom())
 </script>
@@ -68,7 +77,7 @@ onUpdated(() => scrollToBottom())
             </div>
         </div>
 
-        <div class="bg-light w-100 d-flex p-4 animated-box">
+        <div class="bg-light w-100 d-flex p-4 animated-box" :style="`--angle:${angle}turn`">
             <form @submit.prevent="sendMessage" class="input-group mb-0">
                 <input
                     v-model="message"

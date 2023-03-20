@@ -4,9 +4,9 @@ import { useChat } from '@/assets/vue/app/open-ai/composables/useChat'
 import ChatMessage from '@/assets/vue/app/open-ai/chat/components/ChatMessage.vue'
 
 const { container, active, loading, timeout, introMessage, fetchApi, scrollToBottom, activator } = useChat()
-
 const message = ref('')
 const messages = ref([introMessage])
+const angle = ref(0)
 
 function formattedMessage(): { content: string, role: string }[] {
     return messages.value.filter((message) => ['system', 'user', 'assistant'].includes(message.role)).map((message) => {
@@ -40,16 +40,24 @@ async function sendMessage(): Promise<void> {
     loading.value = false
 }
 
-onMounted(() => activator(() => {
-    messages.value = []
-    messages.value.push({
-        time: new Date(),
-        content: 'Zdravím, jsem AI Chatbot. Položte mi jakýkoliv dotaz.',
-        role: 'system',
-        name: 'AI Bot',
-        shortName: 'AI'
+onMounted(() => {
+    activator(() => {
+        messages.value = []
+        messages.value.push({
+            time: new Date(),
+            content: 'Zdravím, jsem AI Chatbot. Položte mi jakýkoliv dotaz.',
+            role: 'system',
+            name: 'AI Bot',
+            shortName: 'AI'
+        })
     })
-}))
+
+    const timeout = setInterval(() => {
+        angle.value += 0.01
+    }, 20)
+
+    return () => clearInterval(timeout)
+})
 
 onUpdated(() => {
     scrollToBottom()
@@ -65,7 +73,7 @@ onUpdated(() => {
             <ChatMessage :message="message" v-for="message in messages" :key="message.time.getTime()" />
         </div>
 
-        <div class="bg-light w-100 d-flex p-4 animated-box">
+        <div class="bg-light w-100 d-flex p-4 animated-box" :style="`--angle:${angle}turn`">
             <form @submit.prevent="sendMessage" class="input-group mb-0">
                 <input
                     v-model="message"
