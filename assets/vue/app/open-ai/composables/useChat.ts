@@ -7,7 +7,6 @@ import { ref } from 'vue'
 
 export const useChat = () => {
     const apiKey = 'anotZGV2LTY2Ni5jb29M'
-    const container = ref<HTMLElement>()
     const timeout = ref(20)
     const active = ref(false)
     const loading = ref(false)
@@ -42,15 +41,15 @@ export const useChat = () => {
         return data
     }
 
-    function scrollToBottom() {
-        const lastMsg = container.value?.querySelector('.box-message:last-child') as HTMLElement
+    function scrollToBottom(container: HTMLElement) {
+        const lastMsg = container.querySelector('.box-message:last-child') as HTMLElement
 
-        if (container.value && lastMsg) {
-            container.value.scrollTop = lastMsg.offsetTop - 16 * 1.5
+        if (lastMsg) {
+            container.scrollTop = lastMsg.offsetTop - 16 * 1.5
         }
     }
 
-    function activator(callback?: () => void) {
+    function activate(callback?: () => void) {
         const interval = setInterval(() => {
             timeout.value = timeout.value - 1
             if (timeout.value <= 0) {
@@ -62,13 +61,12 @@ export const useChat = () => {
     }
 
     return {
-        container,
         timeout,
         active,
         loading,
         introMessage,
         fetchApi,
         scrollToBottom,
-        activator
+        activate
     }
 }

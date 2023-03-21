@@ -43,7 +43,13 @@
                     {/if}
 
                     <div class="bg-white px-4 px-sm-5 px-md-4 px-lg-5 px-xl-4 px-xxl-5">
-                        <h2 class="fw-bold h4 mb-0 mb-4 pt-4 pt-sm-5 pt-md-4 pt-lg-5 pt-xl-4 pt-xxl-5" style="line-height: 1.4">{$article['title']}</h2>
+                        {if $article['description'] && Nette\Utils\Strings::contains($article['description'], 'Připravuje se...')}
+                            <h2 class="fw-bold h4 mb-0 mb-4 pt-4 pt-sm-5 pt-md-4 pt-lg-5 pt-xl-4 pt-xxl-5" style="line-height: 1.4">{$article['title']}</h2>
+                        {else}
+                            <a href="{route('blog-detail', ['slug' => $article['slug']])}" title="{$article['title']}" class="text-dark text-decoration-none">
+                                <h2 class="fw-bold h4 mb-0 mb-4 pt-4 pt-sm-5 pt-md-4 pt-lg-5 pt-xl-4 pt-xxl-5" style="line-height: 1.4">{$article['title']}</h2>
+                            </a>
+                        {/if}
                         <p class="mb-0 text-secondary" style="font-size: 1.125rem">{$article['descriptionShort']}</p>
                     </div>
                 </div>

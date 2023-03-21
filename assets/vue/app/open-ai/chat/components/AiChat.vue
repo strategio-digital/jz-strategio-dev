@@ -3,7 +3,8 @@ import { onMounted, onUpdated, ref } from 'vue'
 import { useChat } from '@/assets/vue/app/open-ai/composables/useChat'
 import ChatMessage from '@/assets/vue/app/open-ai/chat/components/ChatMessage.vue'
 
-const { container, active, loading, timeout, introMessage, fetchApi, scrollToBottom, activator } = useChat()
+const { active, loading, timeout, introMessage, fetchApi, scrollToBottom, activate } = useChat()
+const container = ref<HTMLElement>()
 const message = ref('')
 const messages = ref([introMessage])
 const angle = ref(0)
@@ -34,14 +35,20 @@ async function sendMessage(): Promise<void> {
             shortName: 'AI'
         })
     } catch (e) {
-        messages.value.push({ time: new Date(), content: 'Něco se pokazilo, zkuste to prosím znovu.', role: 'error', name: 'Chyba', shortName: '!' })
+        messages.value.push({
+            time: new Date(),
+            content: 'Něco se pokazilo, zkuste to prosím znovu.',
+            role: 'error',
+            name: 'Chyba',
+            shortName: '!'
+        })
     }
 
     loading.value = false
 }
 
 onMounted(() => {
-    activator(() => {
+    activate(() => {
         messages.value = []
         messages.value.push({
             time: new Date(),
@@ -53,18 +60,24 @@ onMounted(() => {
     })
 
     const timeout = setInterval(() => {
-        // angle.value += 0.01
+        angle.value += 0.01
     }, 20)
 
     return () => clearInterval(timeout)
 })
 
+
+let lastHeight = 0
 onUpdated(() => {
-    scrollToBottom()
-    document.querySelectorAll('.box-message .content a:not([target="_blank"])').forEach((link) => {
-        link.setAttribute('target', '_blank')
-    })
+    if(container.value && container.value.scrollHeight !== lastHeight) {
+        lastHeight = container.value?.scrollHeight
+        scrollToBottom(container.value)
+        document.querySelectorAll('.box-message .content a:not([target="_blank"])').forEach((link) => {
+            link.setAttribute('target', '_blank')
+        })
+    }
 })
+
 </script>
 
 <template>

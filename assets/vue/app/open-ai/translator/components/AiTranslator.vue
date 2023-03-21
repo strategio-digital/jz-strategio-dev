@@ -5,7 +5,8 @@ import ChatMessage from '@/assets/vue/app/open-ai/chat/components/ChatMessage.vu
 import { TMessage } from '@/assets/vue/app/open-ai/types/TMessage'
 import { TTranslation } from '@/assets/vue/app/open-ai/types/TTranslation'
 
-const { container, active, loading, timeout, introMessage, fetchApi, activator, scrollToBottom } = useChat()
+const { active, loading, timeout, introMessage, fetchApi, activate, scrollToBottom } = useChat()
+const container = ref<HTMLElement>()
 const message = ref()
 const messages = ref<TMessage[]>([introMessage])
 const translations = ref<TTranslation[]>([])
@@ -35,7 +36,7 @@ async function sendMessage(): Promise<void> {
 }
 
 onMounted(() => {
-    activator(() => {
+    activate(() => {
         messages.value = []
         messages.value.push({
             time: new Date(),
@@ -47,19 +48,25 @@ onMounted(() => {
     })
 
     const timeout = setInterval(() => {
-        // angle.value += 0.01
+        angle.value += 0.01
     }, 20)
 
     return () => clearInterval(timeout)
 })
 
-onUpdated(() => scrollToBottom())
+let lastHeight = 0
+onUpdated(() => {
+    if(container.value && container.value.scrollHeight !== lastHeight) {
+        lastHeight = container.value?.scrollHeight
+        scrollToBottom(container.value)
+    }
+})
 </script>
 
 <template>
     <div style="height: 520px" class="border rounded-top d-flex flex-column justify-content-between mb-4 shadow-sm">
         <div class="p-4 overflow-auto position-relative" ref="container">
-            <ChatMessage v-for="message in messages" :message="message" />
+            <ChatMessage v-for="message in messages" :message="message" :key="message.time.getTime()" />
             <div class="fw-bold" v-if="translations.length > 0">Výsledná tabulka:</div>
             <div v-if="translations.length > 0" class="open-ai-message box-message">
                 <div class="content">
