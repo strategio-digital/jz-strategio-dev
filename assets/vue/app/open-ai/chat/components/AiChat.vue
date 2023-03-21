@@ -53,7 +53,7 @@ onMounted(() => {
     })
 
     const timeout = setInterval(() => {
-        angle.value += 0.01
+        // angle.value += 0.01
     }, 20)
 
     return () => clearInterval(timeout)
