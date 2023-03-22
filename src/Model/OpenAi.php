@@ -16,9 +16,11 @@ class OpenAi
     
     public function __construct()
     {
+        ini_set('max_execution_time', '120');
+        
         $this->client = new Client([
             'base_uri' => 'https://api.openai.com/v1/',
-            'timeout' => 30,
+            'timeout' => 120,
             'headers' => [
                 'Authorization' => 'Bearer ' . $_ENV['OPENAI_API_KEY'],
                 'OpenAI-Organization' => $_ENV['OPENAI_ORGANIZATION_ID'],
