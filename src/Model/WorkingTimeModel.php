@@ -15,15 +15,15 @@ class WorkingTimeModel
      */
     public function get(): array
     {
-        $workingZone = new \DateTimeZone('Europe/Prague');
-        $clientZone = new \DateTimeZone('America/Edmonton');
+        $workingZone = new \DateTimeZone('America/Edmonton');
+        $clientZone = new \DateTimeZone('Europe/Prague');
     
         $current = new \DateTime('now', $workingZone);
         $workingFrom = clone $current;
         $workingTo = clone $current;
     
-        $workingFrom->setTime(9, 0);
-        $workingTo->setTime(22, 0);
+        $workingFrom->setTime(7, 0);
+        $workingTo->setTime(15, 0);
         
         return [
             'workingZone' => $workingZone->getName(),
