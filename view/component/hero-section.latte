@@ -39,10 +39,10 @@
                 <div class="col-12 col-xxl-auto">
                     {if $times['workingZone'] === 'Europe/Prague'}
                         <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
-                        <span style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
+                        <span style="opacity: 1"><span class="fi fi-ca me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
                     {else}
                         <span class="me-4"><span class="fi fi-cz me-3"></span>{$times['target']['from']} - {$times['target']['to']}</span>
-                        <span style="opacity: .5"><span class="fi fi-ca me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
+                        <span style="opacity: 1"><span class="fi fi-ca me-3"></span>{$times['local']['from']} - {$times['local']['to']}</span>
                     {/if}
                 </div>
             </div>

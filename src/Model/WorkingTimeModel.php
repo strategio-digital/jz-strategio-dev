@@ -22,8 +22,8 @@ class WorkingTimeModel
         $workingFrom = clone $current;
         $workingTo = clone $current;
     
-        $workingFrom->setTime(7, 0);
-        $workingTo->setTime(15, 0);
+        $workingFrom->setTime(6, 0);
+        $workingTo->setTime(18, 0);
         
         return [
             'workingZone' => $workingZone->getName(),
