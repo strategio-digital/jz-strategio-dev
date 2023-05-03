@@ -26,6 +26,14 @@ class CodeExamples
                 'link' => 'https://github.com/strategio-digital/saas/blob/master/vue/composables/datagrid/useDatagrid.ts'
             ],
             [
+                'type' => 'ts',
+                'title' => 'PersonalInfo.tsx',
+                'shortcut' => 'React',
+                'code' => file_get_contents(Path::srcDir() . '/../assets/code-example/react.txt'),
+                'active' => false,
+                'link' => 'https://github.com/jzaplet/saas-checkout/blob/feature-graph-ql/src/views/PersonalInfo.tsx'
+            ],
+            [
                 'type' => 'php',
                 'title' => 'User\\CreateRequest.php',
                 'shortcut' => 'PHP',
