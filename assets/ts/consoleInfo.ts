@@ -10,7 +10,7 @@ export default () => {
     )
 
     console.log(
-        `%cBTW Don't use Particle engine for production, it's costs a lot of performance!`,
+        `%cBTW Don't use Particle engine for production, it costs a lot of performance!`,
         `font-weight: bold; font-size: 1.5rem; color: white; background: #f90; padding: 5px;`
     )
 }

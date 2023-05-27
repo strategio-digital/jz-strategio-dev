@@ -24,6 +24,7 @@ import highlight from '@/assets/ts/plugins/highlight'
 import consoleInfo from '@/assets/ts/consoleInfo'
 import carousels from '@/assets/ts/carousels'
 import switchers from '@/assets/ts/switchers'
+import writingAnimation from '@/assets/ts/writingAnimation'
 
 // Inject analytics script
 if (window.location.host === 'jz.strategio.dev') {
@@ -41,6 +42,7 @@ carousels()
 highlight()
 switchers()
 consoleInfo()
+writingAnimation()
 
 // Create vue apps
 createApp(ContactForm).mount('#vue-contact-form')
