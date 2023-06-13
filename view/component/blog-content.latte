@@ -60,8 +60,8 @@
 
                 <p class="lead">{$data['item']['descriptionShort']}</p>
 
+                {var $counter = 0}
                 {foreach $data['item']['paragraphs'] as $paragraph}
-
                     <h2 n:if="$paragraph['title']" class="text-dark h5 fw-bold mb-3" style="line-height: 1.78">{$paragraph['title']}</h2>
 
                     <div style="font-size: 1.125rem; line-height: 1.78;">{$paragraph['description']|noescape}</div>
@@ -74,11 +74,10 @@
 
                     {var $files = array_filter($paragraph['files'], fn($file) => Nette\Utils\Strings::startsWith($file['mimeType'], 'image/'))}
                     {foreach $files as $file}
-                        <div class="mb-4">
+                        <figure class="figure mb-3">
                             <a href="https://cdn.contentio.app/{$file['filePath']}" title="{$file['description']}" target="_blank" class="d-block">
                                 {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
                                 {varType Saas\Helper\Thumbnail $thumb}
-
                                 <img data-thumb
                                      src="https://cdn.contentio.app/{$thumb->getSrc()}"
                                      alt="{$file['description']}"
@@ -88,7 +87,13 @@
                                      loading="lazy"
                                 >
                             </a>
-                        </div>
+                            <figcaption n:if="$file['description']" class="figure-caption mt-1 px-4 px-md-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                                Obrázek č. {++$counter}: {$file['description']}
+                            </figcaption>
+                        </figure>
                     {/foreach}
                 {/foreach}
             </div>
