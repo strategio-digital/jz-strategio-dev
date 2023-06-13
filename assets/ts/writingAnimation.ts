@@ -6,6 +6,19 @@
 export default () => {
     const elements: HTMLSpanElement[] = Array.from(document.querySelectorAll('.writing-animation'))
 
+
+    function interval() {
+        const index = elements.findIndex(el => el.classList.contains('active'))
+
+        elements[index].classList.remove('active')
+
+        if (index < elements.length - 1) {
+            elements[index + 1].classList.add('active')
+        } else {
+            elements[0].classList.add('active')
+        }
+    }
+
     // Make text-writing animation for each character in each element.
     elements.forEach(element => {
         const text = element.innerText
@@ -18,17 +31,9 @@ export default () => {
         })
     })
 
-    setInterval(() => {
-        const index = elements.findIndex(el => el.classList.contains('active'))
 
-        elements[index].classList.remove('active')
-
-        if (index < elements.length - 1) {
-            elements[index + 1].classList.add('active')
-        } else {
-            elements[0].classList.add('active')
-        }
-
-    }, 3000)
+    if (elements.length > 0) {
+        setInterval(interval, 3000)
+    }
 
 }
