@@ -33,7 +33,7 @@ class ToolsModel
             [
                 'title' => 'Invoice GUN',
                 'description' => 'Nástroj pro Vaší kompletní fakturaci - hezké faktury s QR kódem a napojením na banku.',
-                'link' => null
+                'link' => '/blog/nastroj-na-faktury-zdarma'
             ],
             [
                 'title' => 'Webis editor',
