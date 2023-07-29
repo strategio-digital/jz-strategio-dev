@@ -26,14 +26,4 @@ return static function (RoutingConfigurator $routes): void {
         ->controller([\App\Http\Controller\BlogController::class, 'detail'])
         ->requirements(['slug' => '.+'])
         ->options(['auth' => false]);
-    
-    $routes->add('openai-translator', '/api/utils/open-ai/translator')
-        ->methods(['POST'])
-        ->controller(\App\Http\Request\OpenAi\TranslatorRequest::class)
-        ->options(['auth' => false]);
-    
-    $routes->add('openai-chat-bot', '/api/utils/open-ai/chat-bot')
-        ->methods(['POST'])
-        ->controller(\App\Http\Request\OpenAi\ChatBotRequest::class)
-        ->options(['auth' => false]);
 };
