@@ -16,13 +16,14 @@ use App\Model\SkillsModel;
 use App\Model\ToolsModel;
 use App\Model\WorkingTimeModel;
 use Saas\Helper\Path;
-use Saas\Http\Controller\Controller;
+use Saas\Http\Controller\Base\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends Controller
 {
-    public function index(): void
+    public function index(): Response
     {
-        $this->getResponse()->render(Path::viewDir() . '/controller/home.latte', [
+        return $this->render(Path::viewDir() . '/controller/home.latte', [
             'about' => new AboutModel(),
             'skills' => new SkillsModel(),
             'codeExamples' => new CodeExamples(),

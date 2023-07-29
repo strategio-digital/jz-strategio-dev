@@ -10,13 +10,14 @@ namespace App\Http\Controller;
 use App\Model\AboutModel;
 use App\Model\ContactModel;
 use Saas\Helper\Path;
-use Saas\Http\Controller\Controller;
+use Saas\Http\Controller\Base\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class AboutController extends Controller
 {
-    public function index(): void
+    public function index(): Response
     {
-        $this->getResponse()->render(Path::viewDir() . '/controller/about.latte', [
+        return $this->render(Path::viewDir() . '/controller/about.latte', [
             'about' => new AboutModel(),
             'contact' => new ContactModel()
         ]);

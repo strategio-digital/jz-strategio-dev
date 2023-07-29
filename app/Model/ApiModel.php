@@ -10,13 +10,13 @@ namespace App\Model;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
-use Saas\Http\Response\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ApiModel
 {
     protected Client $client;
     
-    public function __construct(protected Response $response)
+    public function __construct()
     {
         $this->client = new Client([
             'base_uri' => 'https://strategio.contentio.app/api/',
@@ -28,17 +28,17 @@ class ApiModel
      * @param string $method
      * @param string $uri
      * @param array<string, mixed> $params
-     * @return array<string, mixed>
+     * @return JsonResponse|array<string, mixed>
      * @throws GuzzleException
      */
-    public function call(string $method, string $uri, array $params): array
+    public function call(string $method, string $uri, array $params): JsonResponse|array
     {
         try {
             $response = $this->client->request($method, $uri, ['json' => $params]);
             return json_decode($response->getBody()->getContents(), true);
         } catch (ClientException $e) {
             if ($e->getResponse()->getStatusCode() === 404) {
-                $this->response->sendError(['404 Data not found'], 404);
+                return new JsonResponse(['errors' => ['404 Data not found']], 404);
             }
             throw $e;
         }

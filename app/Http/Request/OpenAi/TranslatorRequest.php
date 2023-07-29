@@ -11,16 +11,11 @@ use App\Model\OpenAi;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Schema\Elements\Type;
 use Nette\Schema\Expect;
-use Saas\Http\Request\IRequest;
-use Saas\Http\Response\Response;
+use Saas\Http\Request\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class TranslatorRequest implements IRequest
+class TranslatorRequest extends Request
 {
-    
-    public function __construct(protected Response $response)
-    {
-    }
-    
     /**
      * @return array<string, Type>
      */
@@ -38,10 +33,10 @@ class TranslatorRequest implements IRequest
      * @param array{apiKey: string, debug: bool, message: string, languages: array<int,string>} $data
      * @throws GuzzleException
      */
-    public function process(array $data): void
+    public function process(array $data): Response
     {
         if ($data['apiKey'] !== $_ENV['JZ_API_KEY']) {
-            $this->response->sendError(['message' => 'Invalid apiKey for jz.strategio.dev'], 403);
+            return $this->error(['Invalid apiKey for jz.strategio.dev'], 403);
         }
         
         $openAi = new OpenAi();
@@ -73,7 +68,7 @@ class TranslatorRequest implements IRequest
             }
         }
         
-        $this->response->send([
+        return $this->json([
             'message' => $data['message'],
             'translations' => $output,
             'choices' => count($response['choices']),

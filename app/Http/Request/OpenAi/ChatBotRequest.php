@@ -10,16 +10,11 @@ namespace App\Http\Request\OpenAi;
 use App\Model\OpenAi;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Schema\Expect;
-use Saas\Http\Request\IRequest;
-use Saas\Http\Response\Response;
+use Saas\Http\Request\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class ChatBotRequest implements IRequest
+class ChatBotRequest extends Request
 {
-    
-    public function __construct(protected Response $response)
-    {
-    }
-    
     /**
      * @return array<string, mixed>
      */
@@ -31,7 +26,7 @@ class ChatBotRequest implements IRequest
             'messages' => Expect::arrayOf(Expect::structure([
                 'role' => Expect::string()->required(),
                 'content' => Expect::string()->required(),
-            ]))->required()->min(1),
+            ])->castTo('array'))->required()->min(1),
         ];
     }
     
@@ -39,10 +34,10 @@ class ChatBotRequest implements IRequest
      * @param array{apiKey: string, debug: bool, messages: array{role: string, content: string}} $data
      * @throws GuzzleException
      */
-    public function process(array $data): void
+    public function process(array $data): Response
     {
         if ($data['apiKey'] !== $_ENV['JZ_API_KEY']) {
-            $this->response->sendError(['message' => 'Invalid apiKey for jz.strategio.dev'], 403);
+            return $this->error(['Invalid apiKey for jz.strategio.dev'], 403);
         }
         
         $openAi = new OpenAi();
@@ -54,7 +49,7 @@ class ChatBotRequest implements IRequest
         
         $message = $response['choices'][0]['message'];
         
-        $this->response->send([
+        return $this->json([
             'role' => $message['role'],
             'content' => $message['content'],
             'choices' => count($response['choices']),

@@ -12,7 +12,7 @@
 
     {if $cover}
         {var $thumb = thumbnail($cover['filePath'], 510, null, 'fit')}
-        {varType Saas\Helper\Thumbnail $thumb}
+        {varType Saas\Extension\Latte\Helper\Thumbnail $thumb}
 
         <img data-thumb
              src="https://cdn.contentio.app/{$thumb->getSrc()}"

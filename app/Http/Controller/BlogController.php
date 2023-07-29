@@ -11,30 +11,21 @@ use App\Model\AboutModel;
 use App\Model\ApiModel;
 use App\Model\ContactModel;
 use Saas\Helper\Path;
-use Saas\Http\Controller\Controller;
-use Saas\Http\Request\Request;
-use Saas\Http\Response\Response;
-use Symfony\Component\Routing\Generator\UrlGenerator;
+use Saas\Http\Controller\Base\Controller;
+use Saas\Http\Resolver\LinkResolver;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
-    public function __construct(
-        protected ApiModel     $apiModel,
-        protected Response     $response,
-        protected Request      $request,
-        protected UrlGenerator $urlGenerator,
-    )
+    public function index(int $page, LinkResolver $resolver, ApiModel $model): Response
     {
-        parent::__construct($response, $request);
-    }
-    
-    public function index(int $page): void
-    {
-        if ($page < 1 || $this->urlGenerator->generate('blog') . '/1' === $this->request->getHttpRequest()->getPathInfo()) {
-            $this->response->redirect('blog');
+        // TODO:
+        if ($page < 1 /*|| $resolver->link('blog') . '/1' === $this->request->getHttpRequest()->getPathInfo()*/) {
+            return $this->redirect('blog');
         }
         
-        $data = $this->apiModel->call('POST', 'article/show-all', [
+        $data = $model->call('POST', 'article/show-all', [
             'currentPage' => $page,
             'itemsPerPage' => 12,
             'desc' => true,
@@ -45,17 +36,21 @@ class BlogController extends Controller
             'suppressParagraphFiles' => true,
         ]);
         
-        $this->getResponse()->render(Path::viewDir() . '/controller/blog-summary.latte', [
+        if ($data instanceof JsonResponse) {
+            return $data;
+        }
+        
+        return $this->render(Path::viewDir() . '/controller/blog-summary.latte', [
             'data' => $data,
             'about' => new AboutModel(),
             'contact' => new ContactModel()
         ]);
     }
     
-    public function detail(string|int $slug): void
+    public function detail(string $slug, ApiModel $model): Response
     {
-        $data = $this->apiModel->call('POST', 'article/show-one', [
-            'slug' => (string)$slug,
+        $data = $model->call('POST', 'article/show-one', [
+            'slug' => $slug,
             'labels' => ['jz-strategio-blog'],
             'suppressLabels' => true,
             'suppressFiles' => false,
@@ -66,7 +61,11 @@ class BlogController extends Controller
             'prevNextByLabel' => 'jz-strategio-blog',
         ]);
         
-        $this->getResponse()->render(Path::viewDir() . '/controller/blog-detail.latte', [
+        if ($data instanceof JsonResponse) {
+            return $data;
+        }
+        
+        return $this->render(Path::viewDir() . '/controller/blog-detail.latte', [
             'data' => $data,
             'about' => new AboutModel(),
             'contact' => new ContactModel()
