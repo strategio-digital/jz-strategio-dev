@@ -19,11 +19,12 @@ class WorkingTimeModel
         $clientZone = new \DateTimeZone('Europe/Prague');
     
         $current = new \DateTime('now', $workingZone);
+        
         $workingFrom = clone $current;
-        $workingTo = clone $current;
-    
         $workingFrom->setTime(9, 0);
-        $workingTo->setTime(0, 0);
+        
+        $workingTo = clone $workingFrom;
+        $workingTo->modify('+16 hours');
         
         return [
             'workingZone' => $workingZone->getName(),
