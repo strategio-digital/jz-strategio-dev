@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Request\Invoice\DownloadRequest;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return static function (RoutingConfigurator $routes): void {
