@@ -18,7 +18,7 @@ class ToolsModel
             [
                 'title' => 'Strategio SaaS',
                 'description' => 'Nástroj, ve kterém Vám doslova naklikám profesionální administraci webu či aplikace.',
-                'link' => 'https://github.com/strategio-digital/saas'
+                'link' => '/blog/strategio-saas'
             ],
             [
                 'title' => 'Contentio web',

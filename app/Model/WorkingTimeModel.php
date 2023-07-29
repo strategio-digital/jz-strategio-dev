@@ -23,7 +23,7 @@ class WorkingTimeModel
         $workingTo = clone $current;
     
         $workingFrom->setTime(9, 0);
-        $workingTo->setTime(0, 0); // TODO: tomorrow: 1:00
+        $workingTo->setTime(0, 0);
         
         return [
             'workingZone' => $workingZone->getName(),

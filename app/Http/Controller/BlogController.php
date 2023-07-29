@@ -14,14 +14,14 @@ use Saas\Helper\Path;
 use Saas\Http\Controller\Base\Controller;
 use Saas\Http\Resolver\LinkResolver;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
-    public function index(int $page, LinkResolver $resolver, ApiModel $model): Response
+    public function index(int $page, ApiModel $model, Request $request, LinkResolver $resolver): Response
     {
-        // TODO:
-        if ($page < 1 /*|| $resolver->link('blog') . '/1' === $this->request->getHttpRequest()->getPathInfo()*/) {
+        if ($page < 1 || $resolver->link('blog') . '/1' === $request->getPathInfo()) {
             return $this->redirect('blog');
         }
         
