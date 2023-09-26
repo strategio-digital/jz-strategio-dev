@@ -143,7 +143,7 @@ class AboutModel
                 [
                     'year' => '2023',
                     'title' => 'Odlet do Kanady a roční práce ze zahraničí',
-                    'text' => 'In progress... Odlet do Calgary 15.4. 2023.',
+                    'text' => 'In progress...',
                     'images' => []
                 ]
             ]
