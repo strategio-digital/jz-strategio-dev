@@ -5,14 +5,14 @@
  */
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Http\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class ApiModel
+class ContentioClient
 {
     protected Client $client;
     

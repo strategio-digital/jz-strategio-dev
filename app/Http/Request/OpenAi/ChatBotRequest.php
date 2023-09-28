@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Http\Request\OpenAi;
 
-use App\Model\OpenAi;
+use App\Http\Client\OpenAiClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Schema\Expect;
 use Saas\Http\Request\Request;
@@ -40,9 +40,9 @@ class ChatBotRequest extends Request
             return $this->error(['Invalid apiKey for jz.strategio.dev'], 403);
         }
         
-        $openAi = new OpenAi();
+        $client = new OpenAiClient();
         
-        $response = $openAi->call('POST', 'chat/completions', [
+        $response = $client->call('POST', 'chat/completions', [
             'model' => 'gpt-3.5-turbo',
             'messages' => $data['messages'],
         ]);

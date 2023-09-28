@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-class SkillsModel
+class Skills
 {
     /**
      * @return array<string, array<int,string>>

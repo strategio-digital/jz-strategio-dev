@@ -7,9 +7,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controller;
 
-use App\Model\AboutModel;
-use App\Model\ApiModel;
-use App\Model\ContactModel;
+use App\Http\Client\ContentioClient;
+use App\Model\About;
+use App\Model\Contacts;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Base\Controller;
 use Saas\Http\Resolver\LinkResolver;
@@ -19,13 +19,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller
 {
-    public function index(int $page, ApiModel $model, Request $request, LinkResolver $resolver): Response
+    public function index(int $page, ContentioClient $client, Request $request, LinkResolver $resolver): Response
     {
         if ($page < 1 || $resolver->link('blog') . '/1' === $request->getPathInfo()) {
             return $this->redirect('blog');
         }
         
-        $data = $model->call('POST', 'article/show-all', [
+        $data = $client->call('POST', 'article/show-all', [
             'currentPage' => $page,
             'itemsPerPage' => 12,
             'desc' => true,
@@ -42,14 +42,14 @@ class BlogController extends Controller
         
         return $this->render(Path::viewDir() . '/controller/blog-summary.latte', [
             'data' => $data,
-            'about' => new AboutModel(),
-            'contact' => new ContactModel()
+            'about' => new About(),
+            'contact' => new Contacts()
         ]);
     }
     
-    public function detail(string $slug, ApiModel $model): Response
+    public function detail(string $slug, ContentioClient $client): Response
     {
-        $data = $model->call('POST', 'article/show-one', [
+        $data = $client->call('POST', 'article/show-one', [
             'slug' => $slug,
             'labels' => ['jz-strategio-blog'],
             'suppressLabels' => true,
@@ -67,8 +67,8 @@ class BlogController extends Controller
         
         return $this->render(Path::viewDir() . '/controller/blog-detail.latte', [
             'data' => $data,
-            'about' => new AboutModel(),
-            'contact' => new ContactModel()
+            'about' => new About(),
+            'contact' => new Contacts()
         ]);
     }
 }

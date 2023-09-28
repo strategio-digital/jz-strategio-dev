@@ -7,14 +7,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controller;
 
-use App\Model\AboutModel;
-use App\Model\ClientsModel;
+use App\Model\About;
+use App\Model\Clients;
 use App\Model\CodeExamples;
-use App\Model\ContactModel;
-use App\Model\ReferencesModel;
-use App\Model\SkillsModel;
-use App\Model\ToolsModel;
-use App\Model\WorkingTimeModel;
+use App\Model\Contacts;
+use App\Model\References;
+use App\Model\Skills;
+use App\Model\Tools;
+use App\Model\WorkingTime;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Base\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,14 +24,14 @@ class HomeController extends Controller
     public function index(): Response
     {
         return $this->render(Path::viewDir() . '/controller/home.latte', [
-            'about' => new AboutModel(),
-            'skills' => new SkillsModel(),
+            'about' => new About(),
+            'skills' => new Skills(),
             'codeExamples' => new CodeExamples(),
-            'references' => new ReferencesModel(),
-            'clients' => new ClientsModel(),
-            'tools' => new ToolsModel(),
-            'contact' => new ContactModel(),
-            'workingTime' => new WorkingTimeModel(),
+            'references' => new References(),
+            'clients' => new Clients(),
+            'tools' => new Tools(),
+            'contact' => new Contacts(),
+            'workingTime' => new WorkingTime(),
         ]);
     }
 }

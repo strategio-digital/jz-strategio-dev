@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-class ToolsModel
+class Tools
 {
     /**
      * @return array<int, array{title:string, description:string, link:string|null}>

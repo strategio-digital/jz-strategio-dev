@@ -5,12 +5,12 @@
  */
 declare(strict_types=1);
 
-namespace App\Model;
+namespace App\Http\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-class OpenAi
+class OpenAiClient
 {
     protected Client $client;
     

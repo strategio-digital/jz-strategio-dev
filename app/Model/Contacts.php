@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-class ContactModel
+class Contacts
 {
     public function get(string $key): string
     {

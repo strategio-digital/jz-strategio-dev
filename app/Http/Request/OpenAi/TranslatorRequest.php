@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Http\Request\OpenAi;
 
-use App\Model\OpenAi;
+use App\Http\Client\OpenAiClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Schema\Elements\Type;
 use Nette\Schema\Expect;
@@ -39,12 +39,12 @@ class TranslatorRequest extends Request
             return $this->error(['Invalid apiKey for jz.strategio.dev'], 403);
         }
         
-        $openAi = new OpenAi();
+        $client = new OpenAiClient();
         
         $source = implode(',', $data['languages']);
         $prompt = "Translate this into {$source} and if there will be square brackets in the text, don't change the content between them:\n\n{$data['message']}?\n\n";
         
-        $response = $openAi->call('POST', 'completions', [
+        $response = $client->call('POST', 'completions', [
             'model' => 'text-davinci-003',
             'prompt' => $prompt,
             'temperature' => 0.3,

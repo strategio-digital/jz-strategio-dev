@@ -1,7 +1,7 @@
 services:
     entityManager: App\Database\EntityManager
     - App\Console\UserCreateCommand
-    - App\Model\ApiModel
+    - App\Http\Client\ContentioClient
 
 includes:
     - ./../vendor/strategio/saas/config/app.neon
