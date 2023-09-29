@@ -57,3 +57,7 @@ import '@/assets/img/client/roman-kucera.jpg'
 import '@/assets/img/client/jan-pribyl.jpg'
 import '@/assets/img/client/roman-kucera-st.jpg'
 
+import '@/assets/img/mealhack/mesicni-predplatne.jpeg'
+import '@/assets/img/mealhack/rocni-predplatne.jpeg'
+import '@/assets/img/mealhack/planning.jpg'
+

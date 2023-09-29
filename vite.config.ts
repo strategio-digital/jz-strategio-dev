@@ -17,7 +17,7 @@ export default defineConfig({
             buildDirectory: 'temp',
             hotFile: 'temp/vite.hot',
             input: ['assets/app.ts', 'assets/saas.ts', 'assets/particles.ts'],
-            refresh: ['assets/**', 'view/**']
+            refresh: ['assets/**', 'view/**', 'app/Model/**']
         })
     ]
 })

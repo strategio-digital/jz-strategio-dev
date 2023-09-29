@@ -7,18 +7,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controller;
 
-use App\Model\About;
 use App\Model\Contacts;
+use App\Model\MealHack;
 use Saas\Helper\Path;
 use Saas\Http\Controller\Base\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class AboutController extends Controller
+class MealHackController extends Controller
 {
     public function index(): Response
     {
-        return $this->render(Path::viewDir() . '/controller/about.latte', [
-            'timeline' => new About(),
+        return $this->render(Path::viewDir() . '/controller/meal-hack.latte', [
+            'timeline' => new MealHack(),
             'contact' => new Contacts()
         ]);
     }

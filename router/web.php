@@ -25,4 +25,9 @@ return static function (RoutingConfigurator $routes): void {
         ->controller([\App\Http\Controller\BlogController::class, 'detail'])
         ->requirements(['slug' => '.+'])
         ->options(['auth' => false]);
+    
+    $routes->add('meal-hack', '/mealhack')
+        ->methods(['GET'])
+        ->controller([\App\Http\Controller\MealHackController::class, 'index'])
+        ->options(['auth' => false]);
 };

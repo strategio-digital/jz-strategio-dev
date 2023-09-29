@@ -5,6 +5,7 @@
 
 // Static files
 import '@/assets/images'
+import '@/assets/files/MealHack.pdf'
 
 // Stylesheets
 import '@/assets/scss/layout.scss'
