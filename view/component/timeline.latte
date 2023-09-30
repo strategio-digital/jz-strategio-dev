@@ -99,12 +99,26 @@
 
                         <div class="mb-3 fw-bold">{$paragraph['year']}</div>
                         <h2 class="text-dark h5 fw-bold mb-3" style="line-height: 1.7">{$paragraph['title']}</h2>
-                        <p class="mb-0" style="font-size: 1.125rem; line-height: 1.7777778;">{$paragraph['text']|noescape}</p>
+                        <p class="mb-0" style="font-size: 1.125rem; line-height: 1.7777778">
+                            {$paragraph['text']|noescape}
+                        </p>
 
                         {if array_key_exists('images', $paragraph)}
                             {foreach $paragraph['images'] as $image}
-                                <a href="{vite($image['path'])}" title="{$image['title']}" target="_blank" class="d-block mt-3">
-                                    <img src="{vite($image['path'])}" alt="{$image['title']}" class="img-fluid rounded border shadow-sm">
+                                <a
+                                        href="{vite($image['path'])}"
+                                        title="{$image['title']}"
+                                        target="_blank"
+                                        class="d-block mt-3"
+                                >
+                                    <img
+                                            loading="lazy"
+                                            src="{vite($image['path'])}"
+                                            alt="{$image['title']}"
+                                            width="{$image['width']}"
+                                            height="{$image['height']}"
+                                            class="img-fluid rounded border shadow-sm"
+                                    >
                                 </a>
                             {/foreach}
                         {/if}

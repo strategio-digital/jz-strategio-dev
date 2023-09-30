@@ -29,7 +29,7 @@ class MealHack
                     'text' => 'Hledám různé aplikace, sepisuji podobné problémy. Nakonec promýšlím vlastní výzkum a připravuji dotazník. Potřebuji totiž zjistit, zda tento problém trápí i někoho dalšího a zda to dokážu vyřešit tak, že za to někdo rád zaplatí.',
                     'solved' => true,
                     'images' => [
-                        ['path' => 'assets/img/mealhack/planning.jpg', 'title' => 'Příprava plánu']
+                        ['path' => 'assets/img/mealhack/planning.jpg', 'title' => 'Příprava plánu', 'width' => 1440, 'height' => '1080']
                     ],
                 ],
                 [
