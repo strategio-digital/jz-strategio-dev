@@ -19,23 +19,23 @@ class MealHack
                 [
                     'year' => '26. Září 2023',
                     'title' => 'Prázdná lednice jako impulz',
-                    'text' => 'Už 14 dní nejsem schopen sepsat, co nakoupit a lednice zeje prázdnotou. Během týdne několikrát scrolluju Uber Eats, vybírám jidlo a doufám, že mi to bude chutnat. Nakonec vždy něco objednám, zaplatím doručení a dýško kurýrovi. Celkově to není vůbec levné. Jídlo sice přijde rychle, ale není podle představ. U 30 % objednávek dokonce něco chybí a to už mě fakt vytáčí. Kéž bych měl něco, co by mi ten problém vyřešilo - co třeba nějaká aplikace.',
+                    'text' => 'Už 14 dní nejsem schopen sepsat, co nakoupit a lednice zeje prázdnotou. Během týdne několikrát scrolluju Uber Eats, vybírám jidlo a doufám, že mi bude chutnat. Celkově to není vůbec levné. Kéž bych měl něco, co by vytvořilo nákupní seznam podle mých oblíbených jídel - co třeba nějaká aplikace.',
                     'images' => [],
                     'solved' => true,
                 ],
                 [
                     'year' => '27. Září 2023',
                     'title' => 'Hledám řešení a vymýšlím plán',
-                    'text' => 'Hledám různé aplikace, sepisuji podobné problémy. Nakonec promýšlím vlastní výzkum a připravuji dotazník. Potřebuji totiž zjistit, zda tento problém trápí i někoho dalšího a zda to dokážu vyřešit tak, že za to někdo rád zaplatí.',
+                    'text' => 'Hledám různé aplikace, testuji, ale nic můj problém neřeší opravdu jednoduše. Nakonec promýšlím vlastní aplikaci a připravuji se na výzkum. Potřebuji totiž zjistit, zda tento problém trápí i někoho dalšího a zda to dokážu vyřešit tak, že za to někdo rád zaplatí.',
                     'solved' => true,
                     'images' => [
                         ['path' => 'assets/img/mealhack/planning.jpg', 'title' => 'Příprava plánu', 'width' => 1440, 'height' => 1080]
                     ],
                 ],
                 [
-                    'year' => '28. Září',
+                    'year' => 'od 28. Září až dodnes',
                     'title' => '1. krok - Uživatelský výzkum',
-                    'text' => 'Jdu na kafe se známým, ptám se na problémy, testuji hypotézy, píšu poznámky a zaznamenávám výsledky. Dozvídám se, že by aplikaci klidně koupil. Následně vše ladím, vylepšuji a známému posílám číslo účtu pro úhradu. Další den oslovuji nové respondenty, opět ověřuji hypotézy, testuji, sepisuji, vylepšuji a získávám další předplatitele. Takto nyní musím postupovat stále dokola, dokud nevyzpovídám alespoň 100 lidí - abych ověril, zda aplikaci vyvinout.',
+                    'text' => 'Jdu na kafe se známým, ptám se na problémy, testuji hypotézy, píšu poznámky a zaznamenávám výsledky. Dozvídám se, že by aplikaci klidně koupil. Následně vše ladím, vylepšuji a známému posílám číslo účtu, abych měl jistotu, že to myslel vážně. Následující den oslovuji další (náhodné) respondenty, opět ověřuji hypotézy, testuji, sepisuji, vylepšuji a získávám další předplatitele. Takto nyní musím postupovat stále dokola, dokud nevyzpovídám alespoň 100 lidí - abych měl důkazy, zda aplikaci opravdu vyvinout.',
                     'images' => [],
                     'solved' => false,
                 ],
