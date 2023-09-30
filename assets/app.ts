@@ -6,6 +6,7 @@
 // Static files
 import '@/assets/images'
 import '@/assets/files/MealHack.pdf'
+import '@/assets/files/ochrana-predplatitele-signed.pdf'
 
 // Stylesheets
 import '@/assets/scss/layout.scss'

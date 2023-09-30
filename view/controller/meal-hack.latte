@@ -8,22 +8,38 @@
 {block head}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
-    <title>MealHack startup</title>
-    <meta name="description" content="Aktuální stav a časová osa vývoje aplikace MealHack.">
+    <title>MealHack - status</title>
+    <meta name="description" content="Aktuální stav projektu a časová osa vývoje.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="MealHack startup">
-    <meta property="og:description" content="Aktuální stav a časová osa vývoje aplikace MealHack.">
+    <meta property="og:title" content="MealHack - status">
+    <meta property="og:description" content="Aktuální stav projektu a časová osa vývoje.">
 {/block}
 
 {block content}
     <header class="blog-header bg-radial">
         <div class="container text-white text-center">
-            <div class="h1 fw-bold">MealHack startup</div>
-            <h1 class="h5 mb-0">Aktuální stav a časová osa vývoje aplikace MealHack.</h1>
+            <div class="h1 fw-bold">MealHack</div>
+            <h1 class="h5 mb-0">Aktuální stav projektu a časová osa vývoje.</h1>
         </div>
     </header>
 
-    {include './../component/mealhack-stats.latte'}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8 col-xxl-7 text-center">
+                Nejnovější podklady: Skica webu - verze 2
+                <a href="{vite('assets/files/MealHack.pdf')}" class="link-dark" target="_blank" title="Skica webu">
+                    <img src="{vite('assets/img/mealhack/preview.png')}" alt="Náhled na web MealHack" class="img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-4 pt-sm-5 pb-sm-8">
+        {include './../component/mealhack-stats.latte'}
+        {include './../component/mealhack-payment.latte'}
+        {include './../component/mealhack-files.latte'}
+    </div>
+
     {include './../component/timeline.latte'}
     {*include './../component/looking-for.latte'*}
     {include './../component/contact.latte'}

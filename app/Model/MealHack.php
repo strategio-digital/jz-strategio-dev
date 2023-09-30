@@ -69,13 +69,13 @@ class MealHack
                 ],
                 [
                     'year' => 'Až vše kompletně doladím',
-                    'title' => '6. krok - Oficiální spuštění',
+                    'title' => '6. krok - Spuštění a vydání aplikace',
                     'text' => '...',
                     'images' => [],
                     'solved' => null,
                 ],
                 [
-                    'year' => 'Po oficiálním spuštění',
+                    'year' => 'Po vydání aplikace',
                     'title' => '7. krok - Rozšiřování o další funkce',
                     'text' => '...',
                     'images' => [],
