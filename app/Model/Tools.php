@@ -16,9 +16,9 @@ class Tools
     {
         return [
             [
-                'title' => 'Strategio SaaS',
+                'title' => 'Megio panel',
                 'description' => 'Nástroj, ve kterém Vám doslova naklikám profesionální administraci webu či aplikace.',
-                'link' => '/blog/strategio-saas'
+                'link' => '/blog/megio'
             ],
             [
                 'title' => 'Contentio web',
@@ -37,7 +37,7 @@ class Tools
             ],
             [
                 'title' => 'Webis editor',
-                'description' => 'Nástroj pro rychlou tvorbu Vašeho webu napojeného na administraci Strategio SaaS.',
+                'description' => 'Nástroj pro rychlou tvorbu Vašeho webu napojeného na Megio admin panel.',
                 'link' => null
             ],
             [

@@ -3,7 +3,7 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  */
 
-import { useCarousel } from '@/saas/frontend-utils/useCarousel'
+import { useCarousel } from 'megio-frontils'
 
 export default () => {
     const about: HTMLDivElement | null = document.querySelector('#about-carousel')

@@ -47,7 +47,7 @@
 
                 <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4" title="{$data['item']['title']}">
                     {var $thumb = thumbnail($cover['filePath'], 750, null, 'shrink_only', 90)}
-                    {varType Saas\Extension\Latte\Helper\Thumbnail $thumb}
+                    {varType Megio\Extension\Latte\Helper\Thumbnail $thumb}
 
                     <img data-thumb
                          src="https://cdn.contentio.app/{$thumb->getSrc()}"
@@ -76,7 +76,7 @@
                         <figure class="figure mb-3">
                             <a href="https://cdn.contentio.app/{$file['filePath']}" title="{$file['description']}" target="_blank" class="d-block">
                                 {var $thumb = thumbnail($file['filePath'], 750, null, 'shrink_only', 90)}
-                                {varType Saas\Extension\Latte\Helper\Thumbnail $thumb}
+                                {varType Megio\Extension\Latte\Helper\Thumbnail $thumb}
                                 <img data-thumb
                                      src="https://cdn.contentio.app/{$thumb->getSrc()}"
                                      alt="{$file['description']}"

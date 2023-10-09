@@ -17,11 +17,7 @@ import ContactForm from '@/assets/vue/app/forms/contact-form/App.vue'
 import SubscriberForm from '@/assets/vue/app/forms/subscriber-form/App.vue'
 
 // Typescript
-import { useStepper } from '@/saas/frontend-utils/useStepper'
-import { useScroller } from '@/saas/frontend-utils/useScroller'
-import { useNavbar } from '@/saas/frontend-utils/useNavbar'
-import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
-import { useThumbnail } from '@/saas/frontend-utils/useThumbnail'
+import { useStepper, useScroller, useNavbar, useAnalytics, useContentioThumbnail } from 'megio-frontils'
 import highlight from '@/assets/ts/plugins/highlight'
 import consoleInfo from '@/assets/ts/consoleInfo'
 import carousels from '@/assets/ts/carousels'
@@ -37,7 +33,7 @@ if (window.location.host === 'jz.strategio.dev') {
 useScroller().registerEvents()
 useNavbar().registerEvents()
 useStepper().registerEvents()
-useThumbnail().registerEvents()
+useContentioThumbnail(() => {}, 'https://strategio.contentio.app/api').registerEvents()
 
 // Register custom components & plugins
 carousels()

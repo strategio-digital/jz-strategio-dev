@@ -1,75 +1,49 @@
-<?php
-/**
- * Copyright (c) 2022 Strategio Digital s.r.o.
- * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
- */
+declare(strict_types=1);
 
-namespace Saas\Http\Request\User;
+namespace Megio\Http\Request\Resource;
 
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Saas\Database\Entity\Role\Role;
-use Saas\Database\Entity\User\User;
-use Saas\Database\EntityManager;
-use Saas\Http\Request\IRequest;
-use Saas\Http\Response\Response;
-use Saas\Security\Permissions\DefaultRole;
 use Nette\Schema\Expect;
+use Megio\Database\Entity\Auth\Resource;
+use Megio\Database\Entity\Auth\Role;
+use Megio\Database\EntityManager;
+use Megio\Http\Request\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class CreateRequest implements IRequest
+class UpdateRoleRequest extends Request
 {
-    public function __construct(
-        private readonly EntityManager $em,
-        private readonly Response      $response,
-    )
+    public function __construct(protected EntityManager $em)
     {
     }
 
-    /**
-     * @return array{rows: array{email: string, password: string}[1, 20]}
-     */
     public function schema(): array
     {
         return [
-            'rows' => Expect::arrayOf(Expect::structure([
-                'email' => Expect::email()->max(128)->required(),
-                'password' => Expect::string()->min(6)->max(32)->required()
-            ]))->min(1)->max(20)->required()
+            'resource_id' => Expect::string()->required(),
+            'role_id' => Expect::string()->required(),
+            'enable' => Expect::bool()->required(),
         ];
     }
 
-    /**
-     * @param array{rows: array{email: string, password: string}[1, 20]} $data
-     */
-    public function process(array $data): void
+    public function process(array $data): Response
     {
+        /** @var Resource|null $resource */
+        $resource = $this->em->getAuthResourceRepo()->findOneBy(['id' => $data['resource_id']]);
+
         /** @var Role|null $role */
-        $role = $this->em->getRoleRepo()->findOneBy(['name' => DefaultRole::Registered->name()]);
+        $role = $this->em->getAuthRoleRepo()->findOneBy(['id' => $data['role_id']]);
 
-        if (!$role) {
-            $this->response->sendError(["Role 'registered' does not exists"]);
+        if (!$role || !$resource) {
+            return $this->error(['Role or resource not found'], 404);
         }
 
-        foreach ($data['rows'] as $row) {
-            $user = new User();
-            $user->setEmail($row['email']);
-            $user->setPassword($row['password']);
-            $user->setRole($role);
-            $this->em->persist($user);
+        if ($data['enable'] === true) {
+            $role->addResource($resource);
+        } else {
+            $role->getResources()->removeElement($resource);
         }
 
-        $this->em->beginTransaction();
+        $this->em->flush($role);
 
-        try {
-            $this->em->flush();
-            $this->em->commit();
-        } catch (UniqueConstraintViolationException $e) {
-            $this->em->rollback();
-            $this->response->sendError([$e->getMessage()]);
-        }  catch (\Exception $e) {
-            $this->em->rollback();
-            throw $e;
-        }
-
-        $this->response->send(['message' => "Users successfully created"]);
+        return $this->json(['message' => 'Resources successfully updated']);
     }
 }

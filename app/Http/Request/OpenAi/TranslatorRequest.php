@@ -11,7 +11,7 @@ use App\Http\Client\OpenAiClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Schema\Elements\Type;
 use Nette\Schema\Expect;
-use Saas\Http\Request\Request;
+use Megio\Http\Request\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class TranslatorRequest extends Request

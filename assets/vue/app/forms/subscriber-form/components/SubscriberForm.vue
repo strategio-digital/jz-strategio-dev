@@ -2,15 +2,13 @@
 import * as yup from 'yup'
 import { ref } from 'vue'
 import { Form, Field, ErrorMessage, FormActions } from 'vee-validate'
-import { useApi } from '@/saas/frontend-utils/useApi'
-import { useAnalytics } from '@/saas/frontend-utils/useAnalytics'
-import { useAntiSpam } from '@/saas/frontend-utils/useAntiSpam'
+import { useContentioApi, useAntiSpam, useAnalytics } from 'megio-frontils'
 import { useAlert } from '@/assets/vue/app/forms/composables/useAlert'
 import { TNewsletter } from '@/assets/vue/app/forms/types/TNewsletter'
 
 type Values = { email: string }
 
-const api = useApi()
+const api = useContentioApi()
 const alert = useAlert()
 const antiSpam = useAntiSpam(10 * 1000, 'Prosím vyčkejte 10 vteřin, tímto se bráním proti spamu, děkuji za pochopení.')
 const { trackNewsletterSubscribe } = useAnalytics()

@@ -9,8 +9,8 @@ namespace App\Http\Controller;
 
 use App\Model\Contacts;
 use App\Model\MealHack;
-use Saas\Helper\Path;
-use Saas\Http\Controller\Base\Controller;
+use Megio\Helper\Path;
+use Megio\Http\Controller\Base\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 class MealHackController extends Controller

@@ -10,7 +10,7 @@ namespace App\Database;
 use App\Database\Entity\User;
 use App\Database\Repository\UserRepository;
 
-class EntityManager extends \Saas\Database\EntityManager
+class EntityManager extends \Megio\Database\EntityManager
 {
     public function getUserRepo(): UserRepository
     {

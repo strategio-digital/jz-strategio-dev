@@ -19,7 +19,7 @@
                         {var $file = current(array_filter($next['files'], fn(array $file) => $file['cover'] === true))}
                         {if $file && Nette\Utils\Strings::startsWith($file['mimeType'], 'image/')}
                             {var $thumb = thumbnail($file['filePath'], 100, 100)}
-                            {varType Saas\Extension\Latte\Helper\Thumbnail $thumb}
+                            {varType Megio\Extension\Latte\Helper\Thumbnail $thumb}
                             <img data-thumb
                                  src="https://cdn.contentio.app/{$thumb->getSrc()}"
                                  alt="{$next['title']}"
@@ -60,7 +60,7 @@
                         {var $file = current(array_filter($prev['files'], fn(array $file) => $file['cover'] === true))}
                         {if $file && Nette\Utils\Strings::startsWith($file['mimeType'], 'image/')}
                             {var $thumb = thumbnail($file['filePath'], 100, 100)}
-                            {varType Saas\Extension\Latte\Helper\Thumbnail $thumb}
+                            {varType Megio\Extension\Latte\Helper\Thumbnail $thumb}
                             <img data-thumb
                                  src="https://cdn.contentio.app/{$thumb->getSrc()}"
                                  alt="{$prev['title']}"

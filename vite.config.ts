@@ -6,8 +6,6 @@ export default defineConfig({
     resolve: {
         alias: {
             '@/assets': '/assets',
-            '@/saas': '/vendor/strategio/saas/vue',
-            './vue': '/vendor/strategio/saas/vue'
         }
     },
     plugins: [
@@ -16,7 +14,7 @@ export default defineConfig({
             publicDirectory: 'www',
             buildDirectory: 'temp',
             hotFile: 'temp/vite.hot',
-            input: ['assets/app.ts', 'assets/saas.ts', 'assets/particles.ts'],
+            input: ['assets/app.ts', 'assets/panel.ts', 'assets/particles.ts'],
             refresh: ['assets/**', 'view/**', 'app/Model/**']
         })
     ]

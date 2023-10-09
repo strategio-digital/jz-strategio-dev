@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use Saas\Helper\Path;
+use Megio\Helper\Path;
 
 class CodeExamples
 {
@@ -19,11 +19,11 @@ class CodeExamples
         return [
             [
                 'type' => 'ts',
-                'title' => 'useDatagrid.ts',
+                'title' => 'CollectionDatagrid.vue',
                 'shortcut' => 'Vue',
                 'code' => file_get_contents(Path::appDir() . '/../assets/code-example/vue.txt'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/saas/blob/master/vue/composables/datagrid/useDatagrid.ts'
+                'link' => 'https://github.com/strategio-digital/megio-panel/blob/master/src/components/collection/CollectionDatagrid.vue'
             ],
             [
                 'type' => 'ts',
@@ -35,11 +35,11 @@ class CodeExamples
             ],
             [
                 'type' => 'php',
-                'title' => 'User\\CreateRequest.php',
+                'title' => 'Resource\\UpdateRoleRequest.php',
                 'shortcut' => 'PHP',
                 'code' => file_get_contents(Path::appDir() . '/../assets/code-example/php.txt'),
                 'active' => true,
-                'link' => 'https://github.com/strategio-digital/saas/blob/master/src/Http/Request/User/CreateRequest.php'
+                'link' => 'https://github.com/strategio-digital/megio-core/blob/master/src/Http/Request/Resource/UpdateRoleRequest.php'
             ],
             [
                 'type' => 'ts',
@@ -55,7 +55,7 @@ class CodeExamples
                 'shortcut' => 'Docker',
                 'code' => file_get_contents(Path::appDir() . '/../assets/code-example/docker.txt'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/saas/blob/master/template/Dockerfile'
+                'link' => 'https://github.com/strategio-digital/megio-starter/blob/master/Dockerfile'
             ],
             [
                 'type' => 'scss',
@@ -63,7 +63,7 @@ class CodeExamples
                 'shortcut' => 'SCSS',
                 'code' => file_get_contents(Path::appDir() . '/../assets/code-example/scss.txt'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/saas/blob/master/vue/assets/scss/side-modal.scss'
+                'link' => 'https://github.com/strategio-digital/megio-panel/blob/master/src/assets/scss/side-modal.scss'
             ]
         ];
     }

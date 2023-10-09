@@ -1,48 +1,73 @@
-/**
- * Copyright (c) 2022 Strategio Digital s.r.o.
- * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
- */
+<script setup lang="ts">
+import { ref, inject } from 'vue'
+import { megio } from 'megio-api'
+import PageHeading from '@/components/layout/PageHeading.vue'
+import Datagrid from '@/components/datagrid/Datagrid.vue'
+import type IDatagridSettings from '@/components/datagrid/types/IDatagridSettings'
+import type ICollectionSummary from '@/components/collection/types/ICollectionSummary'
+import type { IPagination, IRespShow, IRow } from 'megio-api/types/collections'
 
-import { onMounted, watch, watchEffect } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useDatagridStore } from '@/saas/composables/datagrid/useDatagridStore'
-import api from '@/saas/api'
+const props = defineProps<{ tableName: string }>()
+const emits = defineEmits<{ (e: 'onLoadingChange', status: boolean): void }>()
 
-const useDatagrid = (collectionName: string, itemsPerPage: number) => {
-    const store = useDatagridStore()
-    const { checkedAll, loading, selectedItems, items, page } = storeToRefs(store)
+const actions: IDatagridSettings['actions'] | undefined = inject('datagrid-actions')
+const summaries: ICollectionSummary[] | undefined = inject('collection-summaries')
 
-    async function refresh(): Promise<void> {
-        loading.value = true
-        items.value = []
-        selectedItems.value = []
+const loading = ref<boolean>(true)
+const datagrid = ref()
 
-        const resp = await api.collections.show(collectionName, {
-            currentPage: page.value.currentPage,
-            itemsPerPage
-        })
+async function loadFunction(newPagination: IPagination): Promise<IRespShow> {
+    loading.value = true
+    emits('onLoadingChange', loading.value)
 
-        page.value = { currentPage: resp.data.currentPage, lastPage: resp.data.lastPage }
-
-        if (resp.data.lastPage < page.value.currentPage && page.value.currentPage > 1) {
-            page.value.currentPage = resp.data.lastPage
-        }
-
-        items.value = resp.data.items
-        loading.value = false
-    }
-
-    watch(() => page.value.currentPage, () => refresh())
-
-    watchEffect(() => {
-        if (items.value.length !== 0) {
-            checkedAll.value = selectedItems.value.length === items.value.length
-        }
+    const resp = await megio.collections.show({
+        table: props.tableName,
+        schema: true,
+        currentPage: newPagination.currentPage,
+        itemsPerPage: newPagination.itemsPerPage,
+        orderBy: [
+            { col: 'createdAt', desc: true },
+            { col: 'id', desc: true }
+        ]
     })
 
-    onMounted(() => refresh())
+    loading.value = false
+    emits('onLoadingChange', loading.value)
 
-    return { store, refresh }
+    return resp
 }
 
-export default useDatagrid
+function handleFirstColumnClick(row: IRow) {
+    const custom = summaries?.filter(sum => sum.collectionName === props.tableName).shift()
+    if (custom) {
+        custom.onFirstColumnClick(props.tableName, row)
+    } else {
+        console.log('open sideModal by default')
+    }
+}
+
+</script>
+
+<template>
+    <div class="h-100" v-show="!loading">
+        <PageHeading
+            v-if="!loading"
+            :breadcrumb="['Kolekce', tableName]"
+            @onRefresh="() => datagrid.refresh()"
+        />
+        <Datagrid
+            v-if="actions"
+            ref="datagrid"
+            class="mt-5"
+            :key="tableName"
+            :loadFunction="loadFunction"
+            :rowActions="actions.row"
+            :bulkActions="actions.bulk"
+            :allowActionsFiltering="true"
+            :defaultItemsPerPage="15"
+            :loading="loading"
+            emptyDataMessage="Data nejsou k dispozici."
+            @onFirstColumnClick="handleFirstColumnClick"
+        />
+    </div>
+</template>
