@@ -112,7 +112,6 @@ class Skills
             'Hobby' => [
                 'C#',
                 'C++',
-                'Java',
                 'Unity',
                 'Unreal Engine',
                 'VR Development'
