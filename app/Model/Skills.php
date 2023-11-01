@@ -38,14 +38,12 @@ class Skills
                 'Vite',
                 'TypeScript',
                 'Vanilla JS',
-                'Vue 3',
-                'Vuetify 3',
-                'Pinia JS',
+                'Vue',
+                'Svelte',
                 'React',
                 'Bootstrap 5',
-                'Tailwind UI',
+                'Tailwind',
                 'SCSS',
-                'Gulp'
             ],
             'DB & Storage' => [
                 'Postgres',
@@ -114,7 +112,8 @@ class Skills
                 'C++',
                 'Unity',
                 'Unreal Engine',
-                'VR Development'
+                'Game dev',
+                'VR dev'
             ],
         ];
     }
