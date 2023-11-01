@@ -108,7 +108,15 @@ class Skills
                 'Pocketbase.io',
                 'Google Firebase',
                 'Golang',
-            ]
+            ],
+            'Hobby' => [
+                'C#',
+                'C++',
+                'Java',
+                'Unity',
+                'Unreal Engine',
+                'VR Development'
+            ],
         ];
     }
     
