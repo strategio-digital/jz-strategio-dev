@@ -1,0 +1,27 @@
+<script lang="ts">
+import { createEventDispatcher, onMount } from 'svelte';
+
+const dispatch = createEventDispatcher();
+
+export let placeholder: string;
+export let fieldId: number;
+export let value: string;
+export let items: string[];
+
+function onChange(event: InputEvent & { target: HTMLSelectElement }) {
+  dispatch('change', { fieldId, value: event.target.value });
+}
+
+onMount(() => {
+  dispatch('change', { fieldId, value });
+});
+</script>
+
+<label class="block">
+  <div class="text-gray-400 mb-2">{placeholder}</div>
+  <select bind:value on:change={onChange} class="select select-bordered select-lg w-full">
+    {#each items as item}
+       <option>{item}</option>
+    {/each}
+  </select>
+</label>

@@ -19,6 +19,14 @@ class CodeExamples
         return [
             [
                 'type' => 'ts',
+                'title' => 'SelectBox.svelte',
+                'shortcut' => 'Svelte',
+                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/svelte.txt'),
+                'active' => false,
+                'link' => null
+            ],
+            [
+                'type' => 'ts',
                 'title' => 'CollectionDatagrid.vue',
                 'shortcut' => 'Vue',
                 'code' => file_get_contents(Path::appDir() . '/../assets/code-example/vue.txt'),
