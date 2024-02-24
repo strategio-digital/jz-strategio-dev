@@ -45,18 +45,6 @@
                     <span class="text-nowrap">Poslední úprava: {$data['item']['updatedAt']['date']|date:'j. n. Y H:i'}</span>
                 </div>
 
-                <a n:if="$cover" href="https://cdn.contentio.app/{$cover['filePath']}" target="_blank" class="d-block mb-4" title="{$data['item']['title']}">
-                    {var $thumb = thumbnail($cover['filePath'], 750, null, 'shrink_only', 90)}
-                    {varType Megio\Extension\Latte\Helper\Thumbnail $thumb}
-
-                    <img data-thumb
-                         src="https://cdn.contentio.app/{$thumb->getSrc()}"
-                         alt="{$cover['description']}"
-                         width="100%"
-                         class="w-100"
-                    >
-                </a>
-
                 <p class="lead">{$data['item']['descriptionShort']}</p>
 
                 {var $counter = 0}
