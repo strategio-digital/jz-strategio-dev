@@ -23,8 +23,8 @@
         <div class="row mt-2 mt-md-4 justify-content-center">
             <div class="col-lg-10 col-xl-9 position-relative">
                 <div class="position-absolute h-100 top-0 bottom-0 d-none d-md-block" style="width: 160px; border-right: 1px dashed #d3d3d3; pointer-events: none"></div>
-                <div class="text-start">
-                    <div n:foreach="$skills->get() as $category => $s" class="d-md-flex py-3 skill-row" {if !$iterator->last}style="border-bottom: 1px dashed #d3d3d3"{/if}>
+                <div class="text-start position-relative">
+                    <div n:foreach="$skills->get() as $category => $s" class="d-block d-md-flex py-3 skill-row" {if !$iterator->last}style="border-bottom: 1px dashed #d3d3d3"{/if}>
                         <div style="min-width: 170px;" class="d-flex fw-bold align-items-xl-center text-secondary pb-2 pb-md-0 px-0 px-md-3">{$category}</div>
                         <div class="px-md-3 h-100">
                             {foreach $s as $skill}

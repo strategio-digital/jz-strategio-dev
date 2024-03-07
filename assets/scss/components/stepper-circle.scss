@@ -20,7 +20,7 @@
     transition: all 0.3s ease-in-out;
     @include font-size(4rem);
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
         width: 70px;
         height: 70px;
         min-height: 70px;
