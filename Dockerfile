@@ -1,28 +1,12 @@
-FROM php:8.2-fpm-alpine as build-stage-php
-WORKDIR /build
-
-RUN apk add curl
-
-COPY ./composer.json ./composer.json
-COPY ./composer.lock ./composer.lock
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer install --no-cache --prefer-dist --no-scripts
-
 FROM node:18-alpine as build-stage-node
 WORKDIR /build
 
-COPY ./assets ./assets
-COPY ./package.json ./package.json
-COPY ./yarn.lock ./yarn.lock
-COPY ./vite.config.ts ./vite.config.ts
-COPY ./tsconfig.json ./tsconfig.json
-COPY --from=build-stage-php /build/vendor /build/vendor
+COPY . ./
 
 RUN yarn cache clean --mirror
 RUN yarn && yarn build
 
-FROM php:8.2-fpm-alpine
+FROM php:8.3-fpm-alpine
 WORKDIR /var/www/html
 
 # Set timezone
@@ -62,13 +46,29 @@ RUN docker-php-ext-install intl
 #RUN docker-php-ext-install -j$(nproc) gd
 #RUN apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
-# Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install zip
+#RUN apk add zip libzip-dev #git libicu-dev curl gnupg
+#RUN docker-php-ext-configure zip
+#RUN docker-php-ext-install zip
 
-# Copy source code & set permissions
+# Install PCNTL
+#RUN docker-php-ext-configure pcntl --enable-pcntl
+#RUN docker-php-ext-install pcntl
+
+# Install SOAP
+#RUN apk add --no-cache --virtual .build-deps autoconf dpkg-dev dpkg file g++ gcc libc-dev make pkgconf re2c libxml2-dev
+#RUN docker-php-ext-configure soap
+#RUN docker-php-ext-install soap
+
+# Copy source code
 COPY . ./
-COPY --from=build-stage-php /build/vendor ./vendor
 COPY --from=build-stage-node /build/www/temp ./www/temp
+#COPY --from=build-stage-node /build/temp/latte-mail ./temp/latte-mail
+
+# Install composer & dependencies
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN composer install --no-cache --prefer-dist --no-scripts
 
 # Resolve permissions
 RUN chmod -R ugo+w ./temp

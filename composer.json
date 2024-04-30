@@ -17,9 +17,9 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.2",
-        "guzzlehttp/guzzle": "^7.5",
-        "strategio/megio-core": "^0.7.6"
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "^7.8.1",
+        "strategio/megio-core": "^0.8.5"
     },
     "scripts": {
         "phpstan": "vendor/bin/phpstan analyse -l 8 app/ www/ bin/console  --memory-limit 1G",

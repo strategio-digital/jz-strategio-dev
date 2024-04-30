@@ -16,7 +16,7 @@ class Skills
     {
         return [
             'PHP' => [
-                'PHP 8.2',
+                'PHP 8.3',
                 'Nette',
                 'Symfony',
                 'Laravel',
@@ -26,7 +26,8 @@ class Skills
                 'Nette Tester',
             ],
             'Node.js' => [
-                'Node 18',
+                'Node',
+                'SvelteKit',
                 'Strapi',
                 'Crawlee',
                 'Apify SDK',
@@ -41,8 +42,8 @@ class Skills
                 'Vue',
                 'Svelte',
                 'React',
-                'Bootstrap 5',
                 'Tailwind',
+                'Bootstrap 5',
                 'SCSS',
             ],
             'DB & Storage' => [
