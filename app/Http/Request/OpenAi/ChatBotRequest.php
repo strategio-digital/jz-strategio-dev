@@ -43,7 +43,7 @@ class ChatBotRequest extends Request
         $client = new OpenAiClient();
         
         $response = $client->call('POST', 'chat/completions', [
-            'model' => 'gpt-3.5-turbo',
+            'model' => 'gpt-4o',
             'messages' => $data['messages'],
         ]);
         

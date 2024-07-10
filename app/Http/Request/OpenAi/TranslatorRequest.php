@@ -42,10 +42,10 @@ class TranslatorRequest extends Request
         $client = new OpenAiClient();
         
         $source = implode(',', $data['languages']);
-        $prompt = "Translate this into {$source} and if there will be square brackets in the text, don't change the content between them:\n\n{$data['message']}?\n\n";
+        $prompt = "Translate this into {$source} and if there will be square brackets in the text, don't change the content between them:\n\n{$data['message']}\n\n";
         
         $response = $client->call('POST', 'completions', [
-            'model' => 'text-davinci-003',
+            'model' => 'gpt-3.5-turbo-instruct',
             'prompt' => $prompt,
             'temperature' => 0.3,
             'max_tokens' => 1000,
