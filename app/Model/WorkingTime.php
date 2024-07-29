@@ -15,8 +15,8 @@ class WorkingTime
      */
     public function get(): array
     {
-        $workingZone = new \DateTimeZone('America/Edmonton');
-        $clientZone = new \DateTimeZone('Europe/Prague');
+        $workingZone = new \DateTimeZone('Europe/Prague');
+        $clientZone = new \DateTimeZone('America/Edmonton');
     
         $current = new \DateTime('now', $workingZone);
         
@@ -24,7 +24,7 @@ class WorkingTime
         $workingFrom->setTime(9, 0);
         
         $workingTo = clone $workingFrom;
-        $workingTo->modify('+16 hours');
+        $workingTo->modify('+7 hours');
         
         return [
             'workingZone' => $workingZone->getName(),
