@@ -14,9 +14,24 @@
     color: $secondary;
     transition: background-color 300ms ease-in-out, color 300ms ease-in-out, box-shadow 300ms ease-in-out;
 
+    .tool-link {
+        padding-left: 0;
+        transition: padding-left 300ms ease, font-weight 300ms ease, text-shadow 300ms ease;
+        font-weight: normal;
+        text-shadow: $secondary 0 0 0;
+    }
+
     &.active,
     &:hover,
     &:focus {
         box-shadow: 0 0 1.5rem lighten($blue, 20%);
+        background-color: $orange;
+        color: $white;
+
+        .tool-link {
+            padding-left: .5rem;
+            font-weight: bold;
+            text-shadow: $secondary 0 0 1rem;
+        }
     }
 }
