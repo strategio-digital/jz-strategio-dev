@@ -10,7 +10,7 @@ namespace App\Model;
 class Tools
 {
     /**
-     * @return array<int, array{title:string, description:string, link:string|null}>
+     * @return array<int, array{title:string, description:string, link:string|null, button:string}>
      */
     public function get(): array
     {
