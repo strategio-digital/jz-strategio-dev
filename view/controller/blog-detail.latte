@@ -17,9 +17,9 @@
 
 {block head}
     {include parent}
-    <title>{$data['item']['seoTitle'] ?: $data['item']['title']}</title>
+    <title>{$data['item']['seoTitle'] ?: $data['item']['title']|noescape}</title>
     <meta name="description" content="{$data['item']['seoDescription'] ?: $data['item']['descriptionShort']}">
-    <meta property="og:title" content="{$data['item']['openGraphTitle'] ?: $data['item']['seoTitle'] ?: $data['item']['title'] }">
+    <meta property="og:title" content="{$data['item']['openGraphTitle'] ?: $data['item']['seoTitle'] ?: $data['item']['title']|noescape}">
     <meta property="og:description" content="{$data['item']['openGraphDescription'] ?: $data['item']['seoDescription'] ?: $data['item']['descriptionShort']}">
 {/block}
 
@@ -27,7 +27,7 @@
     <header class="blog-header bg-radial">
         <div class="container text-white text-center">
             <div class="h5">{$data['item']['descriptionExtra'] ?: 'Článek'}</div>
-            <h1 class="h1 fw-bold mb-0" style="line-height: 1.5">{$data['item']['title']}</h1>
+            <h1 class="h1 fw-bold mb-0" style="line-height: 1.5">{$data['item']['title']|noescape}</h1>
         </div>
     </header>
 
