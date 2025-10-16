@@ -15,7 +15,7 @@ type Values = {
 
 const api = useContentioApi()
 const alert = useAlert()
-const antiSpam = useAntiSpam(10 * 1000, 'Prosím vyčkejte 10 vteřin, tímto se bráním proti spamu, děkuji za pochopení.')
+const antiSpam = useAntiSpam(30 * 1000, 'Prosím vyčkejte 30 vteřin, tímto se bráním proti spamu, děkuji za pochopení.')
 const { trackLeadGenerate } = useAnalytics()
 
 
