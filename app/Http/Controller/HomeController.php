@@ -13,7 +13,7 @@ use App\Model\CodeExamples;
 use App\Model\Contacts;
 use App\Model\References;
 use App\Model\Skills;
-use App\Model\Tools;
+use App\Model\Projects;
 use App\Model\WorkingTime;
 use Megio\Helper\Path;
 use Megio\Http\Controller\Base\Controller;
@@ -29,7 +29,7 @@ class HomeController extends Controller
             'codeExamples' => new CodeExamples(),
             'references' => new References(),
             'clients' => new Clients(),
-            'tools' => new Tools(),
+            'projects' => new Projects(),
             'contact' => new Contacts(),
             'workingTime' => new WorkingTime(),
         ]);

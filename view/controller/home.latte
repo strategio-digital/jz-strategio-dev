@@ -7,9 +7,9 @@
 
 {block head}
     {include parent}
-    <title>PHP & Vue | Full-Stack senior developer | Jiří Zapletal</title>
+    <title>PHP & Vue | Full-Stack software engineer | Jiří Zapletal</title>
     <meta name="description" content="Píšu čistý a bezpečný kód, který udrží dlouhodobé zdraví Vašeho projektu.">
-    <meta property="og:title" content="PHP & Vue | Full-Stack senior developer | Jiří Zapletal">
+    <meta property="og:title" content="PHP & Vue | Full-Stack software engineer | Jiří Zapletal">
     <meta property="og:description" content="Píšu čistý a bezpečný kód, který udrží zdraví Vašeho projektu.">
 {/block}
 
@@ -24,10 +24,12 @@
     {include './../component/skills.latte'}
     {include './../component/code-examples.latte'}
 
-    <div class="py-5 bg-light" id="my-references">
+    {include './../component/projects.latte'}
+
+    <div class="py-5 bg-white" id="my-references">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-6 fw-bold mb-3">Reference</h2>
+                <h2 class="display-6 fw-bold mb-3">Recenze</h2>
                 <p class="lead mb-0">Slova přímo od zákazníků (můžete jim zavolat a cokoli si ověřit).</p>
             </div>
             {include './../component/reference-carousel.latte'}
@@ -35,7 +37,6 @@
         </div>
     </div>
 
-    {include './../component/tools.latte'}
     {include './../component/stepper.latte'}
     {include './../component/contact.latte'}
 

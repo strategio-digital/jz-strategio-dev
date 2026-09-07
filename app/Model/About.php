@@ -113,7 +113,7 @@ class About
                 ],
                 [
                     'year' => '2018',
-                    'title' => 'Vývoj Bobříka Informatiky pro Jihočeskou univerzitu',
+                    'title' => 'Vývoj Bobříka Informatiky pro Pedagogickou fakultu JČU',
                     'text' => 'Dělat weby bylo super, ale lidi za ně nechtěli moc platit <em>“Však jen koupíš šablonu do Wordpressu a je to”</em> - <strong>ne, takto to opravdu nefunguje!</strong> A tak přišla potřeba spolupráce s fundovanější klientelou.<br><br>Nicméně, jak mě z vysoké vyhodili dveřmi, tak mě oknem zase vzali zpět. Tentokrát ale v roli programátora, který si mohl diktovat podmínky vývoje a technologie volit podle gusta. Naprogramoval jsem tedy kompletní administrační systém pro Bobříka Informatiky. Spolupráce byla skvělá, tak hned přišla další zakázka na vytvoření webu ibobr.cz. Až na ten Joomla požadavek to také proběhlo skvěle.<br><br><em><strong>Poznámka:</strong> Pro všechny příznivce Wordpressů, Joomel, Drupalů a podobných nesmyslů. Uvědomte si, že s každou úpravou přeplácíte juniora programátora - protože senior, který zvládá práci 10x rychleji se v tom praso-kódu prostě vrtat nebude. Navíc, existují 1000x lepší systémy, jako je Strapi CMS, Pocketbase, Laravel Nova nebo třeba Contentio web a Megio panel.</em>',
                     'images' => []
                 ],

@@ -6,6 +6,10 @@
 .code-wrapper {
     height: 540px;
 
+    // Go se formátuje tabulátory (gofmt); výchozích 8 znaků je v <pre> moc
+    -moz-tab-size: 4;
+    tab-size: 4;
+
     @include media-breakpoint-down(sm) {
         height: 300px;
     }

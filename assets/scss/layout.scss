@@ -65,9 +65,7 @@
 @import "components/bg-blue";
 @import "components/bg-code";
 @import "components/bg-radial";
-@import "components/stepper-circle";
-@import "components/stepper-wrapper";
-@import "components/stepper-paragraph";
+@import "components/process-timeline";
 @import "components/hero-section";
 @import "components/hero-image";
 @import "components/reference-img";
@@ -75,11 +73,11 @@
 @import "components/reference-name";
 @import "components/reference-logo";
 @import "components/reference-text";
-@import "components/tool";
 @import "components/skill-row";
 @import "components/contact-form";
 @import "components/carousel";
 @import "components/about-carousel";
+@import "components/project-slider";
 @import "components/switcher";
 @import "components/code-button";
 @import "components/code-wrapper";
@@ -92,6 +90,7 @@
 @import "components/blog-timeline";
 @import "components/footer-photo";
 @import "components/writing-animation";
+@import "components/section-heading";
 
 // Vue
 @import '../scss/vue/open-ai/animated-box';

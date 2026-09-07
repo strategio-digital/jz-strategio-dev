@@ -1,73 +1,141 @@
 <script setup lang="ts">
-import { ref, inject } from 'vue'
-import { megio } from 'megio-api'
-import PageHeading from '@/components/layout/PageHeading.vue'
-import Datagrid from '@/components/datagrid/Datagrid.vue'
-import type IDatagridSettings from '@/components/datagrid/types/IDatagridSettings'
-import type ICollectionSummary from '@/components/collection/types/ICollectionSummary'
-import type { IPagination, IRespShow, IRow } from 'megio-api/types/collections'
+import type { AdminUser } from '@/app/Admin/types/AdminUser';
+import { isAdminUser } from '@/app/Admin/types/AdminUser';
+import type { UserFormData } from '@/app/Admin/types/UserFormData';
+import type { UserFormErrors } from '@/app/Admin/types/UserFormErrors';
+import { ref, watch } from 'vue';
+import { authFetch, useAuth } from '@/app-ui/Auth';
+import { getLocale, localizePath, useI18n } from '@/app-ui/I18n';
+import { useToast } from '@/app-ui/Toast/useToast';
+import Modal from '@/app-ui/Modals/Modal.vue';
+import Spinner from '@/app-ui/Loading/Spinner.vue';
+import UserForm from '@/app/Admin/Components/UserForm.vue';
 
-const props = defineProps<{ tableName: string }>()
-const emits = defineEmits<{ (e: 'onLoadingChange', status: boolean): void }>()
+const { userId } = defineProps<{
+    userId: string | null;
+}>();
 
-const actions = inject<IDatagridSettings['actions']>('datagrid-actions')
-const summaries = inject<ICollectionSummary[]>('collection-summaries')
+const emit = defineEmits<{
+    saved: [nickname: string];
+    close: [];
+}>();
 
-const loading = ref<boolean>(true)
-const datagrid = ref()
+const { t } = useI18n();
+const { error } = useToast();
+const { user: currentUser } = useAuth();
 
-async function loadFunction(newPagination: IPagination): Promise<IRespShow> {
-    loading.value = true
-    emits('onLoadingChange', loading.value)
+const initial = ref<UserFormData | null>(null);
+const errors = ref<UserFormErrors>({});
+const isLoading = ref<boolean>(false);
+const isFetching = ref<boolean>(false);
 
-    const resp = await megio.collections.show({
-        table: props.tableName,
-        schema: true,
-        currentPage: newPagination.currentPage,
-        itemsPerPage: newPagination.itemsPerPage,
-        orderBy: [
-            { col: 'createdAt', desc: true },
-            { col: 'id', desc: true }
-        ]
-    })
+const clearFieldError = (field: keyof UserFormErrors): void => {
+    delete errors.value[field];
+};
 
-    loading.value = false
-    emits('onLoadingChange', loading.value)
+const close = (): void => {
+    errors.value = {};
+    emit('close');
+};
 
-    return resp
-}
+const loadUser = async (id: string): Promise<void> => {
+    // Blank first — the previous subject must not stay on screen while the new one loads.
+    initial.value = null;
+    errors.value = {};
+    isFetching.value = true;
 
-function handleFirstColumnClick(row: IRow) {
-    const custom = summaries?.filter(sum => sum.collectionName === props.tableName).shift()
-    if (custom) {
-        custom.onFirstColumnClick(props.tableName, row)
-    } else {
-        console.log('open sideModal by default')
+    const result = await authFetch<AdminUser>('GET', `/api/v1/admin/users/${id}`, {
+        validate: isAdminUser,
+    });
+
+    isFetching.value = false;
+
+    if (result.success === false) {
+        error(t('users.load_one_failed'));
+        close();
+
+        return;
     }
-}
 
+    initial.value = {
+        nickname: result.data.nickname,
+        password: '',
+        email: result.data.email,
+        role: result.data.role,
+    };
+};
+
+watch(() => userId, (id: string | null): void => {
+    if (id === null) {
+        return;
+    }
+
+    void loadUser(id);
+});
+
+const handleSubmit = async (data: UserFormData): Promise<void> => {
+    const id = userId;
+
+    if (id === null) {
+        return;
+    }
+
+    isLoading.value = true;
+    errors.value = {};
+
+    const result = await authFetch<null, UserFormErrors, UserFormData>(
+        'PUT',
+        `/api/v1/admin/users/${id}`,
+        { body: data },
+    );
+
+    isLoading.value = false;
+
+    if (result.success === false) {
+        errors.value = result.data;
+
+        return;
+    }
+
+    const isSelf = currentUser.value !== null && currentUser.value.id === id;
+    const roleChanged = initial.value !== null && initial.value.role !== data.role;
+
+    if (isSelf === true && roleChanged === true) {
+        // Admin demoted themselves: full reload so bootstrap mints a token with
+        // the new permissions. A router navigation would keep the stale JWT.
+        window.location.assign(localizePath('/dashboard', getLocale()));
+
+        return;
+    }
+
+    emit('saved', data.nickname);
+    close();
+};
 </script>
 
 <template>
-    <div class="h-100" v-show="!loading">
-        <PageHeading
-            v-if="!loading"
-            :breadcrumb="['Kolekce', tableName]"
-            @onRefresh="() => datagrid.refresh()"
+    <Modal
+        :show="userId !== null"
+        :title="t('users.edit_title')"
+        @close="close"
+    >
+        <div
+            v-if="isFetching === true"
+            class="flex items-center justify-center py-12"
+        >
+            <Spinner />
+        </div>
+
+        <UserForm
+            v-else-if="initial !== null"
+            mode="edit"
+            :submit-label="t('common.save')"
+            :initial="initial"
+            :is-loading="isLoading"
+            :errors="errors"
+            @submit="handleSubmit"
+            @cancel="close"
+            @clear-error="clearFieldError"
         />
-        <Datagrid
-            v-if="actions"
-            ref="datagrid"
-            class="mt-5"
-            :key="tableName"
-            :loadFunction="loadFunction"
-            :rowActions="actions.row"
-            :bulkActions="actions.bulk"
-            :allowActionsFiltering="true"
-            :defaultItemsPerPage="15"
-            :loading="loading"
-            emptyDataMessage="Data nejsou k dispozici."
-            @onFirstColumnClick="handleFirstColumnClick"
-        />
-    </div>
+    </Modal>
 </template>
