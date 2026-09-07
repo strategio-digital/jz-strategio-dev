@@ -1,0 +1,17 @@
+/**
+ * Copyright (c) 2026 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+// Krátký akcent pod nadpisem sekce. Zatím ho nese jen sekce Vybrané projekty,
+// aby se odlišila od zbytku stránky. Nadpis si zarovnání drží vlastní, takže
+// pod vycentrovaný text by čárka patřila taky na střed (margin-inline: auto).
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 5px;
+    margin-top: 1rem;
+    border-radius: 3px;
+    background: #1920ae;
+}

@@ -7,6 +7,11 @@ import Puppeteer from './scraper/puppeteer'
 
 admin.initializeApp()
 
+type ScraperRequest = {
+    links: string[]
+    scraperType: string
+}
+
 export const runPuppeteer = functions
 .region('europe-west3')
 .runWith({
@@ -14,10 +19,11 @@ export const runPuppeteer = functions
     memory: '4GB',
     failurePolicy: false
 })
-.https.onCall(async (data: any, context: CallableContext): Promise<Array<ComparatorResult>> => {
+.https.onCall(async (data: ScraperRequest, context: CallableContext): Promise<Array<ComparatorResult>> => {
     const comparatorResults: Array<ComparatorResult> = []
-    const links = data.links.filter((item: string, index: number, self: string)
-        => self.indexOf(item) === index).splice(0, 10)
+    const links = data.links
+        .filter((item, index, self) => self.indexOf(item) === index)
+        .splice(0, 10)
 
     if (! AllowedTypes.includes(data.scraperType)) {
         comparatorResults.push({
@@ -39,7 +45,7 @@ export const runPuppeteer = functions
             comparatorResults.push(comparatorResult)
         } catch (exception) {
             comparatorResults.push({
-                error: exception.message,
+                error: exception instanceof Error ? exception.message : String(exception),
                 url: targetUrl,
                 duration: null,
                 listingResult: null,

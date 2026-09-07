@@ -7,6 +7,7 @@
 import '@/assets/images'
 import '@/assets/files/MealHack.pdf'
 import '@/assets/files/ochrana-predplatitele-signed.pdf'
+import '@/assets/files/7-klicovych-otazek-pred-zahajenim-projektu.pdf'
 
 // Stylesheets
 import '@/assets/scss/layout.scss'

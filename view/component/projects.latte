@@ -1,0 +1,129 @@
+{*
+ * Copyright (c) 2022 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ *}
+
+{varType App\Model\Projects $projects}
+
+<div class="py-5 bg-light position-relative" id="tools-for-you">
+    <div class="container position-relative" style="z-index: 1">
+        <div class="carousel project-slider" id="project-carousel">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <h2 class="display-6 fw-bold mb-0 section-heading">Vybrané projekty</h2>
+
+                <div class="d-none d-lg-flex align-items-center flex-shrink-0">
+                    <span class="fw-bold lead mb-0 me-3 d-none d-sm-inline" data-carousel="counter">1 / 6</span>
+                    <button class="btn btn-warning rounded-circle" style="width: 50px; height: 50px" data-carousel="prev" aria-label="Předchozí projekt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="btn btn-warning rounded-circle ms-2" style="width: 50px; height: 50px" data-carousel="next" aria-label="Další projekt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div data-carousel="items">
+                {foreach $projects->get() as $project}
+                    <div data-carousel="item">
+                        <div class="project-slide">
+                            {* Nadpis je v DOM první, aby po zalomení sloupců stál nad
+                               obrázkem. Na desktopu ho vrací vpravo nahoru grid-area,
+                               takže nadpis nemusí být v šabloně dvakrát. *}
+                            <div class="project-slide-head">
+                                <h3 class="h2 fw-bold mb-2">{$project['title']}</h3>
+
+                                <p class="lead text-secondary mb-1">{$project['claim']}</p>
+
+                                {if $project['status']}
+                                    <span class="badge project-status">{$project['status']}</span>
+                                {/if}
+
+                                <div class="d-flex flex-wrap mt-4">
+                                    {if $project['link']}
+                                    <a href="{$project['link']}" target="_blank" class="project-link me-4 mb-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                            <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                                        </svg>
+                                        <span class="ms-2">Přejít na web</span>
+                                    </a>
+                                    {/if}
+
+                                    {if $project['pdf']}
+                                        <a href="{vite($project['pdf'])}" target="_blank" class="project-link mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                                                <path d="M4.603 12.087a.8.8 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.7 7.7 0 0 1 1.482-.645 20 20 0 0 0 1.062-2.227 7.3 7.3 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a11 11 0 0 0 .98 1.686 5.8 5.8 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.86.86 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.7 5.7 0 0 1-.911-.95 11.7 11.7 0 0 0-1.997.406 11.3 11.3 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.8.8 0 0 1-.58.029"/>
+                                            </svg>
+                                            <span class="ms-2">PDF – Plán realizace</span>
+                                        </a>
+                                    {/if}
+                                </div>
+                            </div>
+
+                            <div class="project-slide-media">
+                                <div class="project-figure rounded-1 overflow-hidden">
+                                    <img src="{vite($project['image'])}"
+                                         alt="{$project['title']}"
+                                         width="1000"
+                                         height="1000"
+                                         class="project-image"
+                                         loading="lazy"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="project-slide-body">
+                                <div class="mb-4">
+                                    {foreach $project['challenge'] as $paragraph}
+                                        <p class="{$iterator->last ? 'mb-0' : 'mb-3'}">{$paragraph}</p>
+                                    {/foreach}
+                                </div>
+
+
+                                <div class="mb-4">
+                                    {foreach $project['tech'] as $tech}
+                                        <span class="badge project-tech me-1 mb-1">{$tech}</span>
+                                    {/foreach}
+                                </div>
+
+
+                                {if $project['logos']}
+                                    <div class="mt-4 pt-3 project-logo-row d-flex align-items-center flex-wrap">
+                                        {foreach $project['logos'] as $logo}
+                                            <img src="{vite($logo['src'])}" alt="" class="project-logo me-4 mb-2"
+                                                 style="height: {(int) round(52 * $logo['scale'])}px" loading="lazy">
+                                        {/foreach}
+                                    </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+
+            <div class="d-lg-none mt-4 project-nav d-flex justify-content-between align-items-center rounded-1 p-3">
+                <div>
+                    <div class="fw-bold">Další projekt</div>
+                    <div class="small text-secondary" data-carousel-mirror="counter">1 / {$projects->count()}</div>
+                </div>
+                <div class="flex-shrink-0">
+                    <button class="btn btn-warning rounded-circle" style="width: 46px; height: 46px" data-carousel-mirror="prev" aria-label="Předchozí projekt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="btn btn-warning rounded-circle ms-2" style="width: 46px; height: 46px" data-carousel-mirror="next" aria-label="Další projekt">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

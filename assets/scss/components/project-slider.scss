@@ -1,0 +1,125 @@
+/**
+ * Copyright (c) 2026 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+.project-slide {
+    // Pořadí v DOM je nadpis -> obrázek -> text, aby po zalomení sloupců
+    // stál nadpis i podnadpis nad obrázkem. Na širokém rozlišení ho grid
+    // vrací zpět vpravo nahoru, takže nadpis nemusí být v šabloně dvakrát.
+    display: grid;
+    grid-template-areas:
+        "head"
+        "media"
+        "body";
+    row-gap: 1rem;
+}
+
+.project-slide-head {
+    grid-area: head;
+}
+
+.project-slide-media {
+    grid-area: media;
+}
+
+.project-slide-body {
+    grid-area: body;
+}
+
+@include media-breakpoint-down(lg) {
+    // Po zalomení patří nadpis s podnadpisem k obrázku těsněji než text,
+    // který za obrázkem začíná nové sdělení.
+    .project-slide-body {
+        margin-top: .5rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .project-slide {
+        // Obrázek drží levý sloupec přes obě řádky, nadpis a text se skládají
+        // vpravo pod sebe.
+        grid-template-columns: 6fr 6fr;
+        grid-template-areas:
+            "media head"
+            "media body";
+        align-items: start;
+        column-gap: 1.5rem;
+    }
+
+    .project-slide-head {
+        // Mírné odsazení, ať nadpis nezačíná přesně na horní hraně obrázku.
+        padding-top: 1rem;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .project-slide {
+        grid-template-columns: 7fr 5fr;
+        column-gap: 3rem;
+    }
+}
+
+.project-slider {
+    // Výšku drží vždy jen viditelný slide (skryté má sdílený .carousel
+    // absolutně). Rezervovat místo pro nejvyšší z nich dělalo u kratších
+    // studií obří prázdno, a skok při přepnutí stejně srovná scroll na sekci.
+    .project-figure {
+        border: 1px solid rgba(0, 0, 0, .1);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+        line-height: 0;
+    }
+
+    .project-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .project-logo-row {
+        border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .project-logo {
+        width: auto;
+        height: 52px;
+        max-width: 320px;
+        object-fit: contain;
+        opacity: .85;
+    }
+
+    // Decentní obrys místo výplně: štítek informuje o fázi projektu,
+    // nemá soupeřit o pozornost s odkazy.
+    .project-status {
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, .3);
+        color: var(--bs-secondary);
+        font-weight: 600;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    .project-nav {
+        background: #fff;
+    }
+
+    .project-tech {
+        background: rgba(0, 0, 0, .06);
+        color: var(--bs-secondary);
+        font-weight: 600;
+    }
+
+    .project-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--bs-dark);
+        font-weight: 700;
+        text-decoration: none;
+        transition: color .2s ease-in-out;
+
+        &:hover,
+        &:focus {
+            color: var(--bs-warning);
+        }
+    }
+}

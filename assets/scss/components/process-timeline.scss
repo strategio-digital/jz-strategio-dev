@@ -1,0 +1,143 @@
+/**
+ * Copyright (c) 2026 Strategio Digital s.r.o.
+ * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
+ */
+
+// Svislá osa spolupráce. Spojnice je ::before na značce, ne samostatný prvek,
+// aby se u posledního kroku dala vypnout jedním pravidlem a nikde nezůstal
+// viset kus čáry do prázdna.
+$process-mark-size: 56px;
+$process-gap: 2.5rem;
+
+// Spojnice kreslí krok, ne značka: běží od spodní hrany kolečka po spodní
+// hranu kroku, takže dosáhne k dalšímu kolečku i když popisek zabere dva řádky.
+.process-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding-bottom: $process-gap;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: $process-mark-size;
+        bottom: 0;
+        left: calc(#{$process-mark-size} / 2 - 1px);
+        border-left: 2px dashed rgba(25, 32, 174, .4);
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+
+        &::before {
+            display: none;
+        }
+    }
+}
+
+.process-mark {
+    position: relative;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $process-mark-size;
+    height: $process-mark-size;
+    border-radius: 50%;
+    background: #1920ae;
+    color: $white;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.process-body {
+    display: block;
+    padding-top: .35rem;
+}
+
+.process-label {
+    display: block;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.process-note {
+    display: block;
+    margin-top: .15rem;
+    color: var(--bs-secondary);
+}
+
+.process-doc {
+    border: 1px solid rgba(0, 0, 0, .08);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+}
+
+.process-badge {
+    background: rgba(25, 32, 174, .08);
+    color: #1920ae;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.process-questions {
+    padding-left: 1.4rem;
+
+    li + li {
+        margin-top: .5rem;
+    }
+
+    // Číslo drží barvu i tučnost timeline vlevo, ať jsou obě části sekce zjevně stejný seznam.
+    li::marker {
+        color: #1920ae;
+        font-weight: 700;
+    }
+}
+
+// Boxíky s dokumentem nebo odkazem. Klikací je celá plocha, ne jen text,
+// a hover ji nadzvedne, aby bylo poznat, že jde o akci. Akcentní barvu drží
+// proměnná, takže varianta mění jen ji, ne celý blok pravidel.
+.doc-box {
+    --doc-accent: 25, 32, 174;
+
+    background: $light;
+    border: 1px solid rgba(0, 0, 0, .1);
+    color: var(--bs-dark);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out, transform .2s ease-in-out;
+
+    &:hover,
+    &:focus-visible {
+        background: $white;
+        border-color: rgba(var(--doc-accent), .45);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+        transform: translateY(-2px);
+        color: var(--bs-dark);
+    }
+}
+
+.doc-box--pdf {
+    --doc-accent: 211, 47, 47;
+}
+
+.doc-box-icon {
+    color: rgb(var(--doc-accent));
+}
+
+.doc-box-arrow {
+    color: var(--bs-secondary);
+    transition: transform .2s ease-in-out;
+
+    .doc-box:hover & {
+        transform: translateY(2px);
+    }
+}
+
+// Odkaz pryč ze stránky míří doprava, ne dolů jako stahování.
+.doc-box-arrow--right {
+    .doc-box:hover & {
+        transform: translateX(2px);
+    }
+}

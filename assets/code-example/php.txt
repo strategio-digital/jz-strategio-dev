@@ -1,47 +1,73 @@
 <?php
 declare(strict_types=1);
 
-namespace Megio\Http\Request\Resource;
+namespace App\Gameplay\Facade;
 
-use Nette\Schema\Expect;
-use Megio\Database\Entity\Auth\Resource;
-use Megio\Database\Entity\Auth\Role;
-use Megio\Database\EntityManager;
-use Megio\Http\Request\Request;
-use Symfony\Component\HttpFoundation\Response;
+use App\EntityManager;
+use App\Gameplay\Facade\Exception\GameplayFacadeException;
+use App\Gameplay\Http\Request\Dto\RateAnswerDto;
+use App\Student\Database\Entity\Student;
+use App\Student\Database\Enum\Gender;
+use App\StudentGroup\Database\Entity\StudentGroup;
+use App\Task\Database\Entity\Task;
+use App\Task\Database\Enum\Liked;
+use App\Task\Database\Repository\AnswerRepository;
 
-class UpdateRoleRequest extends Request
+/**
+ * Records the group's feedback on a task (Bobřík enum: 1=Yes, -1=No, 0=Neutral).
+ * Re-rating overwrites the previous value.
+ */
+final readonly class RateAnswerFacade
 {
-    public function __construct(protected EntityManager $em)
-    {
-    }
+    public function __construct(
+        private EntityManager $em,
+        private AnswerRepository $answerRepository,
+    ) {}
 
-    public function schema(): array
+    /**
+     * @throws GameplayFacadeException when the answer doesn't belong to the
+     *                                 caller's group (prevents drive-by
+     *                                 rating of other groups' rows).
+     */
+    public function execute(RateAnswerDto $dto, StudentGroup $group, Student $caller): void
     {
-        return [
-            'resource_id' => Expect::string()->required(),
-            'role_id' => Expect::string()->required(),
-            'enable' => Expect::bool()->required(),
-        ];
-    }
-
-    public function process(array $data): Response
-    {
-        $resource = $this->em->getAuthResourceRepo()->findOneBy(['id' => $data['resource_id']]);
-        $role = $this->em->getAuthRoleRepo()->findOneBy(['id' => $data['role_id']]);
-
-        if (!$role || !$resource) {
-            return $this->error(['Role or resource not found'], 404);
+        $answer = $this->answerRepository->findById($dto->answerId);
+        if ($answer === null) {
+            throw new GameplayFacadeException(translationKey: 'gameplay.error.answer_not_found');
         }
 
-        if ($data['enable'] === true) {
-            $role->addResource($resource);
-        } else {
-            $role->getResources()->removeElement($resource);
+        if ($answer->getStudentGroup()->getId() !== $group->getId()) {
+            throw new GameplayFacadeException(translationKey: 'gameplay.error.answer_not_owned');
         }
 
-        $this->em->flush($role);
+        // Author was the only one who could have clicked submit, so they are
+        // also the only one who can rate — keeps the audit trail clean.
+        if ($answer->getAuthorStudent()->getId() !== $caller->getId()) {
+            throw new GameplayFacadeException(translationKey: 'gameplay.error.answer_not_owned');
+        }
 
-        return $this->json(['message' => 'Resources successfully updated']);
+        $answer->setLiked(Liked::from($dto->liked));
+        $this->em->flush();
+
+        $this->recalculatePopularity($answer->getTask());
+    }
+
+    /**
+     * A rating changes the task's popularity, so recompute the two stored
+     * buckets from scratch. Must run *after* the rating flush above — the count
+     * queries read the DB, so the new `liked` value has to be persisted first;
+     * a second flush then writes the refreshed totals.
+     */
+    private function recalculatePopularity(Task $task): void
+    {
+        $taskId = $task->getId();
+        $maleLikes = $this->answerRepository->countLikesByTaskAndGender($taskId, Gender::Male);
+        $femaleLikes = $this->answerRepository->countLikesByTaskAndGender($taskId, Gender::Female);
+        $otherLikes = $this->answerRepository->countLikesByTaskAndGender($taskId, Gender::Other);
+
+        $task->setPopularityMale($maleLikes);
+        $task->setPopularityFemale($femaleLikes);
+        $task->setPopularityOther($otherLikes);
+        $this->em->flush();
     }
 }

@@ -9,12 +9,14 @@ import ts from 'highlight.js/lib/languages/typescript'
 import php from 'highlight.js/lib/languages/php'
 import scss from 'highlight.js/lib/languages/scss'
 import docker from 'highlight.js/lib/languages/dockerfile'
+import go from 'highlight.js/lib/languages/go'
 
 export default () => {
     hljs.registerLanguage('ts', ts)
     hljs.registerLanguage('php', php)
     hljs.registerLanguage('scss', scss)
     hljs.registerLanguage('docker', docker)
+    hljs.registerLanguage('go', go)
 
     document.addEventListener('DOMContentLoaded', () => {
         const codes: HTMLElement[] = Array.from(document.querySelectorAll('pre code'))

@@ -3,47 +3,108 @@
  * @author Jiří Zapletal (https://strategio.dev, jz@strategio.dev)
  *}
 
-<div class="bg-white py-5 py-lg-7 py-xxl-10">
-    <div class="container text-md-center">
-        <div class="text-center mb-xl-5">
-            <h2 class="display-4 fw-bold mb-0">Pobavme se o projektu</h2>
-        </div>
-        <div class="position-relative">
-            <div class="position-absolute top-0 bottom-0 start-0 h-100 py-5 d-md-none" style="width: 36px">
-                <div class="border-end h-100"></div>
-            </div>
-            <div class="row position-absolute justify-content-center m-0 d-none d-md-flex w-100" style="z-index: 0">
-                <div class="col-9 col-xl-10 pe-xl-5 pe-xxl-8 ps-xl-5 ps-xxl-8">
-                    <div class="border-bottom" style="height: 6.3rem; width: 100%"></div>
-                </div>
-            </div>
-            <div class="row d-flex align-items-center align-items-md-start gx-0 gx-md-3 gx-lg-0 gx-xl-7 gx-xxl-9 text-secondary position-relative" style="z-index: 1">
-                <div class="col-md-4 mt-5 d-flex d-md-block align-items-center stepper-wrapper active" data-step="1">
-                    <span class="stepper-circle">1</span>
-                    <p class="mt-0 mt-md-5 mb-0 ms-3 ms-md-0 stepper-paragraph lead fw-bold">
-                        Naplánujete on-line schůzku.
-                    </p>
-                </div>
-                <div class="col-md-4 mt-5 d-flex d-md-block align-items-center stepper-wrapper" data-step="2">
-                    <span class="stepper-circle">2</span>
-                    <p class="mt-0 mt-md-5 mb-0 ms-3 ms-md-0 stepper-paragraph lead fw-bold">
-                        ZDARMA probereme váš projekt.
-                    </p>
-                </div>
-                <div class="col-md-4 mt-5 d-flex d-md-block align-items-center stepper-wrapper" data-step="3">
-                    <span class="stepper-circle">3</span>
-                    <p class="mt-0 mt-md-5 mb-0 ms-3 ms-md-0 stepper-paragraph lead fw-bold">
-                        Navrhnu řešení a cenu realizace
-                    </p>
-                </div>
-            </div>
-        </div>
+<div class="bg-light py-5">
+    <div class="container">
+        <div class="row g-4 g-xl-5 align-items-start">
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-4 section-heading">Jak probíhá spolupráce</h2>
 
-        <div class="text-center">
-            <button class="btn btn-warning btn-xl mt-5 mt-md-7 px-5" data-scroll="#contact-me">
-                <span>Pobavit se o projektu</span>
-                <span class="small fw-light d-block">(zobrazí aktuální kontakty)</span>
-            </button>
+                <ol class="process-timeline list-unstyled mb-0">
+                    <li class="process-step">
+                        <span class="process-mark">1</span>
+                        <span class="process-body">
+                            <span class="process-label">První kontakt a konzultace</span>
+                            <span class="process-note">Z nezávazného hovoru odejdete s rámcovým odhadem rozsahu i ceny.</span>
+                        </span>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-mark">2</span>
+                        <span class="process-body">
+                            <span class="process-label">Analýza projektu a nacenění</span>
+                            <span class="process-note">Dostanete PDF s kompletním plánem: funkce, technologie, termíny a cena.</span>
+                        </span>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-mark">3</span>
+                        <span class="process-body">
+                            <span class="process-label">Vývoj projektu po fázích</span>
+                            <span class="process-note">Po každé fázi máte funkční verzi, kterou si vyzkoušíte.</span>
+                        </span>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-mark">4</span>
+                        <span class="process-body">
+                            <span class="process-label">Spuštění ostrého provozu</span>
+                            <span class="process-note">Aplikace běží v ostrém provozu, otestovaná a předaná.</span>
+                        </span>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-mark">5</span>
+                        <span class="process-body">
+                            <span class="process-label">Měření, údržba, rozvoj</span>
+                            <span class="process-note">Sleduji provoz, opravuji chyby a přidávám nové funkce.</span>
+                        </span>
+                    </li>
+                </ol>
+
+                <button class="btn btn-warning btn-xl px-4 mt-5" data-scroll="#contact-me">Poptat spolupráci</button>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="process-doc bg-white rounded-1 p-4 p-xl-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16" class="text-secondary" aria-hidden="true">
+                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                            <path d="M4.603 12.087a.8.8 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.7 7.7 0 0 1 1.482-.645 20 20 0 0 0 1.062-2.227 7.3 7.3 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a11 11 0 0 0 .98 1.686 5.8 5.8 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.86.86 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.7 5.7 0 0 1-.911-.95 11.7 11.7 0 0 0-1.997.406 11.3 11.3 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.8.8 0 0 1-.58.029"/>
+                        </svg>
+                        <span class="badge process-badge ms-2">PDF ke stažení</span>
+                    </div>
+
+                    <h3 class="h4 fw-bold mb-3">Klíčové otázky před startem</h3>
+
+                    <p class="text-secondary">Než padne první řádek kódu, projdeme spolu otázky, které rozhodují
+                        o tom, jestli má projekt smysl a co má umět nejdřív.</p>
+
+                    <ol class="process-questions text-secondary mb-4">
+                        <li>Jaký problém má projekt vyřešit a komu?</li>
+                        <li>Podle čeho poznáme, že se projekt povedl?</li>
+                        <li>Co vás stojí dnešní stav, když se nic neudělá?</li>
+                        <li>Co musí umět první verze a co počká?</li>
+                        <li>S jakými systémy a daty se řešení propojí?</li>
+                        <li>Kdo bude systém provozovat a rozvíjet?</li>
+                        <li>Jaký máte rozpočet a termín?</li>
+                    </ol>
+
+                    <a href="{vite('assets/files/7-klicovych-otazek-pred-zahajenim-projektu.pdf')}" target="_blank" rel="noopener" class="doc-box doc-box--pdf d-flex align-items-center rounded-1 p-3 p-xl-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" viewBox="0 0 16 16" class="doc-box-icon flex-shrink-0" aria-hidden="true">
+                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                            <path d="M4.603 12.087a.8.8 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.7 7.7 0 0 1 1.482-.645 20 20 0 0 0 1.062-2.227 7.3 7.3 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.187-.012.395-.047.614-.084.51-.27 1.134-.52 1.794a11 11 0 0 0 .98 1.686 5.8 5.8 0 0 1 1.334.05c.364.065.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.86.86 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.7 5.7 0 0 1-.911-.95 11.7 11.7 0 0 0-1.997.406 11.3 11.3 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.8.8 0 0 1-.58.029"/>
+                        </svg>
+                        <span class="ms-3">
+                            <span class="d-block fw-bold">7 klíčových otázek před zahájením projektu</span>
+                            <span class="small text-secondary">Podklad pro první schůzku (PDF)</span>
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="doc-box-arrow ms-auto flex-shrink-0" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v9.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 11.293V1.5A.5.5 0 0 1 8 1"/>
+                            <path d="M2 14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-1.5a.5.5 0 0 0-1 0V14H3v-1.5a.5.5 0 0 0-1 0z"/>
+                        </svg>
+                    </a>
+
+                    <a href="{route('blog-detail', ['slug' => 'jak-se-nacenuje-vyvoj-software'])}" target="_blank" rel="noopener" class="doc-box d-flex align-items-center rounded-1 p-3 p-xl-4 mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" viewBox="0 0 16 16" class="doc-box-icon flex-shrink-0" aria-hidden="true">
+                            <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                            <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4 4 0 0 1-.82 1H12a3 3 0 1 0 0-6z"/>
+                        </svg>
+                        <span class="ms-3">
+                            <span class="d-block fw-bold">Jak se naceňuje vývoj software?</span>
+                            <span class="small text-secondary">Článek na blogu</span>
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="doc-box-arrow doc-box-arrow--right ms-auto flex-shrink-0" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

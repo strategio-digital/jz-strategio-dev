@@ -18,61 +18,66 @@ class CodeExamples
     {
         return [
             [
-                'type' => 'ts',
-                'title' => 'SelectBox.svelte',
-                'shortcut' => 'Svelte',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/svelte.txt'),
+                'type' => 'php',
+                'title' => 'Gameplay\\RateAnswerFacade.php',
+                'shortcut' => 'PHP',
+                'code' => $this->load('php'),
+                'active' => true,
+            ],
+            [
+                'type' => 'go',
+                'title' => 'profile/change_password.go',
+                'shortcut' => 'Go',
+                'code' => $this->load('go'),
                 'active' => false,
-                'link' => null
             ],
             [
                 'type' => 'ts',
-                'title' => 'CollectionDatagrid.vue',
+                'title' => 'UserEditModal.vue',
                 'shortcut' => 'Vue',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/vue.txt'),
+                'code' => $this->load('vue'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/megio-panel/blob/master/src/components/collection/CollectionDatagrid.vue'
             ],
             [
                 'type' => 'ts',
                 'title' => 'PersonalInfo.tsx',
                 'shortcut' => 'React',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/react.txt'),
+                'code' => $this->load('react'),
                 'active' => false,
-                'link' => 'https://github.com/jzaplet/saas-checkout/blob/feature-graph-ql/src/views/PersonalInfo.tsx'
-            ],
-            [
-                'type' => 'php',
-                'title' => 'Resource\\UpdateRoleRequest.php',
-                'shortcut' => 'PHP',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/php.txt'),
-                'active' => true,
-                'link' => 'https://github.com/strategio-digital/megio-core/blob/master/src/Http/Request/Resource/UpdateRoleRequest.php'
             ],
             [
                 'type' => 'ts',
                 'title' => 'firebase/scraper.ts',
                 'shortcut' => 'Node',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/node.txt'),
+                'code' => $this->load('node'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/pricingo/blob/master/functions/src/index.ts'
             ],
             [
                 'type' => 'docker',
                 'title' => 'Dockerfile',
                 'shortcut' => 'Docker',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/docker.txt'),
+                'code' => $this->load('docker'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/megio-starter/blob/master/Dockerfile'
             ],
             [
                 'type' => 'scss',
                 'title' => 'side-modal.scss',
                 'shortcut' => 'SCSS',
-                'code' => file_get_contents(Path::appDir() . '/../assets/code-example/scss.txt'),
+                'code' => $this->load('scss'),
                 'active' => false,
-                'link' => 'https://github.com/strategio-digital/megio-panel/blob/master/src/assets/scss/side-modal.scss'
-            ]
+            ],
         ];
+    }
+    
+    private function load(string $name): string
+    {
+        $path = Path::appDir() . '/../assets/code-example/' . $name . '.txt';
+        $code = file_get_contents($path);
+        
+        if ($code === false) {
+            throw new \RuntimeException("Code example '{$name}' not found at {$path}");
+        }
+        
+        return $code;
     }
 }
